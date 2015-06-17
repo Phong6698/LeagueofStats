@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity">
+    tools:context="ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity"
+    android:id="@+id/activity_champion_stats">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -12,6 +13,125 @@
         android:id="@+id/champ_square"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/ekko" />
+        android:src="@drawable/ekko"
+        android:layout_alignBottom="@+id/difficulty_bar" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dmg_bar"
+        android:max="10"
+        android:progress="2"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_below="@+id/dmg_stat"
+        android:layout_toEndOf="@+id/champ_square"
+        android:layout_marginBottom="-3dp" />
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_bar"
+        android:max="10"
+        android:progress="5"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_toEndOf="@+id/champ_square"
+        android:layout_below="@id/dmg_stat"
+        android:layout_marginBottom="-3dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ap_bar"
+        android:max="10"
+        android:progress="9"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/ap_stat"
+        android:layout_toEndOf="@+id/champ_square"
+        android:layout_marginBottom="-3dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/def_bar"
+        android:max="10"
+        android:progress="7"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/def_stat"
+        android:layout_toEndOf="@+id/champ_square" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Damage"
+        android:id="@+id/dmg_stat"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/ad_bar"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="-3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ability Power"
+        android:id="@+id/ap_stat"
+        android:layout_below="@+id/ad_bar"
+        android:layout_alignStart="@+id/dmg_stat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Defense"
+        android:id="@+id/def_stat"
+        android:layout_below="@+id/ap_bar"
+        android:layout_alignStart="@+id/ap_stat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Diffuculty"
+        android:id="@+id/textView"
+        android:layout_below="@+id/def_bar"
+        android:layout_alignStart="@+id/def_stat" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/champ_square"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="53dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/difficulty_bar"
+        android:max="10"
+        android:progress="6"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_alignEnd="@+id/def_bar"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/champ_square" />
 
 </RelativeLayout>
