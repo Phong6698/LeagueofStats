@@ -48,8 +48,8 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:text="@string/favoriteplayer_btn"
-        android:id="@+id/favoriteplayer_btn"
+        android:text="@string/favoritSummoners_btn"
+        android:id="@+id/favoritSummoners_btn"
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffffff"
         android:layout_below="@+id/items_btn"
