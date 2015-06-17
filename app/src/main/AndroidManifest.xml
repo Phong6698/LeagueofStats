@@ -33,6 +33,10 @@
             android:label="@string/title_activity_favorit_summoner"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
+        <activity
+            android:name=".FindSummonerActivity"
+            android:label="@string/title_activity_find_summoner" >
+        </activity>
     </application>
 
 </manifest>

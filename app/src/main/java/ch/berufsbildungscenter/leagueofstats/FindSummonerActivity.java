@@ -6,18 +6,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class FavoritSummonerActivity extends ActionBarActivity {
+public class FindSummonerActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorit_summoner);
+        setContentView(R.layout.activity_find_summoner);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_favorit_summoner, menu);
+        getMenuInflater().inflate(R.menu.menu_find_summoner, menu);
         return true;
     }
 
@@ -26,12 +26,10 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        if(item.getItemId() == R.id.action_search_summoner){
-
-        }
+        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (item.getItemId() == R.id.action_settings) {
+        if (id == R.id.action_settings) {
             return true;
         }
 
