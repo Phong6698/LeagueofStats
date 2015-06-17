@@ -10,4 +10,5 @@
     <string name="title_activity_favorit_summoner">Favorit Summoner</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_find_summoner">Find Summoner</string>
 </resources>
