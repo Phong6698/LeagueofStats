@@ -13,26 +13,15 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:text="@string/searchplayer_btn"
-        android:id="@+id/searchplayer_btn"
-        android:background="@android:color/holo_blue_dark"
-        android:textColor="#ffffffff"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/free_to_play_btn"
-        android:layout_marginTop="180dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true" />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="60dp"
         android:text="@string/freetoplay_btn"
         android:id="@+id/free_to_play_btn"
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffffff"
-        android:layout_below="@+id/searchplayer_btn"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/champions_btn"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true" />
 
     <Button
         android:layout_width="250dp"
@@ -42,7 +31,7 @@
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffffff"
         android:layout_below="@+id/free_to_play_btn"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/items_btn"
         android:layout_marginBottom="10dp" />
 
     <Button
@@ -52,7 +41,18 @@
         android:id="@+id/items_btn"
         android:background="@android:color/holo_blue_dark"
         android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/champions_btn"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="@string/favoriteplayer_btn"
+        android:id="@+id/favoriteplayer_btn"
+        android:background="@android:color/holo_blue_dark"
+        android:textColor="#ffffffff"
+        android:layout_below="@+id/items_btn"
         android:layout_centerHorizontal="true" />
 
     <ImageView

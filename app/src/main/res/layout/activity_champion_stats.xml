@@ -13,4 +13,5 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/ekko" />
+
 </RelativeLayout>

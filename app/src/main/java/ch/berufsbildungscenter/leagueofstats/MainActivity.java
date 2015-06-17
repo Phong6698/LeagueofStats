@@ -16,7 +16,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Intent intent = new Intent(this.getApplicationContext(), AllChampionsActivity.class);
+        final Intent intent = new Intent(this.getApplicationContext(), ChampionStatsActivity.class);
         Button button = (Button) findViewById(R.id.champions_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
