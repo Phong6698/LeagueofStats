@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/button"
+        android:id="@+id/searchSummonerButton"
         android:layout_alignBottom="@+id/findSummonerTextField"
         android:layout_alignParentEnd="true" />
 

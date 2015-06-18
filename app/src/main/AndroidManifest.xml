@@ -36,9 +36,14 @@
         <activity
             android:name=".FindSummonerActivity"
             android:label="@string/title_activity_find_summoner"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:parentActivityName=".FavoritSummonerActivity">
-
+            android:parentActivityName=".FavoritSummonerActivity"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name=".SummonerActivity"
+            android:label="@string/title_activity_summoner"
+            android:parentActivityName=".FindSummonerActivity"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
     </application>
 

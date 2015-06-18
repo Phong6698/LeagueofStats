@@ -24,4 +24,5 @@
         <item>tr</item>
         <item>ru</item>
     </string-array>
+    <string name="title_activity_summoner">"Summoner "</string>
 </resources>
