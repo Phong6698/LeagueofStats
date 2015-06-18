@@ -44,7 +44,7 @@
         </activity>
         <activity
             android:name=".SummonerActivity"
-            android:label="@string/title_activity_find_summoner"
+            android:label="@string/title_activity_summoner"
             android:parentActivityName=".FindSummonerActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>

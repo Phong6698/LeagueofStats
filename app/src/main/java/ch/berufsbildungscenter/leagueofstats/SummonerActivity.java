@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TabWidget;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,6 +33,11 @@ public class SummonerActivity extends ActionBarActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        TabWidget tabWidget = (TabWidget)findViewById(R.id.summonerTab);
+        tabWidget.setEnabled(true);
+
+
 
         Intent intent = getIntent();
         summoner = intent.getStringExtra("summoner");

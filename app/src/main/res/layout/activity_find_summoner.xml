@@ -49,9 +49,8 @@
         android:id="@+id/regionSpinner"
         android:spinnerMode="dropdown"
         android:layout_alignTop="@+id/inGameRadioButton"
-        android:layout_toEndOf="@+id/findSummonerTextField"
-        android:layout_alignBottom="@+id/inGameRadioButton"
-        android:layout_alignStart="@+id/searchSummonerButton" />
+        android:layout_toEndOf="@+id/FindSummonerTextView"
+        android:layout_alignBottom="@+id/inGameRadioButton" />
 
     <TextView
         android:layout_width="wrap_content"
