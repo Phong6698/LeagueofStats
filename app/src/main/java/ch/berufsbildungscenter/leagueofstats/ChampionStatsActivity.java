@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class ChampionStatsActivity extends ActionBarActivity {
@@ -12,6 +15,14 @@ public class ChampionStatsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champion_stats);
+        PlayerData playerData = new PlayerData();
+        playerData.setHealth("Health");
+        playerData.setHealth_stat("678 (+89 per Level)");
+        ArrayList<PlayerData> arrayList = new ArrayList<PlayerData>();
+        arrayList.add(playerData);
+        ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item,arrayList);
+        ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);
+        champStatList.setAdapter(champStatAdapter);
     }
 
     @Override

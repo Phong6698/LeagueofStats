@@ -15,15 +15,15 @@
     <string name="title_activity_champ_stat_adapter">Champion</string>
 
     <string-array name="region">
-        <item>euw</item>
-        <item>eune</item>
-        <item>na</item>
-        <item>br</item>
-        <item>kr</item>
-        <item>lan</item>
-        <item>las</item>
-        <item>oce</item>
-        <item>tr</item>
-        <item>ru</item>
+        <item>EUW</item>
+        <item>EUNE</item>
+        <item>NA</item>
+        <item>BR</item>
+        <item>KR</item>
+        <item>LAN</item>
+        <item>LAS</item>
+        <item>OCE</item>
+        <item>TR</item>
+        <item>RU</item>
     </string-array>
 </resources>
