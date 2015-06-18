@@ -12,7 +12,7 @@
         android:text="Profile"
         android:id="@+id/profileRadioButton"
         android:layout_marginTop="129dp"
-        android:checked="false"
+        android:checked="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/inGameRadioButton"
         android:checked="false"
         android:layout_alignTop="@+id/profileRadioButton"
-        android:layout_alignEnd="@+id/findSummonerTextField" />
+        android:layout_alignStart="@+id/FindSummonerTextView" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,5 +42,25 @@
         android:id="@+id/button"
         android:layout_alignBottom="@+id/findSummonerTextField"
         android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/regionSpinner"
+        android:spinnerMode="dropdown"
+        android:layout_alignTop="@+id/inGameRadioButton"
+        android:layout_toEndOf="@+id/findSummonerTextField"
+        android:layout_alignBottom="@+id/inGameRadioButton"
+        android:layout_alignStart="@+id/button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Find Summoner"
+        android:id="@+id/FindSummonerTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
 
 </RelativeLayout>

@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Diffuculty"
-        android:id="@+id/textView"
+        android:id="@+id/FindSummonerTextView"
         android:layout_below="@+id/def_bar"
         android:layout_alignStart="@+id/def_stat" />
 
@@ -131,7 +131,7 @@
         android:paddingLeft="20dp"
         android:progressTint="#ff0052ff"
         android:layout_alignEnd="@+id/def_bar"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/FindSummonerTextView"
         android:layout_toEndOf="@+id/champ_square" />
 
 </RelativeLayout>

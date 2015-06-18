@@ -11,4 +11,17 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_find_summoner">Find Summoner</string>
+
+    <string-array name="region">
+        <item>euw</item>
+        <item>eune</item>
+        <item>na</item>
+        <item>br</item>
+        <item>kr</item>
+        <item>lan</item>
+        <item>las</item>
+        <item>oce</item>
+        <item>tr</item>
+        <item>ru</item>
+    </string-array>
 </resources>

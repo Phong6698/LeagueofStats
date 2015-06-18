@@ -1,5 +1,6 @@
 package ch.berufsbildungscenter.leagueofstats;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,7 +28,8 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         if(item.getItemId() == R.id.action_search_summoner){
-
+            Intent intent = new Intent(this, FindSummonerActivity.class);
+            startActivity(intent);
         }
 
         //noinspection SimplifiableIfStatement
