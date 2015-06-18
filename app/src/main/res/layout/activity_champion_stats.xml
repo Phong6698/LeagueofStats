@@ -115,7 +115,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/Champ_stat_list"
         android:layout_below="@+id/champ_square"
         android:layout_alignParentStart="true"
         android:layout_marginTop="53dp" />

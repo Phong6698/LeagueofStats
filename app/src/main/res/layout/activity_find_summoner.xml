@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Summoner"
         android:ems="10"
         android:id="@+id/findSummonerTextField"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="Find Summoners" />
 
     <Button
         android:layout_width="wrap_content"
