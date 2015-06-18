@@ -24,10 +24,12 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     protected JSONParser jsonParser;
     protected ProgressDialog mDialog;
 
+
     private static final String LOG_TAG = JsonLoadingTask.class.getCanonicalName();
 
     private ConnectivityManager connectivityManager;
-    private Context activity;
+    protected Context activity;
+    private Object object;
 
     public JsonLoadingTask(Context activity, ProgressDialog mDialog) {
         this.activity = activity;
@@ -79,11 +81,11 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
 
     @Override
     protected void onPostExecute(String jsonString) {
-        Log.e(LOG_TAG,"jasonString: "+jsonString);
-        onCostumPostExecute(jsonString);
+        Log.e(LOG_TAG, "jasonString: " + jsonString);
+        object = onCostumPostExecute(jsonString);
     }
 
-    protected abstract void onCostumPostExecute(String jsonString);
+    protected abstract Object onCostumPostExecute(String jsonString);
 
     private boolean isNetworkConnectionAvailable() {
         ConnectivityManager connectivityService = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -105,4 +107,27 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
         return resultBuilder.toString();
     }
 
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
+
+    public ConnectivityManager getConnectivityManager() {
+        return connectivityManager;
+    }
+
+    public void setConnectivityManager(ConnectivityManager connectivityManager) {
+        this.connectivityManager = connectivityManager;
+    }
+
+    public Context getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Context activity) {
+        this.activity = activity;
+    }
 }

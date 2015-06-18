@@ -46,6 +46,7 @@ public class SummonerActivity extends ActionBarActivity {
         }
         LoadingSummonerIDTask loadingSummonerIDTask = new LoadingSummonerIDTask(this, mDialog);
         loadingSummonerIDTask.execute(url);
+
     }
 
     @Override
