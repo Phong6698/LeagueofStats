@@ -51,7 +51,7 @@
         android:layout_alignTop="@+id/inGameRadioButton"
         android:layout_toEndOf="@+id/findSummonerTextField"
         android:layout_alignBottom="@+id/inGameRadioButton"
-        android:layout_alignStart="@+id/button" />
+        android:layout_alignStart="@+id/searchSummonerButton" />
 
     <TextView
         android:layout_width="wrap_content"

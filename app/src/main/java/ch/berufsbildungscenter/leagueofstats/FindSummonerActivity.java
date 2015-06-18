@@ -5,12 +5,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+
+import ch.berufsbildungscenter.leagueofstats.listener.FindSummonerActivityButtonListener;
 
 
 public class FindSummonerActivity extends ActionBarActivity {
+
+
+    private String regionSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +28,20 @@ public class FindSummonerActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Spinner spinner = (Spinner) findViewById(R.id.regionSpinner);
+        EditText summonerTextField = (EditText)findViewById(R.id.findSummonerTextField);
+
+        Spinner regionSpinner = (Spinner) findViewById(R.id.regionSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.region, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        regionSpinner.setAdapter(adapter);
+
+
 
         Button searchSummonerButton = (Button) findViewById(R.id.searchSummonerButton);
-        searchSummonerButton.setOnClickListener(new FindSummonerButtonListener(this));
+        searchSummonerButton.setOnClickListener(new FindSummonerActivityButtonListener(this, summonerTextField, regionSpinner));
     }
 
     @Override
@@ -52,5 +64,14 @@ public class FindSummonerActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public String getRegionSelected() {
+        return regionSelected;
+    }
+
+    public void setRegionSelected(String regionSelected) {
+        this.regionSelected = regionSelected;
     }
 }

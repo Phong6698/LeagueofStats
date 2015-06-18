@@ -1,4 +1,4 @@
-package ch.berufsbildungscenter.leagueofstats;
+package ch.berufsbildungscenter.leagueofstats.json;
 
 import android.app.Activity;
 import android.util.Log;
@@ -8,21 +8,22 @@ import org.json.JSONObject;
 
 import java.util.Iterator;
 
-public class JSONReader extends Activity{
+public class JSONParser{
 
-    protected static long getPlayerID(String playerName, Activity activity) {
-        long id = 0;
+    protected static int getSummonerIDByString(String jsonString) {
+        int summonerID = 0;
         try {
-            JSONObject jsonObject = new JSONObject(playerName);
+            JSONObject jsonObject = new JSONObject(jsonString);
             Iterator keys = jsonObject.keys();
             while(keys.hasNext()) {
                 String key = (String) keys.next();
                 JSONObject subObject = jsonObject.getJSONObject(key);
-                id = subObject.getLong("id");
+                summonerID = subObject.getInt("id");
             }
         } catch (JSONException e) {
-            Log.v("JSONReader", e.toString());
+            Log.v("JSONParser", e.toString());
         }
-        return id;
+        return summonerID;
     }
+
 }

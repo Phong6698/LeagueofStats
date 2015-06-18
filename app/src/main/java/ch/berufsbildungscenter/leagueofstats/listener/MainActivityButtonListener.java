@@ -1,8 +1,12 @@
-package ch.berufsbildungscenter.leagueofstats;
+package ch.berufsbildungscenter.leagueofstats.listener;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+
+import ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity;
+import ch.berufsbildungscenter.leagueofstats.FavoritSummonerActivity;
+import ch.berufsbildungscenter.leagueofstats.R;
 
 /**
  * Created by zpengc on 17.06.2015.

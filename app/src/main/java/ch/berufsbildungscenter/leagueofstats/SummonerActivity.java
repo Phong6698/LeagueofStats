@@ -1,13 +1,29 @@
 package ch.berufsbildungscenter.leagueofstats;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import ch.berufsbildungscenter.leagueofstats.json.LoadingSummonerIDTask;
 
 
 public class SummonerActivity extends ActionBarActivity {
+
+    private String summoner;
+    private String region;
+    private URL url;
+
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +32,20 @@ public class SummonerActivity extends ActionBarActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        summoner = intent.getStringExtra("summoner");
+        region = intent.getStringExtra("region");
+
+        mDialog = ProgressDialog.show(this, "Search Summoner", "Please wait...");
+
+        try {
+            url = new URL("https://euw.api.pvp.net/api/lol/"+region+"/v1.4/summoner/by-name/"+summoner+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        LoadingSummonerIDTask loadingSummonerIDTask = new LoadingSummonerIDTask(this, mDialog);
+        loadingSummonerIDTask.execute(url);
     }
 
     @Override
