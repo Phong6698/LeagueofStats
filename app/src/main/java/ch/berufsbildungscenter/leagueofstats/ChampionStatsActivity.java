@@ -19,6 +19,15 @@ public class ChampionStatsActivity extends ActionBarActivity {
         playerData.setHealth("Health");
         playerData.setHealth_stat("678 (+89 per Level)");
         ArrayList<PlayerData> arrayList = new ArrayList<PlayerData>();
+        // add Rows
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
+        arrayList.add(playerData);
         arrayList.add(playerData);
         ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item,arrayList);
         ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);

@@ -5,17 +5,6 @@
     android:background="#fffff9ff"
     android:padding="8dp"
     android:id="@+id/champ_stat_item">
-    <LinearLayout android:id="@+id/Text"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dip" />
-
-        <ImageView
-            android:layout_width="39dp"
-            android:layout_height="39dp"
-            android:id="@+id/imageView2"
-            android:src="@drawable/ekko" />
 
     <LinearLayout
             android:id="@+id/linearLayout"
@@ -52,4 +41,5 @@
             android:text="678 (+89 per Level)"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true" />
-    </RelativeLayout>
+
+</RelativeLayout>
