@@ -60,6 +60,12 @@ public class JSONParser{
                 JSONObject subObject = championsJsonObject.getJSONObject(key);
                 int id = subObject.getInt("id");
                 String name = subObject.getString("name");
+
+                JSONObject subImageObject = subObject.getJSONObject("image");
+                String image = subImageObject.getString("full");
+                championData.setImage(image);
+
+
                 championData.setId(id);
                 championData.setName(name);
 

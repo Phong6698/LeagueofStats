@@ -17,6 +17,8 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
  */
 public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
 
+    protected String name = "";
+
     private Context context;
     public AllChampsAdapter(Context context, int resource, List<ChampionData> championDataList) {
         super(context, resource, championDataList);
@@ -27,12 +29,19 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.activity_activity_all_champs_adapter, parent, false);
-        ImageView subtitle = (ImageView) rowView.findViewById(R.id.champ_square);
-        TextView title = (TextView) rowView.findViewById(R.id.nameField);
-        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
         ChampionData championData = this.getItem(position);
 
+        ImageView championIcon = (ImageView) rowView.findViewById(R.id.champ_square);
+
+
+        TextView name = (TextView) rowView.findViewById(R.id.nameField);
+        name.setText(championData.getName());
+        this.name = championData.getName();
+
+        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         return rowView;
     }
+
+
 }

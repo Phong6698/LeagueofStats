@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,54 +32,7 @@ public class AllChampionsActivity extends ActionBarActivity{
             e.printStackTrace();
         }
 
-        ChampionData championData = new ChampionData();
 
-        ArrayList<ChampionData> arrayList = new ArrayList<ChampionData>();
-        // add Rows
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-        arrayList.add(championData);
-
-        AllChampsAdapter allChampsAdapter = new AllChampsAdapter(this, R.id.all_champs_item, arrayList);
-        GridView champStatList = (GridView) findViewById(R.id.champGrid);
-        champStatList.setAdapter(allChampsAdapter);
     }
 
     @Override
@@ -103,7 +57,20 @@ public class AllChampionsActivity extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void setData(ArrayList champions){
+    public void setData(ArrayList<ChampionData> champions){
 
+        ArrayList<ChampionData> arrayList = new ArrayList<ChampionData>();
+        // add Rows
+        for(ChampionData championDataIt : champions) {
+            arrayList.add(championDataIt);
+            ImageView championIcon = (ImageView) findViewById(R.id.champSquare);
+            if(!championDataIt.getName().equals("Ekko")) {
+                championDataIt.getPlayerIcon(championIcon);
+            }
+        }
+
+        AllChampsAdapter allChampsAdapter = new AllChampsAdapter(this, R.id.all_champs_item, arrayList);
+        GridView champStatList = (GridView) findViewById(R.id.champGrid);
+        champStatList.setAdapter(allChampsAdapter);
     }
 }
