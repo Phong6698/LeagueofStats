@@ -32,30 +32,13 @@ public class LoadingSummonerIDTask extends JsonLoadingTask {
     protected void onCostumPostExecute(String jsonString) {
         Summoner summoner = jsonParser.getSummonerIDByString(jsonString);
         int summonerId = summoner.getId();
-//        try {
-//            url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/stats/by-summoner/"+summonerId+"/summary?season=SEASON2015&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
-//        LoadingSummonerStatsTask loadingSummonerStatsTask = new LoadingSummonerStatsTask(activity, mDialog, summoner);
-//        loadingSummonerStatsTask.execute(url);
-//
-//        summoner = (Summoner) loadingSummonerStatsTask.getObject();
-
-        summonerActivity.setData(summoner);
-
-        mDialog.dismiss();
-
-
-
-
-
-
-
-
-
-
-
+        try {
+            url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/stats/by-summoner/"+summonerId+"/summary?season=SEASON2015&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        LoadingSummonerStatsTask loadingSummonerStatsTask = new LoadingSummonerStatsTask(activity, mDialog, summoner);
+        loadingSummonerStatsTask.execute(url);
 
     }
 }

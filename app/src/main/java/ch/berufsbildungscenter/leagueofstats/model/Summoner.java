@@ -1,5 +1,7 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by zpengc on 18.06.2015.
  */
@@ -8,6 +10,16 @@ public class Summoner {
     private int id;
     private int summonerLevel;
     private int profileIconId;
+
+    private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
+
+    public ArrayList<SummonerRanked> getSummonerRankeds() {
+        return summonerRankeds;
+    }
+
+    public void setSummonerRankeds(ArrayList<SummonerRanked> summonerRankeds) {
+        this.summonerRankeds = summonerRankeds;
+    }
 
     public int getProfileIconId() {
         return profileIconId;

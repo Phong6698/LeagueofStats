@@ -2,6 +2,7 @@ package ch.berufsbildungscenter.leagueofstats.json;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,5 +72,61 @@ public class JSONParser{
         }
         System.out.print("DIE CHAMPIONS" + champions);
         return champions;
+    }
+
+    protected static Summoner getSummonerWins(String jsonString, Summoner summoner){
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+
+            ArrayList<String> listdata = new ArrayList<String>();
+            JSONArray jArray = (JSONArray)jsonObj.getJSONArray("playerStatSummaries");
+
+            if (jArray != null) {
+                for (int i=0;i<jArray.length();i++){
+                    listdata.add(jArray.get(i).toString());
+                }
+            }
+            String unranked = listdata.get(11);
+            JSONObject unrankedObj = new JSONObject(unranked);
+
+            int wins = unrankedObj.getInt("wins");
+
+            Log.e(LOG_TAG, "wins: " + wins);
+
+            summoner.setWins(wins);
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+        return summoner;
+    }
+
+    protected static Summoner getSummonerRankedStats(String jsonString, Summoner summoner) {
+
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+
+            ArrayList<String> listdata = new ArrayList<String>();
+            JSONArray jArray = (JSONArray)jsonObj.getJSONArray("playerStatSummaries");
+
+            if (jArray != null) {
+                for (int i=0;i<jArray.length();i++){
+                    listdata.add(jArray.get(i).toString());
+                }
+            }
+            String unranked = listdata.get(11);
+            JSONObject unrankedObj = new JSONObject(unranked);
+
+            int wins = unrankedObj.getInt("wins");
+
+            Log.e(LOG_TAG, "wins: " + wins);
+
+            summoner.setWins(wins);
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+        return summoner;
     }
 }
