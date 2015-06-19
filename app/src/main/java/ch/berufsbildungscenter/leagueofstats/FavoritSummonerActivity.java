@@ -40,10 +40,7 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         if(item.getItemId() == R.id.action_search_summoner){
             Intent intent = new Intent(this, FindSummonerActivity.class);
             startActivity(intent);
-        }
-
-        //noinspection SimplifiableIfStatement
-        if (item.getItemId() == R.id.action_settings) {
+        } else if (item.getItemId() == R.id.action_settings) {//noinspection SimplifiableIfStatement
             return true;
         }
 
