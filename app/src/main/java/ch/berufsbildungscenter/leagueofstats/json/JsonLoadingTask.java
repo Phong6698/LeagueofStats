@@ -1,5 +1,6 @@
 package ch.berufsbildungscenter.leagueofstats.json;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -16,6 +17,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import ch.berufsbildungscenter.leagueofstats.SummonerActivity;
+
 /**
  * Created by zpengc on 18.06.2015.
  */
@@ -25,13 +28,14 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     protected ProgressDialog mDialog;
 
 
+
     private static final String LOG_TAG = JsonLoadingTask.class.getCanonicalName();
 
     private ConnectivityManager connectivityManager;
-    protected Context activity;
-    private Object object;
+    protected Activity activity;
 
-    public JsonLoadingTask(Context activity, ProgressDialog mDialog) {
+
+    public JsonLoadingTask(Activity activity, ProgressDialog mDialog) {
         this.activity = activity;
         this.mDialog = mDialog;
         jsonParser = new JSONParser();
@@ -81,11 +85,12 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
 
     @Override
     protected void onPostExecute(String jsonString) {
+        onCostumPostExecute(jsonString);
         Log.e(LOG_TAG, "jasonString: " + jsonString);
-        object = onCostumPostExecute(jsonString);
+
     }
 
-    protected abstract Object onCostumPostExecute(String jsonString);
+    protected abstract void onCostumPostExecute(String jsonString);
 
     private boolean isNetworkConnectionAvailable() {
         ConnectivityManager connectivityService = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -107,13 +112,7 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
         return resultBuilder.toString();
     }
 
-    public Object getObject() {
-        return object;
-    }
 
-    public void setObject(Object object) {
-        this.object = object;
-    }
 
     public ConnectivityManager getConnectivityManager() {
         return connectivityManager;
@@ -123,11 +122,11 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
         this.connectivityManager = connectivityManager;
     }
 
-    public Context getActivity() {
+    public Activity getActivity() {
         return activity;
     }
 
-    public void setActivity(Context activity) {
+    public void setActivity(Activity activity) {
         this.activity = activity;
     }
 }

@@ -1,5 +1,6 @@
 package ch.berufsbildungscenter.leagueofstats.json;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 
@@ -12,13 +13,13 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
  */
 public class LoadingChampionStatsTask extends JsonLoadingTask{
 
-    public LoadingChampionStatsTask(Context activity, ProgressDialog mDialog) {
+    public LoadingChampionStatsTask(Activity activity, ProgressDialog mDialog) {
         super(activity, mDialog);
     }
 
+
     @Override
-    protected Object onCostumPostExecute(String jsonString) {
+    protected void onCostumPostExecute(String jsonString) {
         ArrayList<ChampionData> champions = jsonParser.getAllChampions(jsonString);
-        return champions;
     }
 }

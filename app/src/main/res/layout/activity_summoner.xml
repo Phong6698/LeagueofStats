@@ -12,7 +12,46 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@drawable/ekko"
-        android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Level:"
+        android:id="@+id/summonerLevelTitle"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Wins:"
+        android:id="@+id/winsTitle"
+        android:layout_below="@+id/summonerLevelTitle"
+        android:layout_alignStart="@+id/summonerLevelTitle"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/summonerLevel"
+        android:layout_above="@+id/winsTitle"
+        android:layout_toEndOf="@+id/summonerLevelTitle"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/wins"
+        android:layout_alignTop="@+id/winsTitle"
+        android:layout_alignStart="@+id/summonerLevel" />
+
 </RelativeLayout>
