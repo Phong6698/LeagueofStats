@@ -115,7 +115,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Champ_stat_list"
+        android:id="@+id/champ_stat_list"
         android:layout_below="@+id/champ_square"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
@@ -138,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gridView2"
-        android:layout_alignTop="@+id/Champ_stat_list"
+        android:layout_alignTop="@+id/champ_stat_list"
         android:layout_alignParentStart="true"
         android:layout_marginStart="415dp"
         android:layout_marginTop="134dp" />

@@ -11,6 +11,15 @@ public class SummonerRanked {
     private String division;
     private int wins;
     private int losses;
+    private String queue;
+
+    public String getQueue() {
+        return queue;
+    }
+
+    public void setQueue(String queue) {
+        this.queue = queue;
+    }
 
     public String getName() {
         return name;

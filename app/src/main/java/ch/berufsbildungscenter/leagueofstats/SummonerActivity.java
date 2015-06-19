@@ -1,9 +1,7 @@
 package ch.berufsbildungscenter.leagueofstats;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -11,15 +9,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TabWidget;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingSummonerIDTask;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
+import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
 
 public class SummonerActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -66,7 +66,6 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
 
 
 
-
     }
 
     public void setData(Summoner summoner){
@@ -75,6 +74,17 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
 
         levelTextView.setText("" + summoner.getSummonerLevel());
         winsTextView.setText(""+summoner.getWins());
+
+        ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
+
+        // add Rows
+        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+        // define items
+        RankedAdapter rankedAdapter = new RankedAdapter(this, R.id.rankedItem, summonerRankeds);
+        ListView rankedListView = (ListView) findViewById(R.id.rankedListView);
+        rankedListView.setAdapter(rankedAdapter);
 
         setTitle(summoner.getName());
     }

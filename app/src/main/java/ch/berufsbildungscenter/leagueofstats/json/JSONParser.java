@@ -134,6 +134,7 @@ public class JSONParser{
 
             summonerRanked.setName(rankedObj.getString("name"));
             summonerRanked.setTier(rankedObj.getString("tier"));
+            summonerRanked.setQueue(rankedObj.getString("queue"));
 
             summonerRanked.setDivision(rankedSubObj.getString("division"));
             summonerRanked.setLeaguePoints(rankedSubObj.getInt("leaguePoints"));

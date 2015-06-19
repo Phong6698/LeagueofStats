@@ -32,7 +32,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
         arrayList.add(championData);
         arrayList.add(championData);
         ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item,arrayList);
-        ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);
+        ListView champStatList = (ListView) findViewById(R.id.champ_stat_list);
         champStatList.setAdapter(champStatAdapter);
     }
 

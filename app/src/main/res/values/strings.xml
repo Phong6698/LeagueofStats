@@ -31,4 +31,5 @@
         <item>RU</item>
     </string-array>
     <string name="title_activity_activity_all_champs_adapter">activity_all_champs_adapter</string>
+    <string name="title_activity_ranked_adapter">RankedAdapter</string>
 </resources>

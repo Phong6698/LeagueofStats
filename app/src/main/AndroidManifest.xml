@@ -10,7 +10,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -43,26 +42,30 @@
         <activity
             android:name=".FindSummonerActivity"
             android:label="@string/title_activity_find_summoner"
-            android:screenOrientation="portrait"
             android:parentActivityName=".FavoritSummonerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".SummonerActivity"
             android:label="@string/title_activity_summoner"
-            android:screenOrientation="portrait"
             android:parentActivityName=".FindSummonerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".ChampStatAdapter"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_champ_stat_adapter" >
+            android:label="@string/title_activity_champ_stat_adapter"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity_all_champs_adapter"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_activity_all_champs_adapter" >
+            android:label="@string/title_activity_activity_all_champs_adapter"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".RankedAdapter"
+            android:label="@string/title_activity_ranked_adapter" >
         </activity>
     </application>
 
