@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity;
+import ch.berufsbildungscenter.leagueofstats.AllChampionsActivity;
 import ch.berufsbildungscenter.leagueofstats.FavoritSummonerActivity;
 import ch.berufsbildungscenter.leagueofstats.R;
 
@@ -25,7 +25,7 @@ public class MainActivityButtonListener implements View.OnClickListener {
         if(v.getId() == R.id.free_to_play_btn){
 
         } else if(v.getId() == R.id.champions_btn) {
-            Intent intent = new Intent(context, ChampionStatsActivity.class);
+            Intent intent = new Intent(context, AllChampionsActivity.class);
             context.startActivity(intent);
         } else if(v.getId() == R.id.items_btn) {
 

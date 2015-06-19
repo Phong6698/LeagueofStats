@@ -1,9 +1,12 @@
 package ch.berufsbildungscenter.leagueofstats;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
 
 
 public class AllChampionsActivity extends ActionBarActivity {
@@ -12,6 +15,8 @@ public class AllChampionsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champions_all);
+        LoadingChampionStatsTask champLoader = new LoadingChampionStatsTask(this, ProgressDialog.show(this, "Please wait", "Champs are Loading"));
+
     }
 
     @Override

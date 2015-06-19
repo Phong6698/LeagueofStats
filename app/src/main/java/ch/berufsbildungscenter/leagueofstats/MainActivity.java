@@ -26,8 +26,6 @@ public class MainActivity extends ActionBarActivity {
         championsButton.setOnClickListener(new MainActivityButtonListener(this));
         itemsButton.setOnClickListener(new MainActivityButtonListener(this));
         favSummonersButton.setOnClickListener(new MainActivityButtonListener(this));
-
-
     }
 
     @Override

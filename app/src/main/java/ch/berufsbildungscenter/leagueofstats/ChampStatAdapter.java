@@ -9,14 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
-public class ChampStatAdapter extends ArrayAdapter<PlayerData> {
+
+public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
 
     private Context context;
+    public ChampStatAdapter(Context context, int resource, List<ChampionData> championDataList) {
 
-    public ChampStatAdapter(Context context, int resource, List<PlayerData> playerDataList) {
-
-        super(context, resource, playerDataList);
+        super(context, resource, championDataList);
         this.context = context;
     }
 
@@ -28,11 +29,9 @@ public class ChampStatAdapter extends ArrayAdapter<PlayerData> {
         TextView subtitle = (TextView) rowView.findViewById(R.id.health_stat);
         // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
-        PlayerData playerData = this.getItem(position);
-
-        title.setText(playerData.getHealth());
-        subtitle.setText(playerData.getHealth_stat());
-
+        ChampionData championData = this.getItem(position);
+        title.setText(championData.getHealth());
+        subtitle.setText(championData.getHealth_stat());
 
         return rowView;
     }

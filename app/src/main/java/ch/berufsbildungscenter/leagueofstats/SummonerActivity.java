@@ -1,16 +1,12 @@
 package ch.berufsbildungscenter.leagueofstats;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TabWidget;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,10 +30,8 @@ public class SummonerActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        TabWidget tabWidget = (TabWidget)findViewById(R.id.summonerTab);
-        tabWidget.setEnabled(true);
-
-
+        //TabWidget tabWidget = (TabWidget)findViewById(R.id.summonerTab);
+        //tabWidget.setEnabled(true);
 
         Intent intent = getIntent();
         summoner = intent.getStringExtra("summoner");

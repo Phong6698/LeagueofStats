@@ -6,8 +6,8 @@
     <string name="items_btn">Items</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_all_champions">Champions</string>
-    <string name="title_activity_champion_stats">Champion Stats</string>
-    <string name="title_activity_favorit_summoner">Favorit Summoner</string>
+    <string name="title_activity_champion_stats">[Champion Name]</string>
+    <string name="title_activity_favorit_summoner">Favorite Summoner</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_find_summoner">Find Summoner</string>

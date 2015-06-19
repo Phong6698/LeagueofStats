@@ -1,13 +1,14 @@
 package ch.berufsbildungscenter.leagueofstats.json;
 
-import android.app.Activity;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 public class JSONParser{
@@ -36,8 +37,6 @@ public class JSONParser{
                 Log.e(LOG_TAG, "summonerLevel: " + summonerLevel);
                 Log.e(LOG_TAG, "profileIconId: " +profileIconId);
 
-
-
             }
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
@@ -45,4 +44,27 @@ public class JSONParser{
         return summoner;
     }
 
+    public static ArrayList<ChampionData> getAllChampions(String jsonstring) {
+        ArrayList<ChampionData> champions = new ArrayList<ChampionData>();
+        try {
+            JSONObject jsonObject = new JSONObject(jsonstring);
+            Iterator keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                ChampionData championData = new ChampionData();
+                String key = (String) keys.next();
+                JSONObject subObject = jsonObject.getJSONObject(key);
+                int id = subObject.getInt("id");
+                String name = subObject.getString("name");
+                championData.setId(id);
+                championData.setName(name);
+
+                Log.e(LOG_TAG, "id: " + id);
+                Log.e(LOG_TAG, "name: " + name);
+            }
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+        System.out.print("DIE CHAMPIONS" + champions);
+        return champions;
+    }
 }
