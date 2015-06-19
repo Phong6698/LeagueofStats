@@ -9,9 +9,9 @@ public class ChampionData {
 
     private ArrayList<ChampionStat> championStats = new ArrayList<ChampionStat>();
 
-    private String title;
-    private String name;
-    private int id;
+    private String title = "NAME";
+    private String name = "NAME";
+    private int id = 1234;
 
     public String getTitle() {
         return title;

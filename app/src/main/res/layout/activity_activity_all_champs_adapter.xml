@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="115dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/all_champs_item"
+    android:paddingRight="5dp">
+
+    <ImageButton
+        android:layout_width="115dp"
+        android:layout_height="100dp"
+        android:id="@+id/champSquare"
+        android:src="@drawable/ekko"
+        android:layout_marginLeft="10dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/nameField"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ekko"
+        android:id="@+id/nameField"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/champSquare"
+        android:layout_centerHorizontal="true"
+        android:textSize="14sp" />
+
+</RelativeLayout>

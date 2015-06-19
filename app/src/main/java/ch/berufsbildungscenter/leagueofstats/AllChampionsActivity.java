@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingAllChampionsTask;
-import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 
-public class AllChampionsActivity extends ActionBarActivity {
+public class AllChampionsActivity extends ActionBarActivity{
 
     private ProgressDialog mDialog;
 
@@ -22,7 +23,7 @@ public class AllChampionsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champions_all);
-        mDialog = ProgressDialog.show(this, "Please wait", "Champs are Loading");
+        mDialog = ProgressDialog.show(this, "Please wait", "Champions are loading");
         LoadingAllChampionsTask loadingAllChampionsTask = new LoadingAllChampionsTask(this, mDialog );
         try {
             loadingAllChampionsTask.execute(new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?champData=image&api_key=58453580-a12b-497a-bdde-d1255bd0fda3"));
@@ -30,6 +31,54 @@ public class AllChampionsActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
+        ChampionData championData = new ChampionData();
+
+        ArrayList<ChampionData> arrayList = new ArrayList<ChampionData>();
+        // add Rows
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+        arrayList.add(championData);
+
+        AllChampsAdapter allChampsAdapter = new AllChampsAdapter(this, R.id.all_champs_item, arrayList);
+        GridView champStatList = (GridView) findViewById(R.id.champGrid);
+        champStatList.setAdapter(allChampsAdapter);
     }
 
     @Override
