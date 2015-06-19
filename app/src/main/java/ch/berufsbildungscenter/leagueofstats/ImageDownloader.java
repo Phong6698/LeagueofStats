@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -12,9 +13,11 @@ import java.io.InputStream;
  * Created by zdomaa on 18.06.2015.
  */
 public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
+    private ImageButton bmImage;
 
-    public ImageDownloader(ImageView bmImage) {
+    private static final String LOG_TAG = ImageDownloader.class.getCanonicalName();
+
+    public ImageDownloader(ImageButton bmImage) {
         this.bmImage = bmImage;
     }
 
@@ -31,6 +34,7 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
+
         bmImage.setImageBitmap(result);
     }
 

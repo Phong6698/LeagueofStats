@@ -1,5 +1,7 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
+import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class ChampionData {
         this.image = image;
     }
 
-    public void getPlayerIcon(ImageView image) {
+    public void getPlayerIcon(ImageButton image) {
         String url = "http://ddragon.leagueoflegends.com/cdn/5.7.2/img/champion/" + this.image;
         new ImageDownloader(image).execute(url);
     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,8 +33,10 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
 
         ChampionData championData = this.getItem(position);
 
-        ImageView championIcon = (ImageView) rowView.findViewById(R.id.champ_square);
-
+        ImageButton championIcon = (ImageButton) rowView.findViewById(R.id.championIcon);
+        if(!championData.getName().equals("Ekko")) {
+            championData.getPlayerIcon(championIcon);
+        }
 
         TextView name = (TextView) rowView.findViewById(R.id.nameField);
         name.setText(championData.getName());
