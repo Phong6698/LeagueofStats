@@ -27,8 +27,6 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     protected JSONParser jsonParser;
     protected ProgressDialog mDialog;
 
-
-
     private static final String LOG_TAG = JsonLoadingTask.class.getCanonicalName();
 
     private ConnectivityManager connectivityManager;
@@ -41,19 +39,13 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
         jsonParser = new JSONParser();
     }
 
-
-
-
     @Override
     protected String doInBackground(URL... params) {
 
         URL url = params[0];
         Log.e(LOG_TAG,"url: "+url);
 
-
-
         String result = null;
-
 
         if(isNetworkConnectionAvailable()) {
             try {
