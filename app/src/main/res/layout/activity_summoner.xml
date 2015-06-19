@@ -54,4 +54,21 @@
         android:layout_alignTop="@+id/winsTitle"
         android:layout_alignStart="@+id/summonerLevel" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ranked"
+        android:id="@+id/summonerRankedTitle"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/summonerRankedTitle" />
+
 </RelativeLayout>

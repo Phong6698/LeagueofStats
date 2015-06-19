@@ -11,6 +11,7 @@ import java.util.Iterator;
 
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
+import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
 public class JSONParser{
 
@@ -81,15 +82,16 @@ public class JSONParser{
             ArrayList<String> listdata = new ArrayList<String>();
             JSONArray jArray = (JSONArray)jsonObj.getJSONArray("playerStatSummaries");
 
+            int wins = 0;
+
             if (jArray != null) {
                 for (int i=0;i<jArray.length();i++){
-                    listdata.add(jArray.get(i).toString());
+                    JSONObject unrankedObj = new JSONObject(jArray.get(i).toString());
+                    if(unrankedObj.getString("playerStatSummaryType").equals("Unranked")){
+                        wins = unrankedObj.getInt("wins");
+                    }
                 }
             }
-            String unranked = listdata.get(11);
-            JSONObject unrankedObj = new JSONObject(unranked);
-
-            int wins = unrankedObj.getInt("wins");
 
             Log.e(LOG_TAG, "wins: " + wins);
 
@@ -107,22 +109,38 @@ public class JSONParser{
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
 
-            ArrayList<String> listdata = new ArrayList<String>();
-            JSONArray jArray = (JSONArray)jsonObj.getJSONArray("playerStatSummaries");
-
+            ArrayList<String> rankedList = new ArrayList<String>();
+            JSONArray jArray = (JSONArray)jsonObj.getJSONArray(""+summoner.getId());
             if (jArray != null) {
                 for (int i=0;i<jArray.length();i++){
-                    listdata.add(jArray.get(i).toString());
+                    rankedList.add(jArray.get(i).toString());
                 }
             }
-            String unranked = listdata.get(11);
-            JSONObject unrankedObj = new JSONObject(unranked);
+            String ranked = rankedList.get(0);
+            JSONObject rankedObj = new JSONObject(ranked);
 
-            int wins = unrankedObj.getInt("wins");
 
-            Log.e(LOG_TAG, "wins: " + wins);
+            ArrayList<String> rankedSubList = new ArrayList<String>();
+            JSONArray jArray2 = (JSONArray)rankedObj.getJSONArray("entries");
+            if (jArray2 != null) {
+                for (int i=0;i<jArray2.length();i++){
+                    rankedSubList.add(jArray2.get(i).toString());
+                }
+            }
+            String rankedSub = rankedSubList.get(0);
+            JSONObject rankedSubObj = new JSONObject(rankedSub);
 
-            summoner.setWins(wins);
+            SummonerRanked summonerRanked = new SummonerRanked();
+
+            summonerRanked.setName(rankedObj.getString("name"));
+            summonerRanked.setTier(rankedObj.getString("tier"));
+
+            summonerRanked.setDivision(rankedSubObj.getString("division"));
+            summonerRanked.setLeaguePoints(rankedSubObj.getInt("leaguePoints"));
+            summonerRanked.setWins(rankedSubObj.getInt("wins"));
+            summonerRanked.setLosses(rankedSubObj.getInt("losses"));
+
+            summoner.getSummonerRankeds().add(summonerRanked);
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());

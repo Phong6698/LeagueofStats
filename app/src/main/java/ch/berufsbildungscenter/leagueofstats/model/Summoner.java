@@ -11,7 +11,7 @@ public class Summoner {
     private int summonerLevel;
     private int profileIconId;
 
-    private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
+    private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<>();
 
     public ArrayList<SummonerRanked> getSummonerRankeds() {
         return summonerRankeds;
