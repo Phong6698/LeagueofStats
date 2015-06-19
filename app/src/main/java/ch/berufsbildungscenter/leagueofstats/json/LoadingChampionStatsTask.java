@@ -2,11 +2,6 @@ package ch.berufsbildungscenter.leagueofstats.json;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-
-import java.util.ArrayList;
-
-import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 /**
  * Created by zkillt on 19.06.2015.

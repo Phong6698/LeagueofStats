@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -35,6 +34,7 @@ public class FindSummonerActivityButtonListener implements View.OnClickListener 
     public void onClick(View v) {
         if(v.getId() == R.id.searchSummonerButton){
             String summoner = summonerTextField.getText().toString();
+            summoner = summoner.replaceAll("\\s+", "%20");
             String region = regionSpinner.getSelectedItem().toString();
 
             Log.e(LOG_TAG, "summoner: " + summoner);
