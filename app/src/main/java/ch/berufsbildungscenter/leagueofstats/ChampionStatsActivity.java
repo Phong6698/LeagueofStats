@@ -19,7 +19,6 @@ public class ChampionStatsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_champion_stats);
 
         ChampionData championData = new ChampionData();
-        championData.setHealth_stat("678 (+89 per Level)");
 
         ArrayList<ChampionData> arrayList = new ArrayList<ChampionData>();
         // add Rows

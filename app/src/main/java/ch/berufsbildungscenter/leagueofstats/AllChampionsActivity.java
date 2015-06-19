@@ -6,16 +6,29 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import ch.berufsbildungscenter.leagueofstats.json.LoadingAllChampionsTask;
 import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
 
 
 public class AllChampionsActivity extends ActionBarActivity {
 
+    private ProgressDialog mDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champions_all);
-        LoadingChampionStatsTask champLoader = new LoadingChampionStatsTask(this, ProgressDialog.show(this, "Please wait", "Champs are Loading"));
+        mDialog = ProgressDialog.show(this, "Please wait", "Champs are Loading");
+        LoadingAllChampionsTask loadingAllChampionsTask = new LoadingAllChampionsTask(this, mDialog );
+        try {
+            loadingAllChampionsTask.execute(new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?champData=image&api_key=58453580-a12b-497a-bdde-d1255bd0fda3"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -39,5 +52,9 @@ public class AllChampionsActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setData(ArrayList champions){
+
     }
 }

@@ -20,6 +20,6 @@ public class LoadingChampionStatsTask extends JsonLoadingTask{
 
     @Override
     protected void onCostumPostExecute(String jsonString) {
-        ArrayList<ChampionData> champions = jsonParser.getAllChampions(jsonString);
+
     }
 }

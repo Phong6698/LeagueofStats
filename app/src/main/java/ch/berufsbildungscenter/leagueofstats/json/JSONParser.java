@@ -19,6 +19,7 @@ public class JSONParser{
         Summoner summoner = new Summoner();
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
+
             Iterator keys = jsonObject.keys();
             while(keys.hasNext()) {
                 String key = (String) keys.next();
@@ -45,18 +46,22 @@ public class JSONParser{
     }
 
     public static ArrayList<ChampionData> getAllChampions(String jsonstring) {
+
         ArrayList<ChampionData> champions = new ArrayList<ChampionData>();
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
-            Iterator keys = jsonObject.keys();
+            JSONObject championsJsonObject = jsonObject.getJSONObject("data");
+            Iterator keys = championsJsonObject.keys();
             while(keys.hasNext()) {
                 ChampionData championData = new ChampionData();
                 String key = (String) keys.next();
-                JSONObject subObject = jsonObject.getJSONObject(key);
+                JSONObject subObject = championsJsonObject.getJSONObject(key);
                 int id = subObject.getInt("id");
                 String name = subObject.getString("name");
                 championData.setId(id);
                 championData.setName(name);
+
+                champions.add(championData);
 
                 Log.e(LOG_TAG, "id: " + id);
                 Log.e(LOG_TAG, "name: " + name);

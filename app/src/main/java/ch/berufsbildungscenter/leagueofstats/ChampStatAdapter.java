@@ -30,8 +30,6 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
         // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
         ChampionData championData = this.getItem(position);
-        title.setText(championData.getHealth());
-        subtitle.setText(championData.getHealth_stat());
 
         return rowView;
     }
