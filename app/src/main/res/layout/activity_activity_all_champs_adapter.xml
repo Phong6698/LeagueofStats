@@ -7,10 +7,10 @@
     android:paddingRight="5dp">
 
     <ImageButton
-        android:layout_width="115dp"
+        android:layout_width="125dp"
         android:layout_height="100dp"
         android:id="@+id/championIcon"
-        android:src="@drawable/ekko"
+        android:src="@drawable/standard_120px"
         android:layout_marginLeft="10dp"
         android:paddingRight="20dp"
         android:layout_alignParentTop="true"

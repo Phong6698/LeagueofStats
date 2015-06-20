@@ -29,8 +29,8 @@ public class ChampionData {
     }
 
     public void getPlayerIcon(ImageButton image) {
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.7.2/img/champion/" + this.image;
-        new ImageDownloader(image).execute(url);
+            String url = "http://ddragon.leagueoflegends.com/cdn/5.7.2/img/champion/" + this.image;
+            new ImageDownloader(image).execute(url);
     }
 
     public String getTitle() {

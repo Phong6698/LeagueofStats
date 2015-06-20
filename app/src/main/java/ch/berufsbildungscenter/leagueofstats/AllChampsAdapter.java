@@ -41,8 +41,6 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
         TextView name = (TextView) rowView.findViewById(R.id.nameField);
         name.setText(championData.getName());
         this.name = championData.getName();
-
-        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         return rowView;
     }
 
