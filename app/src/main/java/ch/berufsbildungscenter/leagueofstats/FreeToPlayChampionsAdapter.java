@@ -47,6 +47,9 @@ public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
         defense.setText(""+championData.getDefense());
         difficulty.setText(""+championData.getDifficulty());
 
+
+
+
         return rowView;
     }
 }

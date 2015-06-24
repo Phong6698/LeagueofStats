@@ -8,12 +8,12 @@
     android:id="@+id/freeToPlayChampItem">>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120px"
+        android:layout_height="120px"
         android:id="@+id/championIcon"
         android:src="@drawable/standard_120px"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/difficultyTitle" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,10 +21,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Champion"
         android:id="@+id/champion"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/championIcon"
         android:layout_toEndOf="@+id/championIcon"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,10 +32,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Attack:"
         android:id="@+id/attackTitle"
-        android:layout_marginStart="46dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/champion"
-        android:layout_marginTop="5dp" />
+        android:layout_alignTop="@+id/championIcon"
+        android:layout_alignStart="@+id/deifficultyTitle" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Magic:"
         android:id="@+id/magicTitle"
-        android:layout_below="@+id/attackTitle"
+        android:layout_alignBottom="@+id/champion"
         android:layout_alignStart="@+id/attackTitle" />
 
     <TextView
@@ -52,17 +50,18 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Defense:"
         android:id="@+id/defenseTitle"
-        android:layout_below="@+id/magicTitle"
-        android:layout_alignStart="@+id/magicTitle" />
+        android:layout_below="@+id/champion"
+        android:layout_alignStart="@+id/deifficultyTitle" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Difficulty:"
-        android:id="@+id/difficultyTitle"
+        android:id="@+id/deifficultyTitle"
         android:layout_below="@+id/defenseTitle"
-        android:layout_alignStart="@+id/defenseTitle" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,9 +69,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/attack"
-        android:layout_above="@+id/magicTitle"
-        android:layout_toEndOf="@+id/difficultyTitle"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginRight="80dp"
+        android:layout_alignTop="@+id/attackTitle"
+        android:layout_alignStart="@+id/attackTitle"
+        android:layout_marginStart="68dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +80,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/magic"
-        android:layout_alignTop="@+id/magicTitle"
+        android:layout_marginRight="80dp"
+        android:layout_below="@+id/attack"
         android:layout_alignStart="@+id/attack" />
 
     <TextView
@@ -89,7 +90,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/defense"
-        android:layout_above="@+id/difficultyTitle"
+        android:layout_marginRight="80dp"
+        android:layout_below="@+id/magic"
         android:layout_alignStart="@+id/magic" />
 
     <TextView
@@ -98,6 +100,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/difficulty"
-        android:layout_alignTop="@+id/difficultyTitle"
+        android:layout_marginRight="80dp"
+        android:layout_below="@+id/defense"
         android:layout_alignStart="@+id/defense" />
+
 </RelativeLayout>

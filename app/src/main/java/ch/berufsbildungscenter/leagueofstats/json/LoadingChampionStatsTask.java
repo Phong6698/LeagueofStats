@@ -24,6 +24,6 @@ public class LoadingChampionStatsTask extends JsonLoadingTask{
     protected void onCostumPostExecute(String jsonString) {
         ChampionData champion = jsonParser.getChampionDetails(jsonString);
         championStatsActivity.setData(champion);
-        mDialog.dismiss();
+
     }
 }

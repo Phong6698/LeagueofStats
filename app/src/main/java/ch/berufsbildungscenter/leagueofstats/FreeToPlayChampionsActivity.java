@@ -78,5 +78,9 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
         FreeToPlayChampionsAdapter freeToPlayChampionsAdapter = new FreeToPlayChampionsAdapter(this, R.id.freeToPlayChampItem, champions);
         ListView freeToPlayChampionListView = (ListView) findViewById(R.id.freeToPlayChampionListView);
         freeToPlayChampionListView.setAdapter(freeToPlayChampionsAdapter);
+
+        if(freeToPlayChampions.size()==10){
+            mDialog.dismiss();
+        }
     }
 }
