@@ -67,6 +67,14 @@
             android:name=".RankedAdapter"
             android:label="@string/title_activity_ranked_adapter" >
         </activity>
+        <activity
+            android:name=".FreeToPlayChampionsActivity"
+            android:label="@string/title_activity_free_to_play_champions" >
+        </activity>
+        <activity
+            android:name=".FreeToPlayChampionsAdapter"
+               android:label="@string/title_activity_free_to_play_champions_adapter" >
+           </activity>
     </application>
 
 </manifest>

@@ -37,7 +37,7 @@ public class LoadingFreeToPlayChampionsIdTask extends JsonLoadingTask {
             loadingFreeToPlayChampionsByIdTask.execute(url);
         }
 
-        mDialog.dismiss();
+
 
 
     }

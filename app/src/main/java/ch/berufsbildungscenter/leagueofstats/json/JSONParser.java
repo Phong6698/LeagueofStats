@@ -80,36 +80,34 @@ public class JSONParser{
         return champions;
     }
 
-    public static ArrayList<ChampionData> getChampionDetails(String jsonstring) {
+    public static ChampionData getChampionDetails(String jsonstring) {
 
-        ArrayList<ChampionData> championsDetails = new ArrayList<ChampionData>();
+        ChampionData championsDetails = new ChampionData();
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
             JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
-                ChampionData championData = new ChampionData();
+            ChampionData championData = new ChampionData();
+            int ad = jsonInfoObj.getInt("attack");
+            int ap = jsonInfoObj.getInt("magic");
+            int defense = jsonInfoObj.getInt("defense");
+            int difficulty = jsonInfoObj.getInt("difficulty");
 
-                int ad = jsonInfoObj.getInt("attack");
-                int ap = jsonInfoObj.getInt("magic");
-                int defense = jsonInfoObj.getInt("defense");
-                int difficulty = jsonInfoObj.getInt("difficulty");
+            championData.setAttack(ad);
+            championData.setMagic(ap);
+            championData.setDefense(defense);
+            championData.setDifficulty(difficulty);
 
-                championData.setAttack(ad);
-                championData.setMagic(ap);
-                championData.setDefense(defense);
-                championData.setDifficulty(difficulty);
-
-                championsDetails.add(championData);
-
-                Log.e(LOG_TAG, "Attack: " + ad);
-                Log.e(LOG_TAG, "Magic: " + ap);
-                Log.e(LOG_TAG, "Defense: " + defense);
-                Log.e(LOG_TAG, "Difficulty: " + difficulty);
+            Log.e(LOG_TAG, "Attack: " + ad);
+            Log.e(LOG_TAG, "Magic: " + ap);
+            Log.e(LOG_TAG, "Defense: " + defense);
+            Log.e(LOG_TAG, "Difficulty: " + difficulty);
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
         }
         return championsDetails;
     }
+
 
     protected static Summoner getSummonerWins(String jsonString, Summoner summoner){
         try {
@@ -183,5 +181,52 @@ public class JSONParser{
             Log.v("JSONParser", e.toString());
         }
         return summoner;
+    }
+
+    protected static ArrayList getFreeToPlayChampionsId(String jsonString){
+        ArrayList freeToPlayChampionsId = new ArrayList();
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+
+            ArrayList<String> rankedList = new ArrayList<String>();
+            JSONArray jArray = (JSONArray)jsonObj.getJSONArray("champions");
+            if (jArray != null) {
+                for (int i=0;i<jArray.length();i++){
+                    JSONObject jsonObject = new JSONObject(jArray.get(i).toString());
+                    Log.e(LOG_TAG, "ID: "+jsonObject.getInt("id"));
+                    freeToPlayChampionsId.add(jsonObject.getInt("id"));
+                }
+            }
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+
+        return freeToPlayChampionsId;
+    }
+
+    protected static ChampionData getFreeToPlayChampionById(String jsonString){
+        ChampionData championData = new ChampionData();
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+            championData.setId(jsonObj.getInt("id"));
+            championData.setName(jsonObj.getString("name"));
+
+            JSONObject jsonInfoObj = jsonObj.getJSONObject("info");
+            championData.setAttack(jsonInfoObj.getInt("attack"));
+            championData.setMagic(jsonInfoObj.getInt("magic"));
+            championData.setDefense(jsonInfoObj.getInt("defense"));
+            championData.setDifficulty(jsonInfoObj.getInt("difficulty"));
+
+            JSONObject jsonImageObj = jsonObj.getJSONObject("image");
+            championData.setImage(jsonImageObj.getString("full"));
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+
+        return championData;
     }
 }

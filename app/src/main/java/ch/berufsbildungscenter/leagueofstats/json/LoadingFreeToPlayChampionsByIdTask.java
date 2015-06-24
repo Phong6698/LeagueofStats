@@ -24,5 +24,7 @@ public class LoadingFreeToPlayChampionsByIdTask extends JsonLoadingTask{
         freeToPlayChampionsActivity.addFreeToPlayChampion(championData);
 
         freeToPlayChampionsActivity.setData();
+
+        mDialog.dismiss();
     }
 }
