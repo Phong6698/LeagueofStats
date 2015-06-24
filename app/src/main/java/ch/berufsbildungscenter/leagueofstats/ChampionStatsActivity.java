@@ -1,7 +1,9 @@
 package ch.berufsbildungscenter.leagueofstats;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -17,6 +19,11 @@ public class ChampionStatsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champion_stats);
+
+        Intent intent = getIntent();
+        int championId = intent.getIntExtra("championId", -1);
+        String titleName = intent.getStringExtra("championName");
+        Log.e("ChampStatActicity", "champID: " + championId);
 
         ChampionData championData = new ChampionData();
 
