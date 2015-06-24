@@ -24,7 +24,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
         int championId = intent.getIntExtra("championId", -1);
         String titleName = intent.getStringExtra("championName");
         Log.e("ChampStatActicity", "champID: " + championId);
-
+        setTitle(titleName);
         ChampionData championData = new ChampionData();
 
         ArrayList<ChampionData> arrayList = new ArrayList<ChampionData>();

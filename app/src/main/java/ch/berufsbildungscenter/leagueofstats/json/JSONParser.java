@@ -81,6 +81,39 @@ public class JSONParser{
         return champions;
     }
 
+    public static ArrayList<ChampionData> getChampionDetails(String jsonstring) {
+
+        ArrayList<ChampionData> championsDetails = new ArrayList<ChampionData>();
+        try {
+            JSONObject jsonObject = new JSONObject(jsonstring);
+            Iterator keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                ChampionData championData = new ChampionData();
+                String key = (String) keys.next();
+                JSONObject subObject = jsonObject.getJSONObject(key);
+                int id = subObject.getInt("id");
+                String name = subObject.getString("name");
+
+                JSONObject subImageObject = subObject.getJSONObject("image");
+                String image = subImageObject.getString("full");
+                championData.setImage(image);
+
+
+                championData.setId(id);
+                championData.setName(name);
+
+                championsDetails.add(championData);
+
+                Log.e(LOG_TAG, "id: " + id);
+                Log.e(LOG_TAG, "name: " + name);
+            }
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+        System.out.print("DIE CHAMPIONS" + championsDetails);
+        return championsDetails;
+    }
+
     protected static Summoner getSummonerWins(String jsonString, Summoner summoner){
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
