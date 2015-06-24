@@ -69,6 +69,8 @@ public class ChampionStatsActivity extends ActionBarActivity {
         defBar.setProgress(champion.getDefense());
         diffBar.setProgress(champion.getDifficulty());
 
+
+        // Animations NEED REWORK
         ProgressBarAnimation adAnim = new ProgressBarAnimation(adBar, 0, adBar.getProgress() * 100);
         adAnim.setDuration(1000);
         adBar.startAnimation(adAnim);

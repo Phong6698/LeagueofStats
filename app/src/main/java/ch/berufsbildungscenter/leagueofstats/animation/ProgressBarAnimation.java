@@ -9,6 +9,7 @@ public class ProgressBarAnimation extends Animation {
     private float from;
     private float  to;
 
+    // Bar Animation
     public ProgressBarAnimation(ProgressBar progressBar, float from, float to) {
         super();
         this.progressBar = progressBar;
