@@ -4,22 +4,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.InputStream;
 
-/**
- * Created by zdomaa on 18.06.2015.
- */
 public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
     private ImageButton bmImage;
+    private ImageView imageView;
 
     private static final String LOG_TAG = ImageDownloader.class.getCanonicalName();
 
     public ImageDownloader(ImageButton bmImage) {
         this.bmImage = bmImage;
+    }
+
+    public ImageDownloader(ImageView imageView) {
+               this.imageView = imageView;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -35,10 +36,15 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
+        if(imageView != null) {
+            imageView.setImageBitmap(result);
+        }
 
-        bmImage.setScaleX(2f);
-        bmImage.setScaleY(2f);
-        bmImage.setImageBitmap(result);
+        if(bmImage != null) {
+            bmImage.setScaleX(2f);
+            bmImage.setScaleY(2f);
+            bmImage.setImageBitmap(result);
+        }
     }
 
 }

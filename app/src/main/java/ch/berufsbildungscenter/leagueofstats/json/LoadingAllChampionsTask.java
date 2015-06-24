@@ -15,7 +15,6 @@ public class LoadingAllChampionsTask extends JsonLoadingTask {
 
     private AllChampionsActivity allChampionsActivity;
 
-
     public LoadingAllChampionsTask(Activity activity, ProgressDialog mDialog) {
         super(activity, mDialog);
         allChampionsActivity = (AllChampionsActivity) activity;

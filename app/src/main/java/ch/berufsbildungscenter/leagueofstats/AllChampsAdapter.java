@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import ch.berufsbildungscenter.leagueofstats.listener.AllChampionsListener;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 /**
@@ -19,8 +19,9 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
 
     protected String name = "";
-
+    protected int id;
     private Context context;
+
     public AllChampsAdapter(Context context, int resource, List<ChampionData> championDataList) {
         super(context, resource, championDataList);
         this.context = context;
@@ -35,12 +36,14 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
 
         ImageButton championIcon = (ImageButton) rowView.findViewById(R.id.championIcon);
         if(!championData.getName().equals("Ekko")) {
-            championData.getPlayerIcon(championIcon);
+            championData.getPlayerIconImageButton(championIcon);
         }
+        championIcon.setOnClickListener(new AllChampionsListener(context, championData.getId(), championData.getName()));
 
         TextView name = (TextView) rowView.findViewById(R.id.nameField);
         name.setText(championData.getName());
         this.name = championData.getName();
+        this.id = championData.getId();
         return rowView;
     }
 

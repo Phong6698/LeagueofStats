@@ -27,7 +27,6 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
         View rowView = inflater.inflate(R.layout.activity_champ_stat_adapter, parent, false);
         TextView title = (TextView) rowView.findViewById(R.id.health);
         TextView subtitle = (TextView) rowView.findViewById(R.id.health_stat);
-        // ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
         ChampionData championData = this.getItem(position);
 

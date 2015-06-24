@@ -17,7 +17,6 @@
             android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -67,6 +66,14 @@
             android:name=".RankedAdapter"
             android:label="@string/title_activity_ranked_adapter" >
         </activity>
+        <activity
+            android:name=".FreeToPlayChampionsActivity"
+            android:label="@string/title_activity_free_to_play_champions" >
+        </activity>
+        <activity
+            android:name=".FreeToPlayChampionsAdapter"
+               android:label="@string/title_activity_free_to_play_champions_adapter" >
+           </activity>
     </application>
 
 </manifest>

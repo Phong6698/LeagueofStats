@@ -60,16 +60,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ranked"
         android:id="@+id/summonerRankedTitle"
-        android:layout_marginTop="43dp"
         android:layout_below="@+id/championIcon"
-        android:layout_toStartOf="@+id/summonerLevel" />
+        android:layout_alignEnd="@+id/summonerLevelTitle"
+        android:layout_marginTop="20dp" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rankedListView"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/championIcon"
-        android:layout_marginTop="100dp" />
+        android:layout_below="@+id/summonerRankedTitle"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

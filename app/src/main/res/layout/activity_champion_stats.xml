@@ -13,22 +13,8 @@
         android:id="@+id/champ_square"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/ekko"
+        android:src="@drawable/standard_120px"
         android:layout_alignBottom="@+id/difficulty_bar" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dmg_bar"
-        android:max="10"
-        android:progress="2"
-        android:indeterminate="false"
-        android:paddingLeft="20dp"
-        android:progressTint="#ff0052ff"
-        android:layout_below="@+id/dmg_stat"
-        android:layout_toEndOf="@+id/champ_square"
-        android:layout_marginBottom="-3dp" />
 
 
     <ProgressBar
@@ -36,22 +22,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ad_bar"
-        android:max="10"
-        android:progress="5"
+        android:max="1000"
+        android:progress="0"
         android:indeterminate="false"
         android:paddingLeft="20dp"
         android:progressTint="#ff0052ff"
         android:layout_toEndOf="@+id/champ_square"
-        android:layout_below="@id/dmg_stat"
-        android:layout_marginBottom="-3dp" />
+        android:layout_below="@+id/dmg_stat"
+        android:layout_marginBottom="-3dp"
+        android:layout_alignParentStart="false" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ap_bar"
-        android:max="10"
-        android:progress="9"
+        android:max="1000"
+        android:progress="0"
         android:indeterminate="false"
         android:paddingLeft="20dp"
         android:progressTint="#ff0052ff"
@@ -65,13 +52,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/def_bar"
-        android:max="10"
-        android:progress="7"
+        android:max="1000"
+        android:progress="0"
         android:indeterminate="false"
         android:paddingLeft="20dp"
         android:progressTint="#ff0052ff"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/def_stat"
+        android:layout_toEndOf="@+id/champ_square" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/difficulty_bar"
+        android:max="1000"
+        android:progress="0"
+        android:indeterminate="false"
+        android:paddingLeft="20dp"
+        android:progressTint="#ff0052ff"
+        android:layout_alignEnd="@+id/def_bar"
+        android:layout_below="@+id/FindSummonerTextView"
         android:layout_toEndOf="@+id/champ_square" />
 
     <TextView
@@ -115,30 +116,16 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/champ_stat_list"
+        android:id="@+id/Champ_stat_list"
         android:layout_below="@+id/champ_square"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/difficulty_bar"
-        android:max="10"
-        android:progress="6"
-        android:indeterminate="false"
-        android:paddingLeft="20dp"
-        android:progressTint="#ff0052ff"
-        android:layout_alignEnd="@+id/def_bar"
-        android:layout_below="@+id/FindSummonerTextView"
-        android:layout_toEndOf="@+id/champ_square" />
 
     <GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gridView2"
-        android:layout_alignTop="@+id/champ_stat_list"
+        android:layout_alignTop="@+id/Champ_stat_list"
         android:layout_alignParentStart="true"
         android:layout_marginStart="415dp"
         android:layout_marginTop="134dp" />
