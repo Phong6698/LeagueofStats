@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,9 +14,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-
-import ch.berufsbildungscenter.leagueofstats.SummonerActivity;
 
 /**
  * Created by zpengc on 18.06.2015.
@@ -79,7 +75,7 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     @Override
     protected void onPostExecute(String jsonString) {
         onCostumPostExecute(jsonString);
-        Log.e(LOG_TAG, "jasonString: " + jsonString);
+        Log.e(LOG_TAG, "jsonString: " + jsonString);
 
     }
 

@@ -77,40 +77,34 @@ public class JSONParser{
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
         }
-        System.out.print("DIE CHAMPIONS" + champions);
         return champions;
     }
 
-    public static ArrayList<ChampionData> getChampionDetails(String jsonstring) {
+    public static ChampionData getChampionDetails(String jsonstring) {
 
-        ArrayList<ChampionData> championsDetails = new ArrayList<ChampionData>();
+        ChampionData championsDetails = new ChampionData();
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
-            Iterator keys = jsonObject.keys();
-            while(keys.hasNext()) {
+            JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
                 ChampionData championData = new ChampionData();
-                String key = (String) keys.next();
-                JSONObject subObject = jsonObject.getJSONObject(key);
-                int id = subObject.getInt("id");
-                String name = subObject.getString("name");
+                int ad = jsonInfoObj.getInt("attack");
+                int ap = jsonInfoObj.getInt("magic");
+                int defense = jsonInfoObj.getInt("defense");
+                int difficulty = jsonInfoObj.getInt("difficulty");
 
-                JSONObject subImageObject = subObject.getJSONObject("image");
-                String image = subImageObject.getString("full");
-                championData.setImage(image);
+                championData.setAttack(ad);
+                championData.setMagic(ap);
+                championData.setDefense(defense);
+                championData.setDifficulty(difficulty);
 
+                Log.e(LOG_TAG, "Attack: " + ad);
+                Log.e(LOG_TAG, "Magic: " + ap);
+                Log.e(LOG_TAG, "Defense: " + defense);
+                Log.e(LOG_TAG, "Difficulty: " + difficulty);
 
-                championData.setId(id);
-                championData.setName(name);
-
-                championsDetails.add(championData);
-
-                Log.e(LOG_TAG, "id: " + id);
-                Log.e(LOG_TAG, "name: " + name);
-            }
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
         }
-        System.out.print("DIE CHAMPIONS" + championsDetails);
         return championsDetails;
     }
 
