@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -74,8 +75,13 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
 
     @Override
     protected void onPostExecute(String jsonString) {
-        onCostumPostExecute(jsonString);
-        Log.e(LOG_TAG, "jsonString: " + jsonString);
+        if (null == jsonString) {
+            mDialog.dismiss();
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_SHORT).show();
+        }else {
+            onCostumPostExecute(jsonString);
+            Log.e(LOG_TAG, "jsonString: " + jsonString);
+        }
 
     }
 
