@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -22,8 +21,9 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
     public ImageDownloader(ImageButton bmImage) {
         this.bmImage = bmImage;
     }
+
     public ImageDownloader(ImageView imageView) {
-        this.imageView = imageView;
+               this.imageView = imageView;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -42,6 +42,7 @@ public class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
         if(imageView != null) {
             imageView.setImageBitmap(result);
         }
+
         if(bmImage != null) {
             bmImage.setScaleX(2f);
             bmImage.setScaleY(2f);
