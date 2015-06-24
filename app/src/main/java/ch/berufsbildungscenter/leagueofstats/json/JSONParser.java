@@ -86,16 +86,15 @@ public class JSONParser{
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
             JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
-            ChampionData championData = new ChampionData();
             int ad = jsonInfoObj.getInt("attack");
             int ap = jsonInfoObj.getInt("magic");
             int defense = jsonInfoObj.getInt("defense");
             int difficulty = jsonInfoObj.getInt("difficulty");
 
-            championData.setAttack(ad);
-            championData.setMagic(ap);
-            championData.setDefense(defense);
-            championData.setDifficulty(difficulty);
+            championsDetails.setAttack(ad);
+            championsDetails.setMagic(ap);
+            championsDetails.setDefense(defense);
+            championsDetails.setDifficulty(difficulty);
 
             Log.e(LOG_TAG, "Attack: " + ad);
             Log.e(LOG_TAG, "Magic: " + ap);

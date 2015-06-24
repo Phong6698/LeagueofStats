@@ -16,7 +16,6 @@ public class LoadingChampionStatsTask extends JsonLoadingTask{
     public LoadingChampionStatsTask(Activity activity, ProgressDialog mDialog) {
         super(activity, mDialog);
         championStatsActivity = (ChampionStatsActivity) activity;
-
     }
 
 
@@ -25,5 +24,6 @@ public class LoadingChampionStatsTask extends JsonLoadingTask{
         ChampionData champion = jsonParser.getChampionDetails(jsonString);
         championStatsActivity.setData(champion);
 
+        mDialog.dismiss();
     }
 }

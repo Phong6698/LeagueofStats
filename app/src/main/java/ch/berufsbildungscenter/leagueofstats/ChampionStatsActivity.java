@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
@@ -20,39 +21,33 @@ public class ChampionStatsActivity extends ActionBarActivity {
 
     private URL url;
     private ProgressDialog mDialog;
-    ProgressBar adBar  = (ProgressBar) findViewById(R.id.ad_bar);
-    ProgressBar apBar  = (ProgressBar) findViewById(R.id.ap_bar);
-    ProgressBar defBar  = (ProgressBar) findViewById(R.id.def_bar);
-    ProgressBar diffBar  = (ProgressBar) findViewById(R.id.difficulty_bar);
+    private ArrayList<ChampionData> championDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ChampionData championData = new ChampionData();
+        setContentView(R.layout.activity_champion_stats);
 
         Intent intent = getIntent();
-
-        setContentView(R.layout.activity_champion_stats);
 
         int championId = intent.getIntExtra("championId", -1);
         String titleName = intent.getStringExtra("championName");
         Log.e("ChampStatActicity", "champID: " + championId);
         setTitle(titleName);
 
-
         mDialog = ProgressDialog.show(this, titleName, "Stats are loading...");
-
 
         try {
             url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "?champData=all&api_key=53ee3303-7114-413e-af65-3a767e515436");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
         LoadingChampionStatsTask loadingChampionStatsTask = new LoadingChampionStatsTask(this, mDialog );
         loadingChampionStatsTask.execute(url);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,13 +56,19 @@ public class ChampionStatsActivity extends ActionBarActivity {
         return true;
     }
 
-    public void setData(ChampionData champions) {
+    public void setData(ChampionData champion) {
 
-        adBar.setProgress(champions.getAttack());
-        apBar.setProgress(champions.getMagic());
-        defBar.setProgress(champions.getDefense());
-        diffBar.setProgress(champions.getDifficulty());
+        ProgressBar adBar  = (ProgressBar) findViewById(R.id.ad_bar);
+        ProgressBar apBar  = (ProgressBar) findViewById(R.id.ap_bar);
+        ProgressBar defBar  = (ProgressBar) findViewById(R.id.def_bar);
+        ProgressBar diffBar  = (ProgressBar) findViewById(R.id.difficulty_bar);
 
+        adBar.setProgress(champion.getAttack());
+        apBar.setProgress(champion.getMagic());
+        defBar.setProgress(champion.getDefense());
+        diffBar.setProgress(champion.getDifficulty());
+
+        Log.v("ChampionActivity", "AD BAR: " + champion.getAttack());
     }
 
     @Override
@@ -84,6 +85,4 @@ public class ChampionStatsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

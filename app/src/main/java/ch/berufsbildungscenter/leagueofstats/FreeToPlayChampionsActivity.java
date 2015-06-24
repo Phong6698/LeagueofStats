@@ -1,8 +1,8 @@
 package ch.berufsbildungscenter.leagueofstats;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -12,9 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingFreeToPlayChampionsIdTask;
-import ch.berufsbildungscenter.leagueofstats.json.LoadingSummonerIDTask;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
-import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
 
 public class FreeToPlayChampionsActivity extends ActionBarActivity {
@@ -28,7 +26,7 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_to_play_champions);
 
-        mDialog = ProgressDialog.show(this, "Loading Free to Play Champions", "Please wait...");
+        mDialog = ProgressDialog.show(this, "Please wait", "Free to play champs are loading...");
 
         try {
             url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.2/champion?freeToPlay=true&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");

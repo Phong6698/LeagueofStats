@@ -22,7 +22,6 @@ public class LoadingFreeToPlayChampionsByIdTask extends JsonLoadingTask{
     protected void onCostumPostExecute(String jsonString) {
         ChampionData championData = jsonParser.getFreeToPlayChampionById(jsonString);
         freeToPlayChampionsActivity.addFreeToPlayChampion(championData);
-
         freeToPlayChampionsActivity.setData();
 
     }
