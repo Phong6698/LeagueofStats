@@ -181,4 +181,51 @@ public class JSONParser{
         }
         return summoner;
     }
+
+    protected static ArrayList getFreeToPlayChampionsId(String jsonString){
+        ArrayList freeToPlayChampionsId = new ArrayList();
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+
+            ArrayList<String> rankedList = new ArrayList<String>();
+            JSONArray jArray = (JSONArray)jsonObj.getJSONArray("champions");
+            if (jArray != null) {
+                for (int i=0;i<jArray.length();i++){
+                    JSONObject jsonObject = new JSONObject(jArray.get(i).toString());
+                    Log.e(LOG_TAG, "ID: "+jsonObject.getInt("id"));
+                    freeToPlayChampionsId.add(jsonObject.getInt("id"));
+                }
+            }
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+
+        return freeToPlayChampionsId;
+    }
+
+    protected static ChampionData getFreeToPlayChampionById(String jsonString){
+        ChampionData championData = new ChampionData();
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+            championData.setId(jsonObj.getInt("id"));
+            championData.setName(jsonObj.getString("name"));
+
+            JSONObject jsonInfoObj = jsonObj.getJSONObject("info");
+            championData.setAttack(jsonInfoObj.getInt("attack"));
+            championData.setMagic(jsonInfoObj.getInt("magic"));
+            championData.setDefense(jsonInfoObj.getInt("defense"));
+            championData.setDifficulty(jsonInfoObj.getInt("difficulty"));
+
+            JSONObject jsonImageObj = jsonObj.getJSONObject("image");
+            championData.setImage(jsonImageObj.getString("full"));
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+
+        return championData;
+    }
 }
