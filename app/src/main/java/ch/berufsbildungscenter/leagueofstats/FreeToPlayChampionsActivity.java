@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingFreeToPlayChampionsIdTask;
+import ch.berufsbildungscenter.leagueofstats.listener.FreeToPlayChampListener;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 
@@ -20,6 +21,7 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
     private ProgressDialog mDialog;
     private URL url;
     private ArrayList<ChampionData> freeToPlayChampions;
+    ArrayList<ChampionData> champions = new ArrayList<ChampionData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
         loadingFreeToPlayChampionsIdTask.execute(url);
 
         freeToPlayChampions = new ArrayList<ChampionData>();
+
+        ListView freeToPlayChampionsListView = (ListView)findViewById(R.id.freeToPlayChampionListView);
+        freeToPlayChampionsListView.setOnItemClickListener(new FreeToPlayChampListener(this));
     }
 
     @Override
@@ -66,19 +71,16 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
     }
 
     public void setData(){
-        ArrayList<ChampionData> champions = new ArrayList<ChampionData>();
 
-        // add Rows
-        for(ChampionData championData : freeToPlayChampions){
-            champions.add(championData);
-        }
-        // define items
-        FreeToPlayChampionsAdapter freeToPlayChampionsAdapter = new FreeToPlayChampionsAdapter(this, R.id.freeToPlayChampItem, champions);
-        ListView freeToPlayChampionListView = (ListView) findViewById(R.id.freeToPlayChampionListView);
-        freeToPlayChampionListView.setAdapter(freeToPlayChampionsAdapter);
+        if(freeToPlayChampions.size()==10) {
+            // define items
+            FreeToPlayChampionsAdapter freeToPlayChampionsAdapter = new FreeToPlayChampionsAdapter(this, R.id.freeToPlayChampItem, freeToPlayChampions);
+            ListView freeToPlayChampionListView = (ListView) findViewById(R.id.freeToPlayChampionListView);
+            freeToPlayChampionListView.setAdapter(freeToPlayChampionsAdapter);
 
-        if(freeToPlayChampions.size()==10){
             mDialog.dismiss();
         }
+
+
     }
 }

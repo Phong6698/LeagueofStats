@@ -20,6 +20,7 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
 
     private Context context;
+    private ChampionData championData;
 
     public FreeToPlayChampionsAdapter(Context context, int resource, List<ChampionData> freeToPlayChampions) {
         super(context, resource, freeToPlayChampions);
@@ -30,7 +31,8 @@ public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.activity_free_to_play_champions_adapter, parent, false);
-        ChampionData championData = this.getItem(position);
+        championData = this.getItem(position);
+
 
         TextView champion = (TextView) rowView.findViewById(R.id.champion);
         TextView attack = (TextView) rowView.findViewById(R.id.attack);
@@ -48,8 +50,15 @@ public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
         difficulty.setText(""+championData.getDifficulty());
 
 
-
-
         return rowView;
+    }
+
+
+    public ChampionData getChampionData() {
+        return championData;
+    }
+
+    public void setChampionData(ChampionData championData) {
+        this.championData = championData;
     }
 }
