@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Diffuculty"
+        android:text="Difficulty"
         android:id="@+id/FindSummonerTextView"
         android:layout_below="@+id/def_bar"
         android:layout_alignStart="@+id/def_stat" />
