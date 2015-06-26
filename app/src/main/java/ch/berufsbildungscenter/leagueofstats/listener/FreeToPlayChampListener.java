@@ -25,8 +25,9 @@ public class FreeToPlayChampListener implements AdapterView.OnItemClickListener 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         FreeToPlayChampionsAdapter freeToPlayChampionsAdapter = (FreeToPlayChampionsAdapter) parent.getAdapter();
-        ChampionData championData = freeToPlayChampionsAdapter.getChampionData();
+        ChampionData championData = freeToPlayChampionsAdapter.getItem(position);
         Intent intent = new Intent(context, ChampionStatsActivity.class);
         Log.e(LOG_TAG, "name: " + championData.getName());
         intent.putExtra("championId", championData.getId());

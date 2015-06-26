@@ -2,6 +2,7 @@ package ch.berufsbildungscenter.leagueofstats;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -103,6 +105,17 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         if(item.getItemId() == R.id.action_favoriting_summoner){
+            SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
+            SharedPreferences.Editor editor = favoritSummoners.edit();
+            int i = 1;
+            while (favoritSummoners.contains("SummonerId" + i)){
+                i++;
+            }
+
+            editor.putInt("City",1);
+            editor.commit();
+
+
             item.setIcon(R.mipmap.fav_summoner);
             Toast toast = Toast.makeText(getApplicationContext(), "Add to Favorits", Toast.LENGTH_SHORT);
             toast.show();

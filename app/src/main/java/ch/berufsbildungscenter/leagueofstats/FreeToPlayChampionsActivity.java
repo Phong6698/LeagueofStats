@@ -40,8 +40,7 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
 
         freeToPlayChampions = new ArrayList<ChampionData>();
 
-        ListView freeToPlayChampionsListView = (ListView)findViewById(R.id.freeToPlayChampionListView);
-        freeToPlayChampionsListView.setOnItemClickListener(new FreeToPlayChampListener(this));
+
     }
 
     @Override
@@ -77,6 +76,9 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
             FreeToPlayChampionsAdapter freeToPlayChampionsAdapter = new FreeToPlayChampionsAdapter(this, R.id.freeToPlayChampItem, freeToPlayChampions);
             ListView freeToPlayChampionListView = (ListView) findViewById(R.id.freeToPlayChampionListView);
             freeToPlayChampionListView.setAdapter(freeToPlayChampionsAdapter);
+
+            freeToPlayChampionListView.setOnItemClickListener(new FreeToPlayChampListener(this));
+            freeToPlayChampionListView.setItemsCanFocus(true);
 
             mDialog.dismiss();
         }
