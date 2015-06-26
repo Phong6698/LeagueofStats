@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingSummonerIDTask;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
@@ -30,7 +31,8 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
     private String summonername;
     private String region;
     private URL url;
-
+    private Summoner summoner;
+    private Menu menu;
 
     private ProgressDialog mDialog;
 
@@ -64,19 +66,15 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         }
         LoadingSummonerIDTask loadingSummonerIDTask = new LoadingSummonerIDTask(this, mDialog);
         loadingSummonerIDTask.execute(url);
-
-
-
-
-
     }
 
     public void setData(Summoner summoner){
+        this.summoner = summoner;
         TextView levelTextView = (TextView)findViewById(R.id.summonerLevel);
         TextView winsTextView = (TextView)findViewById(R.id.wins);
 
         levelTextView.setText("" + summoner.getSummonerLevel());
-        winsTextView.setText(""+summoner.getWins());
+        winsTextView.setText("" + summoner.getWins());
 
         ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
 
@@ -90,10 +88,19 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         rankedListView.setAdapter(rankedAdapter);
 
         setTitle(summoner.getName());
+        MenuItem favoriting = (MenuItem)menu.findItem(R.id.action_favoriting_summoner);
+        boolean favorit = checkFavorit();
+
+        if (favorit){
+            favoriting.setIcon(R.mipmap.fav_summoner);
+        }else if(!favorit){
+            favoriting.setIcon(R.mipmap.unfav_summoner);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_summoner, menu);
         return true;
@@ -104,26 +111,60 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        boolean favorit = checkFavorit();
         if(item.getItemId() == R.id.action_favoriting_summoner){
-            SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
-            SharedPreferences.Editor editor = favoritSummoners.edit();
-            int i = 1;
-            while (favoritSummoners.contains("SummonerId" + i)){
-                i++;
+            if(!favorit){
+                addFavorit();
+                item.setIcon(R.mipmap.fav_summoner);
+                Toast toast = Toast.makeText(getApplicationContext(), "Add to Favorits", Toast.LENGTH_SHORT);
+                toast.show();
+            } else if(favorit){
+                removeFavorit();
+                item.setIcon(R.mipmap.unfav_summoner);
+                Toast toast = Toast.makeText(getApplicationContext(), "Removed from Favorits", Toast.LENGTH_SHORT);
+                toast.show();
             }
-
-            editor.putInt("City",1);
-            editor.commit();
-
-
-            item.setIcon(R.mipmap.fav_summoner);
-            Toast toast = Toast.makeText(getApplicationContext(), "Add to Favorits", Toast.LENGTH_SHORT);
-            toast.show();
         } else if (item.getItemId() == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean checkFavorit(){
+        boolean checkFavorit = false;
+        SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
+        Map<String, ?> allEntries = favoritSummoners.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            if(!checkFavorit && ((Integer) entry.getValue()) == summoner.getId()) {
+                checkFavorit = true;
+            }else if(!checkFavorit && ((Integer) entry.getValue()) != summoner.getId()){
+                checkFavorit = false;
+            }
+        }
+        return checkFavorit;
+    }
+
+    public void addFavorit(){
+        SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
+        SharedPreferences.Editor editor = favoritSummoners.edit();
+        int i = 1;
+        while (favoritSummoners.contains("FavoritSummoner" + i)){
+            i++;
+        }
+        editor.putInt("FavoritSummoner" + i, this.summoner.getId());
+        editor.commit();
+    }
+
+    public void removeFavorit(){
+        SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
+        SharedPreferences.Editor editor = favoritSummoners.edit();
+        Map<String, ?> allEntries = favoritSummoners.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            if ((Integer)entry.getValue() == summoner.getId()){
+                editor.remove(entry.getKey());
+                editor.commit();
+            }
+        }
     }
 
     @Override
