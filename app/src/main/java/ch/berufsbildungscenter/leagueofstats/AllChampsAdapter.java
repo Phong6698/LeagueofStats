@@ -19,7 +19,6 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
 
     protected String name = "";
-    protected int id;
     private Context context;
 
     public AllChampsAdapter(Context context, int resource, List<ChampionData> championDataList) {
@@ -41,9 +40,7 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
         championIcon.setOnClickListener(new AllChampionsListener(context, championData.getId(), championData.getName()));
 
         TextView name = (TextView) rowView.findViewById(R.id.nameField);
-        name.setText(championData.getName());
         this.name = championData.getName();
-        this.id = championData.getId();
         return rowView;
     }
 

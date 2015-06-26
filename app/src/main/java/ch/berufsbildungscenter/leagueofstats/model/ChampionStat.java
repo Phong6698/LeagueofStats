@@ -5,7 +5,7 @@ package ch.berufsbildungscenter.leagueofstats.model;
  */
 public class ChampionStat {
     private String title;
-    private String stat;
+    private double stat;
 
     public String getTitle() {
         return title;
@@ -15,11 +15,11 @@ public class ChampionStat {
         this.title = title;
     }
 
-    public String getStat() {
+    public double getStat() {
         return stat;
     }
 
-    public void setStat(String stat) {
+    public void setStat(double stat) {
         this.stat = stat;
     }
 }

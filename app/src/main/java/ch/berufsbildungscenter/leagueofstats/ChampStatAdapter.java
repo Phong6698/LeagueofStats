@@ -15,9 +15,9 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
 
     private Context context;
-    public ChampStatAdapter(Context context, int resource, List<ChampionData> championDataList) {
+    public ChampStatAdapter(Context context, int resource, List<ChampionData> championData) {
 
-        super(context, resource, championDataList);
+        super(context, resource, championData);
         this.context = context;
     }
 
@@ -26,9 +26,10 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.activity_champ_stat_adapter, parent, false);
         TextView title = (TextView) rowView.findViewById(R.id.health);
-        TextView subtitle = (TextView) rowView.findViewById(R.id.health_stat);
+        TextView stats = (TextView) rowView.findViewById(R.id.health_stat);
 
         ChampionData championData = this.getItem(position);
+
 
         return rowView;
     }

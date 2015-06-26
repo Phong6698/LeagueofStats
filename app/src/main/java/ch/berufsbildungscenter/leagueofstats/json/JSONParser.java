@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
@@ -221,6 +222,48 @@ public class JSONParser{
 
             JSONObject jsonImageObj = jsonObj.getJSONObject("image");
             championData.setImage(jsonImageObj.getString("full"));
+
+        } catch (JSONException e) {
+            Log.v("JSONParser", e.toString());
+        }
+
+        return championData;
+    }
+
+    protected static ChampionData getChampionStats(String jsonString){
+        ChampionData championData = new ChampionData();
+        ArrayList<ChampionStat> championStats = new ArrayList<ChampionStat>();
+
+        try {
+            JSONObject jsonObj = new JSONObject(jsonString);
+            JSONObject jsonStatObj = jsonObj.getJSONObject("stat");
+
+
+            //championData.setId(jsonObj.getInt("id"));
+            championData.setName(jsonObj.getString("title"));
+            championData.setAttackrange(jsonStatObj.getInt("attackrange"));
+            championData.setAttackDamage(jsonStatObj.getDouble("attackdamage"));
+            championData.setAttackDamagePerLevel(jsonStatObj.getDouble("attackdamageperlevel"));
+            championData.setAttackSpeedOffset(jsonStatObj.getInt("attackspeedoffset"));
+            championData.setAttackSpeedPerLevel(jsonStatObj.getDouble("attackspeedperlevel"));
+            championData.setHp(jsonStatObj.getDouble("hp"));
+            championData.setHpPerLevel(jsonStatObj.getDouble("hpperlevel"));
+            championData.setMovementSpeed(jsonStatObj.getInt("movementSpeed"));
+            championData.setArmor(jsonStatObj.getDouble("armor"));
+            championData.setArmorPerLevel(jsonStatObj.getDouble("armorperlevel"));
+            championData.setMagicResistance(jsonStatObj.getInt("spellblock"));
+            championData.setMagicResistancePerLevel(jsonStatObj.getInt("spellblockperlevel"));
+            championData.setMana(jsonStatObj.getDouble("mp"));
+            championData.setManaPerLevel(jsonStatObj.getInt("mpperlevel"));
+
+            ChampionStat attackrange = new ChampionStat();
+            attackrange.setTitle("dkjna");
+            attackrange.setStat(2);
+
+            championStats.add(attackrange);
+            championData.setChampionStats(championStats);
+
+
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());

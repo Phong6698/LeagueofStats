@@ -28,19 +28,17 @@ public class ChampionData {
 
     // stat variables
     private double mana;
-    private double manaPerLevelUp;
-    private double manaRegen;
-    private double manaRegenPerLevel;
+    private double manaPerLevel;
 
     private double attackrange;
     private double attackDamage;
     private double attackDamagePerLevel;
     private double attackSpeedPerLevel;
+    private double attackSpeedOffset;
+
 
     private double hp;
     private double hpPerLevel;
-    private double hpRegen;
-    private double hpRegenPerLevel;
 
     private double movementSpeed;
 
@@ -51,8 +49,29 @@ public class ChampionData {
     private String[] allyTips;
     private String[] enemyTips;
 
+    public double getAttackSpeedOffset() {
+        return attackSpeedOffset;
+    }
 
+    public void setAttackSpeedOffset(double attackSpeedOffset) {
+        this.attackSpeedOffset = attackSpeedOffset;
+    }
 
+    public String[] getAllyTips() {
+        return allyTips;
+    }
+
+    public void setAllyTips(String[] allyTips) {
+        this.allyTips = allyTips;
+    }
+
+    public String[] getEnemyTips() {
+        return enemyTips;
+    }
+
+    public void setEnemyTips(String[] enemyTips) {
+        this.enemyTips = enemyTips;
+    }
 
     public void getPlayerIconImageButton(ImageButton image) {
         Log.e("Image", "Image: " + this.image);
@@ -73,29 +92,14 @@ public class ChampionData {
         this.mana = mana;
     }
 
-    public double getManaPerLevelUp() {
-        return manaPerLevelUp;
+    public double getManaPerLevel() {
+        return manaPerLevel;
     }
 
-    public void setManaPerLevelUp(double manaPerLevelUp) {
-        this.manaPerLevelUp = manaPerLevelUp;
+    public void setManaPerLevel(double manaPerLevelUp) {
+        this.manaPerLevel = manaPerLevel;
     }
 
-    public double getManaRegen() {
-        return manaRegen;
-    }
-
-    public void setManaRegen(double manaRegen) {
-        this.manaRegen = manaRegen;
-    }
-
-    public double getManaRegenPerLevel() {
-        return manaRegenPerLevel;
-    }
-
-    public void setManaRegenPerLevel(double manaRegenPerLevel) {
-        this.manaRegenPerLevel = manaRegenPerLevel;
-    }
 
     public double getAttackrange() {
         return attackrange;
@@ -143,22 +147,6 @@ public class ChampionData {
 
     public void setHpPerLevel(double hpPerLevel) {
         this.hpPerLevel = hpPerLevel;
-    }
-
-    public double getHpRegen() {
-        return hpRegen;
-    }
-
-    public void setHpRegen(double hpRegen) {
-        this.hpRegen = hpRegen;
-    }
-
-    public double getHpRegenPerLevel() {
-        return hpRegenPerLevel;
-    }
-
-    public void setHpRegenPerLevel(double hpRegenPerLevel) {
-        this.hpRegenPerLevel = hpRegenPerLevel;
     }
 
     public double getMovementSpeed() {
