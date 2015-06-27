@@ -28,7 +28,7 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_to_play_champions);
 
-        mDialog = ProgressDialog.show(this, "Please wait", "Free to play champs are loading...");
+        mDialog = ProgressDialog.show(this, "Please wait", "Loading Free To Play Champions...");
 
         try {
             url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.2/champion?freeToPlay=true&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");

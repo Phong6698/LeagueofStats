@@ -1,11 +1,7 @@
 package ch.berufsbildungscenter.leagueofstats;
 
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ch.berufsbildungscenter.leagueofstats.R;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
@@ -30,7 +25,7 @@ public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.activity_free_to_play_champions_adapter, parent, false);
+        View rowView = inflater.inflate(R.layout.adapter_free_to_play_champions, parent, false);
         championData = this.getItem(position);
 
 

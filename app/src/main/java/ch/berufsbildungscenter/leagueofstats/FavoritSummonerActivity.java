@@ -1,5 +1,6 @@
 package ch.berufsbildungscenter.leagueofstats;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,9 +10,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map;
+
+import ch.berufsbildungscenter.leagueofstats.json.LoadingFavSummonerTask;
+import ch.berufsbildungscenter.leagueofstats.listener.FreeToPlayChampListener;
+import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 
 public class FavoritSummonerActivity extends ActionBarActivity {
+
+    private ProgressDialog mDialog;
+    private URL url;
+    private ArrayList<Summoner> favoritSummoner;
+    private int favSummonerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +38,33 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         if (listview.getCount() != 0) {
             TextView nofavorites = (TextView) findViewById(R.id.noFavoritesText);
             nofavorites.setVisibility(View.INVISIBLE);
+        }
+        favoritSummoner = new ArrayList<Summoner>();
+
+        mDialog = ProgressDialog.show(this, "Please wait", "Loading Favorit Summoners...");
+        showFavoritSummoners();
+
+    }
+
+    public void showFavoritSummoners(){
+
+        SharedPreferences favoritSummoners = getSharedPreferences("FavoritSummoners", 0);
+        Map<String, ?> allEntries = favoritSummoners.getAll();
+        favSummonerNumber = allEntries.size();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            try {
+                url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/"+entry.getValue() +"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            LoadingFavSummonerTask loadingFavSummonerTask = new LoadingFavSummonerTask(this, mDialog);
+            loadingFavSummonerTask.execute(url);
+        }
+
+        if(favSummonerNumber == 0){
+            mDialog.dismiss();
+            Toast toast = Toast.makeText(getApplicationContext(), "You don't have any favorit Summoner", Toast.LENGTH_SHORT);
+            toast.show();
         }
 
 
@@ -48,5 +91,21 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setData(Summoner summoner) {
+        favoritSummoner.add(summoner);
+        if(favSummonerNumber == favoritSummoner.size()){
+            TextView noFavoritesText = (TextView) findViewById(R.id.noFavoritesText);
+            noFavoritesText.setText("");
+
+            FavoritSummonerAdapter favoritSummonerAdapter = new FavoritSummonerAdapter(this, R.id.freeToPlayChampItem, favoritSummoner);
+            ListView freeToPlayChampionListView = (ListView) findViewById(R.id.favSummonerListView);
+            freeToPlayChampionListView.setAdapter(favoritSummonerAdapter);
+
+            mDialog.dismiss();
+
+
+        }
     }
 }

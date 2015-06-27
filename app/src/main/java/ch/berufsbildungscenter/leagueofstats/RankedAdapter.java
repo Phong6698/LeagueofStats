@@ -1,11 +1,7 @@
 package ch.berufsbildungscenter.leagueofstats;
 
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,8 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
-import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
 
@@ -29,7 +23,7 @@ public class RankedAdapter extends ArrayAdapter<SummonerRanked> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.activity_ranked_adapter, parent, false);
+        View rowView = inflater.inflate(R.layout.adapter_ranked, parent, false);
         SummonerRanked summonerRanked = this.getItem(position);
 
         ImageView rankedImage = (ImageView)rowView.findViewById(R.id.rankedImage);

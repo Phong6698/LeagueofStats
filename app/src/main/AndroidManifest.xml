@@ -17,6 +17,7 @@
             android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -68,12 +69,17 @@
         </activity>
         <activity
             android:name=".FreeToPlayChampionsActivity"
-            android:label="@string/title_activity_free_to_play_champions" >
+            android:label="@string/title_activity_free_to_play_champions"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".FreeToPlayChampionsAdapter"
-               android:label="@string/title_activity_free_to_play_champions_adapter" >
-           </activity>
+            android:label="@string/title_activity_free_to_play_champions_adapter" >
+        </activity>
+        <activity
+            android:name=".FavoritSummonerAdapter"
+            android:label="@string/title_activity_favourit_summoner_adapter" >
+        </activity>
     </application>
 
 </manifest>
