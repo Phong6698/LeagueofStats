@@ -29,7 +29,7 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.activity_activity_all_champs_adapter, parent, false);
+        View rowView = inflater.inflate(R.layout.adapter_all_champs, parent, false);
 
         ChampionData championData = this.getItem(position);
 
