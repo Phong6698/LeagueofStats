@@ -26,7 +26,7 @@ public class LoadingFavSummonerTask extends JsonLoadingTask {
 
     @Override
     protected void onCostumPostExecute(String jsonString) {
-        summoner = jsonParser.getSummonerIDByString(jsonString);
+        summoner = jsonParser.getSummoner(jsonString);
         int summonerId = summoner.getId();
         try {
             url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/stats/by-summoner/"+summonerId+"/summary?season=SEASON2015&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");

@@ -20,20 +20,22 @@ import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 public class LoadingSummonerIDTask extends JsonLoadingTask {
 
     private URL url;
-
+    private String region;
     private SummonerActivity summonerActivity;
 
-    public LoadingSummonerIDTask(Activity activity, ProgressDialog mDialog) {
+    public LoadingSummonerIDTask(Activity activity, ProgressDialog mDialog, String region) {
         super(activity, mDialog);
         summonerActivity = (SummonerActivity) activity;
+        this.region = region;
     }
 
     @Override
     protected void onCostumPostExecute(String jsonString) {
-        Summoner summoner = jsonParser.getSummonerIDByString(jsonString);
+        Summoner summoner = jsonParser.getSummoner(jsonString);
+        summoner.setRegion(region);
         int summonerId = summoner.getId();
         try {
-            url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/stats/by-summoner/"+summonerId+"/summary?season=SEASON2015&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            url = new URL("https://euw.api.pvp.net/api/lol/"+region+"/v1.3/stats/by-summoner/"+summonerId+"/summary?season=SEASON2015&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

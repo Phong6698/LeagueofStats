@@ -64,7 +64,7 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        LoadingSummonerIDTask loadingSummonerIDTask = new LoadingSummonerIDTask(this, mDialog);
+        LoadingSummonerIDTask loadingSummonerIDTask = new LoadingSummonerIDTask(this, mDialog, region);
         loadingSummonerIDTask.execute(url);
     }
 
@@ -76,16 +76,18 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         levelTextView.setText("" + summoner.getSummonerLevel());
         winsTextView.setText("" + summoner.getWins());
 
-        ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
+        if(summoner.getSummonerLevel() ==30) {
+            ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
 
-        // add Rows
-        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
-        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
-        summonerRankeds.add(summoner.getSummonerRankeds().get(0));
-        // define items
-        RankedAdapter rankedAdapter = new RankedAdapter(this, R.id.rankedItem, summonerRankeds);
-        ListView rankedListView = (ListView) findViewById(R.id.rankedListView);
-        rankedListView.setAdapter(rankedAdapter);
+            // add Rows
+            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+            // define items
+            RankedAdapter rankedAdapter = new RankedAdapter(this, R.id.rankedItem, summonerRankeds);
+            ListView rankedListView = (ListView) findViewById(R.id.rankedListView);
+            rankedListView.setAdapter(rankedAdapter);
+        }
 
         setTitle(summoner.getName());
         MenuItem favoriting = (MenuItem)menu.findItem(R.id.action_favoriting_summoner);
@@ -96,6 +98,8 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         }else if(!favorit){
             favoriting.setIcon(R.mipmap.unfav_summoner);
         }
+
+        mDialog.dismiss();
     }
 
     @Override

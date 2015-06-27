@@ -17,7 +17,7 @@ public class FreeToPlayChampListener implements AdapterView.OnItemClickListener 
 
     private static final String LOG_TAG = FreeToPlayChampListener.class.getCanonicalName();
 
-    Context context;
+    private Context context;
 
     public FreeToPlayChampListener(Context context) {
         this.context = context;

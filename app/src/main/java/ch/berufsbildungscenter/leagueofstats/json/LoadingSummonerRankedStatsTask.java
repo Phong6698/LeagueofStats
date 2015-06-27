@@ -27,6 +27,6 @@ public class LoadingSummonerRankedStatsTask extends JsonLoadingTask{
 
         summonerActivity.setData(summoner);
 
-        mDialog.dismiss();
+
     }
 }

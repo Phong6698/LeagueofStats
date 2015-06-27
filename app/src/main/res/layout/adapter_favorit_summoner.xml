@@ -18,54 +18,54 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Level:"
+        android:id="@+id/levelTitle"
+        android:layout_marginRight="50dp"
+        android:layout_alignTop="@+id/summonerImageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Wins:"
+        android:id="@+id/winsTitle"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/level"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/level"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/levelTitle"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/wins"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/winsTitle"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Summoner"
         android:id="@+id/summoner"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/summonerImageView"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Level: "
-        android:id="@+id/levelTitle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Wins: "
-        android:id="@+id/winsTitle"
-        android:layout_marginRight="50dp"
-        android:layout_below="@+id/levelTitle"
-        android:layout_alignStart="@+id/levelTitle"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="0"
-        android:id="@+id/level"
-        android:layout_alignTop="@+id/levelTitle"
-        android:layout_marginRight="30dp"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="0"
-        android:id="@+id/wins"
-        android:layout_marginRight="20dp"
-        android:layout_alignTop="@+id/winsTitle"
-        android:layout_alignStart="@+id/level"
-        android:layout_alignParentEnd="true" />
 </RelativeLayout>

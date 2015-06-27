@@ -31,14 +31,19 @@ public class LoadingSummonerStatsTask extends JsonLoadingTask {
         summoner = jsonParser.getSummonerWins(jsonString, summoner);
 
         int summonerId = summoner.getId();
-        try {
-            url = new URL("https://euw.api.pvp.net/api/lol/euw/v2.5/league/by-summoner/"+summonerId+"/entry?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        if(summoner.getSummonerLevel() == 30) {
+            try {
+                url = new URL("https://euw.api.pvp.net/api/lol/euw/v2.5/league/by-summoner/" + summonerId + "/entry?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
 
-        LoadingSummonerRankedStatsTask loadingSummonerRankedStatsTask = new LoadingSummonerRankedStatsTask(activity, mDialog, summoner);
-        loadingSummonerRankedStatsTask.execute(url);
+
+            LoadingSummonerRankedStatsTask loadingSummonerRankedStatsTask = new LoadingSummonerRankedStatsTask(activity, mDialog, summoner);
+            loadingSummonerRankedStatsTask.execute(url);
+        }else if(summoner.getSummonerLevel() != 30){
+            summonerActivity.setData(summoner);
+        }
 
 
     }

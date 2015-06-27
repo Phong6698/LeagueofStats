@@ -10,6 +10,7 @@ public class Summoner {
     private int id;
     private int summonerLevel;
     private int profileIconId;
+    private String region = "euw";
     private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<>();
 
 
@@ -20,6 +21,15 @@ public class Summoner {
 
     public void setSummonerRankeds(ArrayList<SummonerRanked> summonerRankeds) {
         this.summonerRankeds = summonerRankeds;
+    }
+
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public int getProfileIconId() {

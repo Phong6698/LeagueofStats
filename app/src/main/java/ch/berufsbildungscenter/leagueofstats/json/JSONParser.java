@@ -18,7 +18,7 @@ public class JSONParser{
 
     private static final String LOG_TAG = JSONParser.class.getCanonicalName();
 
-    protected static Summoner getSummonerIDByString(String jsonString) {
+    protected static Summoner getSummoner(String jsonString) {
         Summoner summoner = new Summoner();
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
