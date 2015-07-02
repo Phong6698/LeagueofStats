@@ -24,12 +24,12 @@
             android:id="@+id/health"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dip"
+            android:textSize="16sp"
             android:text="Health"
             android:textColor="#ff000000"
-            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/linearLayout"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:id="@+id/health_stat"

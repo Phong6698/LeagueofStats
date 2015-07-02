@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -24,7 +25,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
     private URL url;
     private ProgressDialog mDialog;
     private ArrayList<ChampionData> championDatas;
-
+    private String titleName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
         Intent intent = getIntent();
 
         int championId = intent.getIntExtra("championId", -1);
-        String titleName = intent.getStringExtra("championName");
+        titleName = intent.getStringExtra("championName");
         Log.e("ChampStatActicity", "champID: " + championId);
         setTitle(titleName);
 
@@ -60,6 +61,10 @@ public class ChampionStatsActivity extends ActionBarActivity {
         for(ChampionStat championStats : champion.getChampionStats()) {
             arrayList.add(championStats);
         }
+
+        ImageView champSquare = (ImageView)findViewById(R.id.champ_square);
+        champion.getSingleChampionImageView(champSquare, getTitle().toString());
+
 
         ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item, arrayList);
         ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);

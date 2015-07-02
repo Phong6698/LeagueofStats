@@ -49,6 +49,25 @@ public class ChampionData {
     private String[] allyTips;
     private String[] enemyTips;
 
+    public void getChampionIconImageButton(ImageButton image) {
+        Log.e("Image", "Image: " + this.image);
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
+        new ImageDownloader(image).execute(url);
+    }
+    public void getChampionIconImageView(ImageView image) {
+        Log.e("Image", "Image: " + this.image);
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
+        new ImageDownloader(image).execute(url);
+    }
+    public void getSingleChampionImageView(ImageView image, String championName) {
+        Log.e("Image Function", championName);
+        championName.replaceAll("'", "");
+        championName.replaceAll(" ", "");
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + championName + ".png";
+
+        new ImageDownloader(image).execute(url);
+    }
+
     public double getAttackSpeedOffset() {
         return attackSpeedOffset;
     }
@@ -71,17 +90,6 @@ public class ChampionData {
 
     public void setEnemyTips(String[] enemyTips) {
         this.enemyTips = enemyTips;
-    }
-
-    public void getChampionIconImageButton(ImageButton image) {
-        Log.e("Image", "Image: " + this.image);
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
-        new ImageDownloader(image).execute(url);
-    }
-    public void getChampionIconImageView(ImageView image) {
-        Log.e("Image", "Image: " + this.image);
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
-        new ImageDownloader(image).execute(url);
     }
 
     public double getMana() {

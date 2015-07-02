@@ -14,7 +14,8 @@
         android:id="@+id/summonerImageView"
         android:src="@drawable/standard_120px"
         android:layout_alignParentTop="false"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"

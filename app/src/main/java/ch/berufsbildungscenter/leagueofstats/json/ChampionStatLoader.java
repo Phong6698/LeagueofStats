@@ -2,6 +2,7 @@ package ch.berufsbildungscenter.leagueofstats.json;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.util.Log;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,7 +29,7 @@ public class ChampionStatLoader extends JsonLoadingTask{
     protected void onCostumPostExecute(String jsonString) {
         ChampionData champion = jsonParser.getChampionStats(jsonString, championData);
         championStatsActivity.setData(champion);
-
+        Log.e("Name Details: ", champion.getName().toString());
         mDialog.dismiss();
     }
 

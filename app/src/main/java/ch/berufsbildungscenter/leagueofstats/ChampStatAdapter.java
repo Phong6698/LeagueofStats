@@ -35,7 +35,21 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
         rackingSystemSb.setCharAt(0, Character.toUpperCase(rackingSystemSb.charAt(0)));
         championStat.setTitle(rackingSystemSb.toString());
 
+        if(championStat.getTitle().contains("per")) {
+            championStat.setTitle(championStat.getTitle().replaceAll("per", " per "));
+        }
+        if(championStat.getTitle().contains("regen")) {
+            championStat.setTitle(championStat.getTitle().replace("regen", "regeneration"));
+        }
+        if(championStat.getTitle().contains("Mp")) {
+            championStat.setTitle(championStat.getTitle().replaceAll("Mp", "Mana"));
+        }
+        if(championStat.getTitle().contains("Hp")) {
+            championStat.setTitle(championStat.getTitle().replaceAll("Hp", "Health"));
+        }
+
         title.setText(championStat.getTitle());
+
         stats.setText("" + championStat.getStat());
 
 
