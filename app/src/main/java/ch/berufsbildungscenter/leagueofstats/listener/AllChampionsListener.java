@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 /**
  * Created by zkillt on 24.06.2015.
@@ -17,21 +18,23 @@ public class AllChampionsListener implements View.OnClickListener {
 
 
     private Context context;
-    private int championId;
-    private String name;
 
-    public AllChampionsListener(Context context, int id, String champName){
+
+    private ChampionData championData;
+
+    public AllChampionsListener(Context context, ChampionData championData){
         this.setContext(context);
-        this.setChampionId(id);
-        this.setName(champName);
+        this.setChampionData(championData);
+
     }
 
     @Override
     public void onClick(View v) {
             Intent intent = new Intent(context, ChampionStatsActivity.class);
-            Log.e(LOG_TAG, "name: " + name);
-            intent.putExtra("championId", championId);
-            intent.putExtra("championName", name);
+            Log.e(LOG_TAG, "name: " + championData.getName());
+            intent.putExtra("championId", championData.getId());
+            intent.putExtra("championName", championData.getName());
+            intent.putExtra("image", championData.getImage());
             context.startActivity(intent);
     }
 
@@ -44,20 +47,13 @@ public class AllChampionsListener implements View.OnClickListener {
         }
 
 
-    public int getChampionId() {
-        return championId;
+    public ChampionData getChampionData() {
+        return championData;
     }
 
-    public void setChampionId(int championId) {
-        this.championId = championId;
-
+    public void setChampionData(ChampionData championData) {
+        this.championData = championData;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

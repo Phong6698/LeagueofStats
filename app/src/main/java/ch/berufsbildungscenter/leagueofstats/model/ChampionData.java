@@ -59,14 +59,6 @@ public class ChampionData {
         String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
         new ImageDownloader(image).execute(url);
     }
-    public void getSingleChampionImageView(ImageView image, String championName) {
-        Log.e("Image Function", championName);
-        championName.replaceAll("'", "");
-        championName.replaceAll(" ", "");
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + championName + ".png";
-
-        new ImageDownloader(image).execute(url);
-    }
 
     public double getAttackSpeedOffset() {
         return attackSpeedOffset;

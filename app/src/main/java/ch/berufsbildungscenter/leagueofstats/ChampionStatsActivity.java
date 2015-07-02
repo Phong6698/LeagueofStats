@@ -25,7 +25,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
     private URL url;
     private ProgressDialog mDialog;
     private ArrayList<ChampionData> championDatas;
-    private String titleName;
+    private String image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,8 @@ public class ChampionStatsActivity extends ActionBarActivity {
         Intent intent = getIntent();
 
         int championId = intent.getIntExtra("championId", -1);
-        titleName = intent.getStringExtra("championName");
+        String titleName = intent.getStringExtra("championName");
+        image = intent.getStringExtra("image");
         Log.e("ChampStatActicity", "champID: " + championId);
         setTitle(titleName);
 
@@ -56,6 +57,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
 
     public void setData(ChampionData champion) {
 
+        champion.setImage(image);
         ArrayList<ChampionStat> arrayList = new ArrayList<ChampionStat>();
 
         for(ChampionStat championStats : champion.getChampionStats()) {
@@ -63,7 +65,7 @@ public class ChampionStatsActivity extends ActionBarActivity {
         }
 
         ImageView champSquare = (ImageView)findViewById(R.id.champ_square);
-        champion.getSingleChampionImageView(champSquare, getTitle().toString());
+        champion.getChampionIconImageView(champSquare);
 
 
         ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item, arrayList);
