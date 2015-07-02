@@ -10,12 +10,11 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.animation.ProgressBarAnimation;
-import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
+import ch.berufsbildungscenter.leagueofstats.json.ChampionStatsLoader;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 
@@ -40,13 +39,8 @@ public class ChampionStatsActivity extends ActionBarActivity {
 
         mDialog = ProgressDialog.show(this, titleName, "Stats are loading...");
 
-        try {
-            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "?champData=all&api_key=53ee3303-7114-413e-af65-3a767e515436");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        LoadingChampionStatsTask loadingChampionStatsTask = new LoadingChampionStatsTask(this, mDialog );
-        loadingChampionStatsTask.execute(url);
+        ChampionStatsLoader championStatsLoader = new ChampionStatsLoader(this, mDialog );
+        championStatsLoader.execute(""+championId);
     }
 
 

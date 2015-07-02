@@ -15,11 +15,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by zpengc on 18.06.2015.
  */
-public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
+public abstract class JsonLoadingTask extends AsyncTask<String, Void, String> {
 
     protected JSONParser jsonParser;
     protected ProgressDialog mDialog;
@@ -38,9 +39,9 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     }
 
     @Override
-    protected String doInBackground(URL... params) {
+    protected String doInBackground(String... params) {
 
-        URL url = params[0];
+        URL url = createURL(params);
         Log.e(LOG_TAG,"url: "+url);
 
         String result = null;
@@ -86,6 +87,7 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
     }
 
     protected abstract void onCostumPostExecute(String jsonString);
+    protected abstract URL createURL(String... params) ;
 
     private boolean isNetworkConnectionAvailable() {
         ConnectivityManager connectivityService = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -96,9 +98,7 @@ public abstract class JsonLoadingTask extends AsyncTask<URL, Void, String> {
 
     private String readInput(InputStream inputStream) throws IOException {
         StringBuilder resultBuilder = new StringBuilder();
-
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-
         String line;
         while (null != (line = bufferedReader.readLine())) {
             resultBuilder.append(line);

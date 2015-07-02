@@ -3,18 +3,21 @@ package ch.berufsbildungscenter.leagueofstats.json;
 import android.app.Activity;
 import android.app.ProgressDialog;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import ch.berufsbildungscenter.leagueofstats.ChampionStatsActivity;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 /**
  * Created by zkillt on 02.07.2015.
  */
-public class LoadingChampionStatDetails extends JsonLoadingTask{
+public class ChampionStatLoader extends JsonLoadingTask{
 
     private ChampionStatsActivity championStatsActivity;
     protected ChampionData championData;
 
-    public LoadingChampionStatDetails(Activity activity, ProgressDialog mDialog, ChampionData championData) {
+    public ChampionStatLoader(Activity activity, ProgressDialog mDialog, ChampionData championData) {
         super(activity, mDialog);
         championStatsActivity = (ChampionStatsActivity) activity;
         this.championData = championData;
@@ -27,5 +30,17 @@ public class LoadingChampionStatDetails extends JsonLoadingTask{
         championStatsActivity.setData(champion);
 
         mDialog.dismiss();
+    }
+
+    @Override
+    protected URL createURL(String... params) {
+        String championId = params[0];
+        URL url = null;
+        try {
+            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "?champData=stats&api_key=53ee3303-7114-413e-af65-3a767e515436");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
     }
 }

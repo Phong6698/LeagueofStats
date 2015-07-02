@@ -7,11 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import ch.berufsbildungscenter.leagueofstats.json.LoadingAllChampionsTask;
+import ch.berufsbildungscenter.leagueofstats.json.AllChampionsLoader;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
 
@@ -24,12 +22,9 @@ public class AllChampionsActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champions_all);
         mDialog = ProgressDialog.show(this, "Please wait", "Champions are loading...");
-        LoadingAllChampionsTask loadingAllChampionsTask = new LoadingAllChampionsTask(this, mDialog );
-        try {
-            loadingAllChampionsTask.execute(new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?champData=image&api_key=58453580-a12b-497a-bdde-d1255bd0fda3"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        AllChampionsLoader allChampionsLoader = new AllChampionsLoader(this, mDialog );
+        allChampionsLoader.execute();
+
     }
 
     @Override

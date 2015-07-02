@@ -7,11 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import ch.berufsbildungscenter.leagueofstats.json.LoadingFreeToPlayChampionsIdTask;
+import ch.berufsbildungscenter.leagueofstats.json.FreeToPlayChampionsIdLoader;
 import ch.berufsbildungscenter.leagueofstats.listener.FreeToPlayChampListener;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 
@@ -30,13 +29,8 @@ public class FreeToPlayChampionsActivity extends ActionBarActivity {
 
         mDialog = ProgressDialog.show(this, "Please wait", "Loading Free To Play Champions...");
 
-        try {
-            url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.2/champion?freeToPlay=true&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        LoadingFreeToPlayChampionsIdTask loadingFreeToPlayChampionsIdTask = new LoadingFreeToPlayChampionsIdTask(this, mDialog);
-        loadingFreeToPlayChampionsIdTask.execute(url);
+        FreeToPlayChampionsIdLoader freeToPlayChampionsIdLoader = new FreeToPlayChampionsIdLoader(this, mDialog);
+        freeToPlayChampionsIdLoader.execute();
 
         freeToPlayChampions = new ArrayList<ChampionData>();
 

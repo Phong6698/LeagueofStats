@@ -12,14 +12,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
-import ch.berufsbildungscenter.leagueofstats.json.LoadingFavSummonerTask;
+import ch.berufsbildungscenter.leagueofstats.json.FavSummonerLoader;
 import ch.berufsbildungscenter.leagueofstats.listener.FavoritSummonerListener;
-import ch.berufsbildungscenter.leagueofstats.listener.FreeToPlayChampListener;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 
@@ -55,13 +53,9 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             TextView noFavoritesText = (TextView) findViewById(R.id.noFavoritesText);
             noFavoritesText.setText("");
-            try {
-                url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/"+entry.getValue() +"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            LoadingFavSummonerTask loadingFavSummonerTask = new LoadingFavSummonerTask(this, mDialog);
-            loadingFavSummonerTask.execute(url);
+
+            FavSummonerLoader favSummonerLoader = new FavSummonerLoader(this, mDialog);
+            favSummonerLoader.execute(""+entry.getValue());
         }
 
         if(favSummonerNumber == 0){

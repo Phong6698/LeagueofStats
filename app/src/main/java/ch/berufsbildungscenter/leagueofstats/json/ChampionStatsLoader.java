@@ -13,11 +13,11 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 /**
  * Created by zkillt on 19.06.2015.
  */
-public class LoadingChampionStatsTask extends JsonLoadingTask{
+public class ChampionStatsLoader extends JsonLoadingTask{
 
     private ChampionStatsActivity championStatsActivity;
 
-    public LoadingChampionStatsTask(Activity activity, ProgressDialog mDialog) {
+    public ChampionStatsLoader(Activity activity, ProgressDialog mDialog) {
         super(activity, mDialog);
         championStatsActivity = (ChampionStatsActivity) activity;
     }
@@ -29,12 +29,20 @@ public class LoadingChampionStatsTask extends JsonLoadingTask{
         int ID = champion.getId();
         Log.e("ID Loading", "" + ID);
 
-        LoadingChampionStatDetails loader = new LoadingChampionStatDetails(championStatsActivity, mDialog, champion);
+        ChampionStatLoader loader = new ChampionStatLoader(championStatsActivity, mDialog, champion);
+        loader.execute(""+champion.getId());
+        mDialog.dismiss();
+    }
+
+    @Override
+    protected URL createURL(String... params) {
+        String championId = params[0];
+        URL url = null;
         try {
-            loader.execute(new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + champion.getId() + "?champData=stats&api_key=53ee3303-7114-413e-af65-3a767e515436"));
+            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "?champData=all&api_key=53ee3303-7114-413e-af65-3a767e515436");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        mDialog.dismiss();
+        return url;
     }
 }
