@@ -33,7 +33,9 @@ public class RankedAdapter extends ArrayAdapter<SummonerRanked> {
         TextView winsTextView = (TextView) rowView.findViewById(R.id.winsTextView);
         TextView textView = (TextView) rowView.findViewById(R.id.textView);
 
-//      rankedImage.setImageResource();
+
+
+
         String queue = summonerRanked.getQueue();
         queue = queue.replaceAll("_", " ");
         queueTextView.setText(queue);
@@ -41,6 +43,9 @@ public class RankedAdapter extends ArrayAdapter<SummonerRanked> {
         leaguePointsTextView.setText(""+summonerRanked.getLeaguePoints()+"LP");
         winsTextView.setText(""+summonerRanked.getWins());
         textView.setText(""+summonerRanked.getLosses());
+        String tier = summonerRanked.getTier() + "_" +summonerRanked.getDivision();
+        int id = context.getResources().getIdentifier(tier.toLowerCase(), "drawable", context.getPackageName());
+        rankedImage.setImageResource(id);
 
         return rowView;
     }
