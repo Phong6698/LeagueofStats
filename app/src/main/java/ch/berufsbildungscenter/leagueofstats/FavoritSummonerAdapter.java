@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -30,6 +31,8 @@ public class FavoritSummonerAdapter extends ArrayAdapter<Summoner> {
         TextView summonerTextView = (TextView) rowView.findViewById(R.id.summoner);
         TextView level = (TextView) rowView.findViewById(R.id.level);
         TextView wins = (TextView) rowView.findViewById(R.id.wins);
+        ImageView summonerIcon = (ImageView) rowView.findViewById((R.id.summonerImageView));
+        summoner.getSummonerIcon(summonerIcon);
 
         summonerTextView.setText(summoner.getName());
         level.setText(""+summoner.getSummonerLevel());

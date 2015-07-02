@@ -34,9 +34,9 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
         ChampionData championData = this.getItem(position);
 
         ImageButton championIcon = (ImageButton) rowView.findViewById(R.id.championIcon);
-        if (!championData.getName().equals("Ekko")) {
-            championData.getPlayerIconImageButton(championIcon);
-        }
+
+        championData.getChampionIconImageButton(championIcon);
+
         championIcon.setOnClickListener(new AllChampionsListener(context, championData.getId(), championData.getName()));
 
         TextView name = (TextView) rowView.findViewById(R.id.nameField);

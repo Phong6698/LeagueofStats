@@ -3,13 +3,15 @@ package ch.berufsbildungscenter.leagueofstats;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ch.berufsbildungscenter.leagueofstats.json.LoadingSummonerIDTask;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
@@ -58,7 +61,7 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         mDialog = ProgressDialog.show(this, "Search Summoner", "Please wait...");
 
         try {
-            url = new URL("https://euw.api.pvp.net/api/lol/"+region+"/v1.4/summoner/by-name/"+summonername+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            url = new URL("https://euw.api.pvp.net/api/lol/"+region+"/v1.4/summoner/by-name/"+summonername.replaceAll("\\s+", "%20")+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -70,9 +73,13 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         this.summoner = summoner;
         TextView levelTextView = (TextView)findViewById(R.id.summonerLevel);
         TextView winsTextView = (TextView)findViewById(R.id.wins);
+        ImageView championIcon = (ImageView) findViewById(R.id.championIcon);
 
         levelTextView.setText("" + summoner.getSummonerLevel());
         winsTextView.setText("" + summoner.getWins());
+        summoner.getSummonerIcon(championIcon);
+
+
 
         if(summoner.getSummonerLevel() ==30) {
             ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
@@ -118,7 +125,7 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
             if(!favorit){
                 addFavorit();
                 item.setIcon(R.mipmap.fav_summoner);
-                Toast toast = Toast.makeText(getApplicationContext(), "Added to Favorits", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "Add to Favorits", Toast.LENGTH_SHORT);
                 toast.show();
             } else if(favorit){
                 removeFavorit();

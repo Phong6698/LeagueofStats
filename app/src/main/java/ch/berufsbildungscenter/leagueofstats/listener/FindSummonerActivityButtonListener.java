@@ -34,7 +34,6 @@ public class FindSummonerActivityButtonListener implements View.OnClickListener 
     public void onClick(View v) {
         if(v.getId() == R.id.searchSummonerButton){
             String summoner = summonerTextField.getText().toString();
-            summoner = summoner.replaceAll("\\s+", "%20");
             String region = regionSpinner.getSelectedItem().toString();
 
             Log.e(LOG_TAG, "summoner: " + summoner);

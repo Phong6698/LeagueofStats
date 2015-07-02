@@ -1,6 +1,11 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
+import android.util.Log;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
+
+import ch.berufsbildungscenter.leagueofstats.ImageDownloader;
 
 /**
  * Created by zpengc on 18.06.2015.
@@ -21,6 +26,12 @@ public class Summoner {
 
     public void setSummonerRankeds(ArrayList<SummonerRanked> summonerRankeds) {
         this.summonerRankeds = summonerRankeds;
+    }
+
+    public void getSummonerIcon(ImageView image) {
+        String summoner = name.replaceAll("\\s+", "%20");
+        String url = "http://avatar.leagueoflegends.com/euw/"+ summoner +".png" ;
+        new ImageDownloader(image).execute(url);
     }
 
 

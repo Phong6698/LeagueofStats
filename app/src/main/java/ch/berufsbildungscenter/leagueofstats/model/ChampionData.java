@@ -73,14 +73,14 @@ public class ChampionData {
         this.enemyTips = enemyTips;
     }
 
-    public void getPlayerIconImageButton(ImageButton image) {
+    public void getChampionIconImageButton(ImageButton image) {
         Log.e("Image", "Image: " + this.image);
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.7.2/img/champion/" + this.image;
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
         new ImageDownloader(image).execute(url);
     }
-    public void getPlayerIconImageView(ImageView image) {
+    public void getChampionIconImageView(ImageView image) {
         Log.e("Image", "Image: " + this.image);
-        String url = "http://ddragon.leagueoflegends.com/cdn/5.7.2/img/champion/" + this.image;
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
         new ImageDownloader(image).execute(url);
     }
 

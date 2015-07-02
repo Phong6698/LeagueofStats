@@ -36,7 +36,7 @@ public class FreeToPlayChampionsAdapter extends ArrayAdapter<ChampionData> {
         TextView difficulty = (TextView) rowView.findViewById(R.id.difficulty);
 
         ImageView championIcon = (ImageView) rowView.findViewById(R.id.championIcon);
-        championData.getPlayerIconImageView(championIcon);
+        championData.getChampionIconImageView(championIcon);
 
         champion.setText(championData.getName());
         attack.setText(""+championData.getAttack());
