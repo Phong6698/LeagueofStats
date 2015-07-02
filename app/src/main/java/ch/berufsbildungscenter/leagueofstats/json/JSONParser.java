@@ -31,6 +31,7 @@ public class JSONParser{
                 String name = subObject.getString("name");
                 int summonerLevel = subObject.getInt("summonerLevel");
                 int profileIconId = subObject.getInt("profileIconId");
+
                 summoner.setId(id);
                 summoner.setName(name);
                 summoner.setSummonerLevel(summonerLevel);
@@ -87,11 +88,13 @@ public class JSONParser{
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
             JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
+            int id = jsonObject.getInt("id");
             int ad = jsonInfoObj.getInt("attack");
             int ap = jsonInfoObj.getInt("magic");
             int defense = jsonInfoObj.getInt("defense");
             int difficulty = jsonInfoObj.getInt("difficulty");
 
+            championsDetails.setId(id);
             championsDetails.setAttack(ad);
             championsDetails.setMagic(ap);
             championsDetails.setDefense(defense);
@@ -230,39 +233,26 @@ public class JSONParser{
         return championData;
     }
 
-    protected static ChampionData getChampionStats(String jsonString){
-        ChampionData championData = new ChampionData();
+    protected static ChampionData getChampionStats(String jsonString, ChampionData champion){
+        ChampionData championData = champion;
         ArrayList<ChampionStat> championStats = new ArrayList<ChampionStat>();
 
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
-            JSONObject jsonStatObj = jsonObj.getJSONObject("stat");
+            JSONObject jsonStatObj = jsonObj.getJSONObject("stats");
+            Iterator keys = jsonStatObj.keys();
+            while(keys.hasNext()) {
+                ChampionStat championStat = new ChampionStat();
+                String key = (String) keys.next();
+                championStat.setTitle(key);
 
+                championStat.setStat(jsonStatObj.getDouble(key));
 
-            //championData.setId(jsonObj.getInt("id"));
-            championData.setName(jsonObj.getString("title"));
-            championData.setAttackrange(jsonStatObj.getInt("attackrange"));
-            championData.setAttackDamage(jsonStatObj.getDouble("attackdamage"));
-            championData.setAttackDamagePerLevel(jsonStatObj.getDouble("attackdamageperlevel"));
-            championData.setAttackSpeedOffset(jsonStatObj.getInt("attackspeedoffset"));
-            championData.setAttackSpeedPerLevel(jsonStatObj.getDouble("attackspeedperlevel"));
-            championData.setHp(jsonStatObj.getDouble("hp"));
-            championData.setHpPerLevel(jsonStatObj.getDouble("hpperlevel"));
-            championData.setMovementSpeed(jsonStatObj.getInt("movementSpeed"));
-            championData.setArmor(jsonStatObj.getDouble("armor"));
-            championData.setArmorPerLevel(jsonStatObj.getDouble("armorperlevel"));
-            championData.setMagicResistance(jsonStatObj.getInt("spellblock"));
-            championData.setMagicResistancePerLevel(jsonStatObj.getInt("spellblockperlevel"));
-            championData.setMana(jsonStatObj.getDouble("mp"));
-            championData.setManaPerLevel(jsonStatObj.getInt("mpperlevel"));
-
-            ChampionStat attackrange = new ChampionStat();
-            attackrange.setTitle("dkjna");
-            attackrange.setStat(2);
-
-            championStats.add(attackrange);
+                championStats.add(championStat);
+                Log.e("Keys", key);
+                Log.e("Stat", ""+jsonStatObj.getDouble(key));
+            }
             championData.setChampionStats(championStats);
-
 
 
         } catch (JSONException e) {

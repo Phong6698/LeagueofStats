@@ -60,7 +60,6 @@ public class AllChampionsActivity extends ActionBarActivity{
         // add Rows
         for(ChampionData championDataIt : champions) {
             arrayList.add(championDataIt);
-
         }
 
         AllChampsAdapter allChampsAdapter = new AllChampsAdapter(this, R.id.all_champs_item, arrayList);

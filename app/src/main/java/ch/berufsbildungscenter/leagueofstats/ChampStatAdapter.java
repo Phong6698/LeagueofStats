@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 
 
-public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
+public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
 
     private Context context;
-    public ChampStatAdapter(Context context, int resource, List<ChampionData> championData) {
 
-        super(context, resource, championData);
+    public ChampStatAdapter(Context context, int resource, ArrayList<ChampionStat> championStats) {
+        super(context, resource, championStats);
         this.context = context;
     }
 
@@ -28,7 +28,15 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionData> {
         TextView title = (TextView) rowView.findViewById(R.id.health);
         TextView stats = (TextView) rowView.findViewById(R.id.health_stat);
 
-        ChampionData championData = this.getItem(position);
+        ChampionStat championStat = this.getItem(position);
+
+        StringBuilder rackingSystemSb = new StringBuilder();
+        rackingSystemSb.append(championStat.getTitle());
+        rackingSystemSb.setCharAt(0, Character.toUpperCase(rackingSystemSb.charAt(0)));
+        championStat.setTitle(rackingSystemSb.toString());
+
+        title.setText(championStat.getTitle());
+        stats.setText("" + championStat.getStat());
 
 
         return rowView;

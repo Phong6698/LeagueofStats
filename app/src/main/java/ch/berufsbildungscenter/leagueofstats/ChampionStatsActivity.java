@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.net.MalformedURLException;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import ch.berufsbildungscenter.leagueofstats.animation.ProgressBarAnimation;
 import ch.berufsbildungscenter.leagueofstats.json.LoadingChampionStatsTask;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
+import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 
 
 public class ChampionStatsActivity extends ActionBarActivity {
@@ -58,6 +60,16 @@ public class ChampionStatsActivity extends ActionBarActivity {
     }
 
     public void setData(ChampionData champion) {
+
+        ArrayList<ChampionStat> arrayList = new ArrayList<ChampionStat>();
+
+        for(ChampionStat championStats : champion.getChampionStats()) {
+            arrayList.add(championStats);
+        }
+
+        ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item, arrayList);
+        ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);
+        champStatList.setAdapter(champStatAdapter);
 
         ProgressBar adBar  = (ProgressBar) findViewById(R.id.ad_bar);
         ProgressBar apBar  = (ProgressBar) findViewById(R.id.ap_bar);
