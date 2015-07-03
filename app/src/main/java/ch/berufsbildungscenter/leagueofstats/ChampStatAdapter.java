@@ -15,10 +15,12 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
 
     private Context context;
+    private ArrayList<ChampionStat> championStats;
 
     public ChampStatAdapter(Context context, int resource, ArrayList<ChampionStat> championStats) {
         super(context, resource, championStats);
         this.context = context;
+        this.championStats = championStats;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
         stringBuilder.append(championStat.getTitle());
         stringBuilder.setCharAt(0, Character.toUpperCase(stringBuilder.charAt(0)));
         championStat.setTitle(stringBuilder.toString());
-        
+
             if (championStat.getTitle().contains("Mp")) {
                 championStat.setTitle(championStat.getTitle().replaceAll("Mp", "Mana"));
             }

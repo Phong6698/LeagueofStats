@@ -3,6 +3,8 @@ package ch.berufsbildungscenter.leagueofstats;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -15,12 +17,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.animation.ProgressBarAnimation;
-import ch.berufsbildungscenter.leagueofstats.json.ChampionStatsLoader;
+import ch.berufsbildungscenter.leagueofstats.json.ChampionStatLoader;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 
 
-public class ChampionStatsActivity extends ActionBarActivity {
+public class ChampionStatsActivity extends ActionBarActivity implements ActionBar.TabListener{
 
     private URL url;
     private ProgressDialog mDialog;
@@ -30,6 +32,16 @@ public class ChampionStatsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champion_stats);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        // changes color of action bar:
+        // actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0099CC")));
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_lore).setTabListener(this), false);
+        actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_stats).setTabListener(this), true);
+        actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_spells).setTabListener(this), false);
 
         Intent intent = getIntent();
 
@@ -41,8 +53,9 @@ public class ChampionStatsActivity extends ActionBarActivity {
 
         mDialog = ProgressDialog.show(this, titleName, "Stats are loading...");
 
-        ChampionStatsLoader championStatsLoader = new ChampionStatsLoader(this, mDialog );
-        championStatsLoader.execute(""+championId);
+        ChampionStatLoader loader = new ChampionStatLoader(this, mDialog);
+        loader.execute("" + championId);
+        mDialog.dismiss();
     }
 
 
@@ -116,5 +129,20 @@ public class ChampionStatsActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
     }
 }

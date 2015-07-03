@@ -84,15 +84,29 @@ public class JSONParser{
 
     public static ChampionData getChampionDetails(String jsonstring) {
 
+        ArrayList<ChampionStat> championStats = new ArrayList<ChampionStat>();
         ChampionData championsDetails = new ChampionData();
         try {
             JSONObject jsonObject = new JSONObject(jsonstring);
             JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
+            JSONObject jsonStatObj = jsonObject.getJSONObject("stats");
             int id = jsonObject.getInt("id");
             int ad = jsonInfoObj.getInt("attack");
             int ap = jsonInfoObj.getInt("magic");
             int defense = jsonInfoObj.getInt("defense");
             int difficulty = jsonInfoObj.getInt("difficulty");
+
+            Iterator keys = jsonStatObj.keys();
+            while(keys.hasNext()) {
+                ChampionStat championStat = new ChampionStat();
+                String key = (String) keys.next();
+                championStat.setTitle(key);
+                championStat.setStat(jsonStatObj.getInt(key));
+
+                championStats.add(championStat);
+                Log.e("Keys ", key);
+                Log.e("Stat ", "" + jsonStatObj.getDouble(key));
+            }
 
             championsDetails.setId(id);
             championsDetails.setAttack(ad);
@@ -100,10 +114,14 @@ public class JSONParser{
             championsDetails.setDefense(defense);
             championsDetails.setDifficulty(difficulty);
 
+            championsDetails.setChampionStats(championStats);
+
+
             Log.e(LOG_TAG, "Attack: " + ad);
             Log.e(LOG_TAG, "Magic: " + ap);
             Log.e(LOG_TAG, "Defense: " + defense);
             Log.e(LOG_TAG, "Difficulty: " + difficulty);
+            Log.e(LOG_TAG, "ChampionStats: " + championStats);
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
@@ -259,6 +277,11 @@ public class JSONParser{
             Log.v("JSONParser", e.toString());
         }
 
+        return championData;
+    }
+
+    protected ChampionData getLore(String jsonstring) {
+        ChampionData championData = new ChampionData();
         return championData;
     }
 }

@@ -18,6 +18,10 @@
     <string name="summomer_gamehistory">Game History</string>
     <string name="summoner_stats">Stats</string>
 
+    <string name="champion_tab_lore">Lore and Tips</string>
+    <string name="champion_tab_stats">Stats</string>
+    <string name="champion_tab_spells">Spells</string>
+
     <string-array name="region">
         <item>EUW</item>
         <item>EUNE</item>
