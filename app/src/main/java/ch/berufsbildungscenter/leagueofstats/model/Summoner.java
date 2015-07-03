@@ -1,6 +1,5 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
-import android.util.Log;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ public class Summoner {
     private int profileIconId;
     private String region = "euw";
     private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<>();
+    private static LRUCacheChampIcons cache = new LRUCacheChampIcons();
 
 
 
@@ -31,7 +31,7 @@ public class Summoner {
     public void getSummonerIcon(ImageView image) {
         String summoner = name.replaceAll("\\s+", "%20");
         String url = "http://avatar.leagueoflegends.com/euw/"+ summoner +".png" ;
-        new ImageDownloader(image).execute(url);
+        new ImageDownloader(image, cache, name).execute(url);
     }
 
 

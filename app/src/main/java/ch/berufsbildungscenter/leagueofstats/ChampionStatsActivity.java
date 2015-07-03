@@ -20,6 +20,7 @@ import ch.berufsbildungscenter.leagueofstats.animation.ProgressBarAnimation;
 import ch.berufsbildungscenter.leagueofstats.json.ChampionStatLoader;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
+import ch.berufsbildungscenter.leagueofstats.model.LRUCacheChampIcons;
 
 
 public class ChampionStatsActivity extends ActionBarActivity implements ActionBar.TabListener{
@@ -28,6 +29,9 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
     private ProgressDialog mDialog;
     private ArrayList<ChampionData> championDatas;
     private String image;
+    private static LRUCacheChampIcons cache = new LRUCacheChampIcons();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +82,6 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
 
         ImageView champSquare = (ImageView)findViewById(R.id.champ_square);
         champion.getChampionIconImageView(champSquare);
-
 
         ChampStatAdapter champStatAdapter = new ChampStatAdapter(this, R.id.champ_stat_item, arrayList);
         ListView champStatList = (ListView) findViewById(R.id.Champ_stat_list);

@@ -279,6 +279,7 @@ public class JSONParser{
 
     protected ChampionData getLore(String jsonstring) {
         ChampionData championData = new ChampionData();
+
         return championData;
     }
 }

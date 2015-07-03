@@ -21,6 +21,7 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
     protected String name = "";
     private Context context;
 
+
     public AllChampsAdapter(Context context, int resource, List<ChampionData> championDataList) {
         super(context, resource, championDataList);
         this.context = context;
@@ -30,14 +31,11 @@ public class AllChampsAdapter extends ArrayAdapter<ChampionData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.adapter_all_champs, parent, false);
-
         ChampionData championData = this.getItem(position);
 
         ImageButton championIcon = (ImageButton) rowView.findViewById(R.id.championIcon);
-
-        championData.getChampionIconImageButton(championIcon);
-
         championIcon.setOnClickListener(new AllChampionsListener(context, championData));
+        championData.getChampionIconImageButton(championIcon);
 
         TextView name = (TextView) rowView.findViewById(R.id.nameField);
         name.setText(championData.getName());
