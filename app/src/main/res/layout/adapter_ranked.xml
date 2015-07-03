@@ -18,8 +18,8 @@
         android:layout_centerInParent="true"
         android:cropToPadding="false"
         android:layout_marginLeft="-20dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
