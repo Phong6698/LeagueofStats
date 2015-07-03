@@ -1,13 +1,12 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
-import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 import ch.berufsbildungscenter.leagueofstats.ImageDownloader;
-import ch.berufsbildungscenter.leagueofstats.R;
 
 /**
  * Created by zkillt on 18.06.2015.
@@ -49,40 +48,16 @@ public class ChampionData {
 
     private String[] allyTips;
     private String[] enemyTips;
-    private String lore;
-    private static LRUCacheChampIcons cache = new LRUCacheChampIcons();
-    private ImageDownloader task;
 
     public void getChampionIconImageButton(ImageButton image) {
-        final String imageKey = name;
-        final Bitmap bitmap = cache.getBitmapFromMemCache(imageKey);
-
-        if (bitmap != null) {
-            image.setImageBitmap(bitmap);
-            image.setScaleX(2);
-            image.setScaleY(2);
-        } else {
-            image.setImageResource(R.drawable.standard_60px);
-            task = new ImageDownloader(image, cache, name);
-            String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
-            task.execute(url);
-            image.setScaleX(2f);
-            image.setScaleY(2f);
-        }
+        Log.e("Image", "Image: " + this.image);
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
+        new ImageDownloader(image).execute(url);
     }
-
     public void getChampionIconImageView(ImageView image) {
-        final String imageKey = name;
-        final Bitmap bitmap = cache.getBitmapFromMemCache(imageKey);
-
-        if (bitmap != null) {
-            image.setImageBitmap(bitmap);
-        } else {
-            image.setImageResource(R.drawable.standard_120px);
-            task = new ImageDownloader(image, cache, name);
-            String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
-            task.execute(url);
-        }
+        Log.e("Image", "Image: " + this.image);
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/" + this.image;
+        new ImageDownloader(image).execute(url);
     }
 
     public double getAttackSpeedOffset() {
@@ -288,13 +263,6 @@ public class ChampionData {
         this.championStats = championStats;
     }
 
-    public String getLore() {
-        return lore;
-    }
-
-    public void setLore(String lore) {
-        this.lore = lore;
-    }
 }
 
 
