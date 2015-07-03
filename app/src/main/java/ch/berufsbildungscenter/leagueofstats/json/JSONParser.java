@@ -317,6 +317,7 @@ public class JSONParser{
             item.setDescription(jsonObject.getString("description"));
             item.setGoldTotal(goldObj.getInt("total"));
             item.setGoldBase(goldObj.getInt("base"));
+            item.setGoldSell(goldObj.getInt("sell"));
 
         } catch (JSONException e) {
             e.printStackTrace();

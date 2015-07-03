@@ -4,8 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import ch.berufsbildungscenter.leagueofstats.json.ItemLoader;
 import ch.berufsbildungscenter.leagueofstats.json.SummonerIDLoader;
@@ -53,7 +56,19 @@ public class ItemActivity extends ActionBarActivity {
     }
 
     public void setData(Item item) {
-        setTitle(item.getName());
+
+        TextView itemName = (TextView) findViewById(R.id.itemName);
+        TextView itemTextView = (TextView) findViewById(R.id.itemTextView);
+        TextView cost = (TextView) findViewById(R.id.cost);
+        TextView sell = (TextView) findViewById(R.id.sell);
+        ImageView itemImageView = (ImageView) findViewById(R.id.itemImageView);
+
+        itemName.setText(item.getName());
+        itemTextView.setText(Html.fromHtml(item.getDescription()));
+        cost.setText(""+item.getGoldTotal()+"("+item.getGoldBase()+")");
+        sell.setText(""+item.getGoldSell());
+        item.getItemIcon(itemImageView);
+
         mDialog.dismiss();
     }
 }

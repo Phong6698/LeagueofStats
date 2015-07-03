@@ -82,7 +82,8 @@
         </activity>
         <activity
             android:name=".AllItemsActivity"
-            android:label="@string/title_activity_all_items" >
+            android:label="@string/title_activity_all_items"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".AllItemsAdapter"
@@ -90,7 +91,8 @@
         </activity>
         <activity
             android:name=".ItemActivity"
-            android:label="@string/title_activity_item" >
+            android:label="@string/title_activity_item"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
     </application>
 

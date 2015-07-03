@@ -14,6 +14,7 @@ public class Item {
     private int id;
     private int goldTotal;
     private int goldBase;
+    private int goldSell;
 
     public void getItemIcon(ImageView image) {
         String url = "http://ddragon.leagueoflegends.com/cdn/5.12.1/img/item/"+id+".png" ;
@@ -58,5 +59,13 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getGoldSell() {
+        return goldSell;
+    }
+
+    public void setGoldSell(int goldSell) {
+        this.goldSell = goldSell;
     }
 }
