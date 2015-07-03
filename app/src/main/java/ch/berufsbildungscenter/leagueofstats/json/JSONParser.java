@@ -164,39 +164,36 @@ public class JSONParser{
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
 
-            ArrayList<String> rankedList = new ArrayList<String>();
+
             JSONArray jArray = (JSONArray)jsonObj.getJSONArray(""+summoner.getId());
             if (jArray != null) {
                 for (int i=0;i<jArray.length();i++){
-                    rankedList.add(jArray.get(i).toString());
+                    JSONObject rankedObj = new JSONObject(jArray.get(i).toString());
+
+                    SummonerRanked summonerRanked = new SummonerRanked();
+                    summonerRanked.setName(rankedObj.getString("name"));
+                    summonerRanked.setTier(rankedObj.getString("tier"));
+                    summonerRanked.setQueue(rankedObj.getString("queue"));
+
+                    JSONArray jArray2 = (JSONArray)rankedObj.getJSONArray("entries");
+                    if (jArray2 != null) {
+                        for (int y=0;y<jArray2.length();y++){
+                            JSONObject rankedSubObj = new JSONObject(jArray2.get(y).toString());
+
+                            summonerRanked.setDivision(rankedSubObj.getString("division"));
+                            summonerRanked.setLeaguePoints(rankedSubObj.getInt("leaguePoints"));
+                            summonerRanked.setWins(rankedSubObj.getInt("wins"));
+                            summonerRanked.setLosses(rankedSubObj.getInt("losses"));
+                        }
+                    }
+                    summoner.getSummonerRankeds().add(summonerRanked);
+
                 }
             }
-            String ranked = rankedList.get(0);
-            JSONObject rankedObj = new JSONObject(ranked);
 
 
-            ArrayList<String> rankedSubList = new ArrayList<String>();
-            JSONArray jArray2 = (JSONArray)rankedObj.getJSONArray("entries");
-            if (jArray2 != null) {
-                for (int i=0;i<jArray2.length();i++){
-                    rankedSubList.add(jArray2.get(i).toString());
-                }
-            }
-            String rankedSub = rankedSubList.get(0);
-            JSONObject rankedSubObj = new JSONObject(rankedSub);
 
-            SummonerRanked summonerRanked = new SummonerRanked();
 
-            summonerRanked.setName(rankedObj.getString("name"));
-            summonerRanked.setTier(rankedObj.getString("tier"));
-            summonerRanked.setQueue(rankedObj.getString("queue"));
-
-            summonerRanked.setDivision(rankedSubObj.getString("division"));
-            summonerRanked.setLeaguePoints(rankedSubObj.getInt("leaguePoints"));
-            summonerRanked.setWins(rankedSubObj.getInt("wins"));
-            summonerRanked.setLosses(rankedSubObj.getInt("losses"));
-
-            summoner.getSummonerRankeds().add(summonerRanked);
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());

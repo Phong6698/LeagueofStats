@@ -37,7 +37,7 @@ public class ChampionStatLoader extends JsonLoadingTask{
         String championId = params[0];
         URL url = null;
         try {
-            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "? champData=info,stats&api_key=53ee3303-7114-413e-af65-3a767e515436");
+            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/" + championId + "?champData=info,stats&api_key=53ee3303-7114-413e-af65-3a767e515436");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

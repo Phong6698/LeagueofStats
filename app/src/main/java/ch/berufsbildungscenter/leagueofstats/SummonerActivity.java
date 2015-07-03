@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -75,16 +76,17 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
 
 
         if(summoner.getSummonerLevel() ==30) {
-            ArrayList<SummonerRanked> summonerRankeds = new ArrayList<SummonerRanked>();
-
-            // add Rows
-            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
-            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
-            summonerRankeds.add(summoner.getSummonerRankeds().get(0));
+            ArrayList<SummonerRanked> summonerRankeds = summoner.getSummonerRankeds();
+            if(summonerRankeds.size()>0){
+                TextView noRankedsTextView = (TextView)findViewById(R.id.noRankedsTextView);
+                noRankedsTextView.setVisibility(View.INVISIBLE);
+            }
             // define items
             RankedAdapter rankedAdapter = new RankedAdapter(this, R.id.rankedItem, summonerRankeds);
             ListView rankedListView = (ListView) findViewById(R.id.rankedListView);
             rankedListView.setAdapter(rankedAdapter);
+        } else if (summoner.getSummonerLevel()<30){
+
         }
 
         setTitle(summoner.getName());

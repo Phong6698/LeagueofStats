@@ -34,7 +34,7 @@ public class FreeToPlayChampionsByIdLoader extends JsonLoadingTask{
         String championId = params[0];
         URL url = null;
         try {
-            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+championId+"?champData=all&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            url = new URL("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+championId+"?champData=image,info&api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

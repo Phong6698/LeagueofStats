@@ -52,7 +52,7 @@ public class FavoritSummonerActivity extends ActionBarActivity {
         favSummonerNumber = allEntries.size();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             TextView noFavoritesText = (TextView) findViewById(R.id.noFavoritesText);
-            noFavoritesText.setText("");
+            noFavoritesText.setVisibility(View.INVISIBLE);
 
             FavSummonerLoader favSummonerLoader = new FavSummonerLoader(this, mDialog);
             favSummonerLoader.execute(""+entry.getValue());

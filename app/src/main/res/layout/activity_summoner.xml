@@ -69,6 +69,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/rankedListView"
         android:layout_below="@+id/summonerRankedTitle"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="No Rankeds"
+        android:id="@+id/noRankedsTextView"
+        android:layout_marginTop="143dp"
+        android:layout_below="@+id/summonerRankedTitle"
+        android:layout_toStartOf="@+id/wins"
+        android:enabled="false" />
 
 </RelativeLayout>

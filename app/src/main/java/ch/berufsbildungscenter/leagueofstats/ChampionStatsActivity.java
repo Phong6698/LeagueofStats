@@ -53,9 +53,8 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
 
         mDialog = ProgressDialog.show(this, titleName, "Stats are loading...");
 
-        ChampionStatLoader loader = new ChampionStatLoader(this, mDialog);
-        loader.execute("" + championId);
-        mDialog.dismiss();
+        ChampionStatLoader championStatLoader = new ChampionStatLoader(this, mDialog);
+        championStatLoader.execute("" + championId);
     }
 
 
