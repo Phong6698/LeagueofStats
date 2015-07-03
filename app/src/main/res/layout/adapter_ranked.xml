@@ -8,13 +8,18 @@
     android:id="@+id/rankedItem">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:id="@+id/rankedImage"
         android:src="@drawable/provisional"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:paddingLeft="10dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:cropToPadding="false"
+        android:layout_marginLeft="-20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"

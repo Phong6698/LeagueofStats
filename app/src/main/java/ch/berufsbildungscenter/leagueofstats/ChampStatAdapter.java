@@ -15,7 +15,6 @@ import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
 public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
 
     private Context context;
-    boolean once = true;
 
     public ChampStatAdapter(Context context, int resource, ArrayList<ChampionStat> championStats) {
         super(context, resource, championStats);
@@ -35,23 +34,14 @@ public class ChampStatAdapter extends ArrayAdapter<ChampionStat> {
         stringBuilder.append(championStat.getTitle());
         stringBuilder.setCharAt(0, Character.toUpperCase(stringBuilder.charAt(0)));
         championStat.setTitle(stringBuilder.toString());
-
-
-        if(once) {
-            if (championStat.getTitle().contains("per")) {
-                championStat.setTitle(championStat.getTitle().replace("per", " per "));
-            }
-            if (championStat.getTitle().contains("regen")) {
-                championStat.setTitle(championStat.getTitle().replaceAll("regen", "regeneration"));
-            }
+        
             if (championStat.getTitle().contains("Mp")) {
                 championStat.setTitle(championStat.getTitle().replaceAll("Mp", "Mana"));
             }
             if (championStat.getTitle().contains("Hp")) {
                 championStat.setTitle(championStat.getTitle().replaceAll("Hp", "Health"));
             }
-            once = false;
-        }
+
         title.setText(championStat.getTitle());
 
         stats.setText("" + championStat.getStat());
