@@ -29,8 +29,7 @@ public class Summoner {
     }
 
     public void getSummonerIcon(ImageView image) {
-        String summoner = name.replaceAll("\\s+", "%20");
-        String url = "http://avatar.leagueoflegends.com/euw/"+ summoner +".png" ;
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.12.1/img/profileicon/"+ profileIconId +".png" ;
         new ImageDownloader(image).execute(url);
     }
 

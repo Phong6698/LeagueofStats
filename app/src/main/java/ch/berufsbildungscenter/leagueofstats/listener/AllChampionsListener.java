@@ -15,11 +15,7 @@ public class AllChampionsListener implements View.OnClickListener {
 
     private static final String LOG_TAG = AllChampionsListener.class.getCanonicalName();
 
-
-
     private Context context;
-
-
     private ChampionData championData;
 
     public AllChampionsListener(Context context, ChampionData championData){

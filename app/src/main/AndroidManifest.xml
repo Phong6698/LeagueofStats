@@ -80,6 +80,18 @@
             android:name=".FavoritSummonerAdapter"
             android:label="@string/title_activity_favourit_summoner_adapter" >
         </activity>
+        <activity
+            android:name=".AllItemsActivity"
+            android:label="@string/title_activity_all_items" >
+        </activity>
+        <activity
+            android:name=".AllItemsAdapter"
+            android:label="@string/title_activity_all_items_adapter" >
+        </activity>
+        <activity
+            android:name=".ItemActivity"
+            android:label="@string/title_activity_item" >
+        </activity>
     </application>
 
 </manifest>

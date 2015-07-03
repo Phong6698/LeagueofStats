@@ -56,7 +56,7 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         summonername = intent.getStringExtra("summoner");
         region = intent.getStringExtra("region");
 
-        mDialog = ProgressDialog.show(this, "Search Summoner", "Please wait...");
+        mDialog = ProgressDialog.show(this, "Please wait", "Loading Summoner...");
 
 
         SummonerIDLoader summonerIDLoader = new SummonerIDLoader(this, mDialog, region);

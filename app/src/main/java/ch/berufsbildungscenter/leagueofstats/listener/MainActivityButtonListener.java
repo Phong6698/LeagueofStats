@@ -8,6 +8,7 @@ import ch.berufsbildungscenter.leagueofstats.AllChampionsActivity;
 import ch.berufsbildungscenter.leagueofstats.FavoritSummonerActivity;
 import ch.berufsbildungscenter.leagueofstats.FreeToPlayChampionsActivity;
 import ch.berufsbildungscenter.leagueofstats.R;
+import ch.berufsbildungscenter.leagueofstats.AllItemsActivity;
 
 /**
  * Created by zpengc on 17.06.2015.
@@ -30,7 +31,8 @@ public class MainActivityButtonListener implements View.OnClickListener {
             Intent intent = new Intent(context, AllChampionsActivity.class);
             context.startActivity(intent);
         } else if(v.getId() == R.id.items_btn) {
-
+            Intent intent = new Intent(context, AllItemsActivity.class);
+            context.startActivity(intent);
         }else if(v.getId() == R.id.favoritSummoners_btn) {
             Intent intent = new Intent(context, FavoritSummonerActivity.class);
             context.startActivity(intent);

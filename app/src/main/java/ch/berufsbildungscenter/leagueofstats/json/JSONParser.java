@@ -11,6 +11,7 @@ import java.util.Iterator;
 
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
+import ch.berufsbildungscenter.leagueofstats.model.Item;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
@@ -280,5 +281,46 @@ public class JSONParser{
     protected ChampionData getLore(String jsonstring) {
         ChampionData championData = new ChampionData();
         return championData;
+    }
+
+    protected ArrayList<Item> getAllItems(String jsonString){
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONObject dataObj = jsonObject.getJSONObject("data");
+            Iterator keys = dataObj.keys();
+            while(keys.hasNext()) {
+                Item item = new Item();
+                String key = (String)keys.next();
+                JSONObject itemObj = dataObj.getJSONObject(key);
+
+                item.setId(itemObj.getInt("id"));
+                item.setName(itemObj.getString("name"));
+
+                items.add(item);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return items;
+    }
+
+    protected Item getItems(String jsonString){
+        Item item = new Item();
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONObject goldObj = jsonObject.getJSONObject("gold");
+
+            item.setId(jsonObject.getInt("id"));
+            item.setName(jsonObject.getString("name"));
+            item.setDescription(jsonObject.getString("description"));
+            item.setGoldTotal(goldObj.getInt("total"));
+            item.setGoldBase(goldObj.getInt("base"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 }

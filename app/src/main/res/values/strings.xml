@@ -40,4 +40,7 @@
     <string name="title_activity_free_to_play_champions">Free to Play Champions</string>
     <string name="title_activity_free_to_play_champions_adapter">FreeToPlayChampionsAdapter</string>
     <string name="title_activity_favourit_summoner_adapter">FavouritSummonerAdapter</string>
+    <string name="title_activity_all_items">Items</string>
+    <string name="title_activity_all_items_adapter">AllItemsAdapter</string>
+    <string name="title_activity_item">Item</string>
 </resources>
