@@ -17,7 +17,6 @@
             android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,18 +24,21 @@
             android:name=".AllChampionsActivity"
             android:label="@string/title_activity_all_champions"
             android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".ChampionStatsActivity"
             android:label="@string/title_activity_champion_stats"
             android:screenOrientation="portrait"
+            android:parentActivityName=".AllChampionsActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".FavoritSummonerActivity"
             android:label="@string/title_activity_favorit_summoner"
             android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
@@ -54,46 +56,25 @@
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
-            android:name=".ChampStatAdapter"
-            android:label="@string/title_activity_champ_stat_adapter"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".activity_all_champs_adapter"
-            android:label="@string/title_activity_activity_all_champs_adapter"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".RankedAdapter"
-            android:label="@string/title_activity_ranked_adapter" >
-        </activity>
-        <activity
             android:name=".FreeToPlayChampionsActivity"
             android:label="@string/title_activity_free_to_play_champions"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" >
-        </activity>
-        <activity
-            android:name=".FreeToPlayChampionsAdapter"
-            android:label="@string/title_activity_free_to_play_champions_adapter" >
-        </activity>
-        <activity
-            android:name=".FavoritSummonerAdapter"
-            android:label="@string/title_activity_favourit_summoner_adapter" >
         </activity>
         <activity
             android:name=".AllItemsActivity"
             android:label="@string/title_activity_all_items"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" >
-        </activity>
-        <activity
-            android:name=".AllItemsAdapter"
-            android:label="@string/title_activity_all_items_adapter" >
         </activity>
         <activity
             android:name=".ItemActivity"
             android:label="@string/title_activity_item"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AllItemsActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
     </application>
-
 </manifest>

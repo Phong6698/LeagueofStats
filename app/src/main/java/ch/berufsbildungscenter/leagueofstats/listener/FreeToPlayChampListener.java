@@ -32,6 +32,7 @@ public class FreeToPlayChampListener implements AdapterView.OnItemClickListener 
         Log.e(LOG_TAG, "name: " + championData.getName());
         intent.putExtra("championId", championData.getId());
         intent.putExtra("championName", championData.getName());
+        intent.putExtra("image", championData.getImage());
         context.startActivity(intent);
     }
 }
