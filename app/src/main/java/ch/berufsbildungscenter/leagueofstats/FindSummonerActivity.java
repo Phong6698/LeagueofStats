@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import ch.berufsbildungscenter.leagueofstats.listener.FindSummonerActivityButtonListener;
@@ -38,10 +39,10 @@ public class FindSummonerActivity extends ActionBarActivity {
         // Apply the adapter to the spinner
         regionSpinner.setAdapter(adapter);
 
-
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.findSummonerRadioGroup);
 
         Button searchSummonerButton = (Button) findViewById(R.id.searchSummonerButton);
-        searchSummonerButton.setOnClickListener(new FindSummonerActivityButtonListener(this, summonerTextField, regionSpinner));
+        searchSummonerButton.setOnClickListener(new FindSummonerActivityButtonListener(this, summonerTextField, regionSpinner, radioGroup));
     }
 
     @Override

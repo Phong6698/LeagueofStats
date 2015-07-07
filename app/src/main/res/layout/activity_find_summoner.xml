@@ -8,7 +8,7 @@
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup"
+        android:id="@+id/findSummonerRadioGroup"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 

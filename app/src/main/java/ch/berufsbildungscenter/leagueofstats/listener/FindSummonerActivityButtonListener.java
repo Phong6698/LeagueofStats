@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import ch.berufsbildungscenter.leagueofstats.FindSummonerActivity;
+import ch.berufsbildungscenter.leagueofstats.InGameActivity;
 import ch.berufsbildungscenter.leagueofstats.R;
 import ch.berufsbildungscenter.leagueofstats.SummonerActivity;
 import ch.berufsbildungscenter.leagueofstats.json.SummonerIDLoader;
@@ -26,39 +29,49 @@ public class FindSummonerActivityButtonListener implements View.OnClickListener 
     private EditText summonerTextField;
     private Spinner regionSpinner;
     private ProgressDialog mDialog;
+    private RadioGroup radioGroup;
 
 
-    public FindSummonerActivityButtonListener(Context context, EditText summonerTextField, Spinner regionSpinner){
+    public FindSummonerActivityButtonListener(Context context, EditText summonerTextField, Spinner regionSpinner, RadioGroup radioGroup){
         this.setContext(context);
         this.setSummonerTextField(summonerTextField);
         this.setRegionSpinner(regionSpinner);
+        this.radioGroup = radioGroup;
 
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.searchSummonerButton){
-            String summoner = summonerTextField.getText().toString();
+            String summonerName = summonerTextField.getText().toString();
             String region = regionSpinner.getSelectedItem().toString();
-            Log.e(LOG_TAG, "summoner: " + summoner);
+            Log.e(LOG_TAG, "summoner: " + summonerName);
             Log.e(LOG_TAG, "region: " + region);
 
             mDialog = ProgressDialog.show(context, "Please wait", "Searching Summoner...");
 
             SummonerIDLoader summonerIDLoader = new SummonerIDLoader((FindSummonerActivity) context, mDialog, this);
-            summonerIDLoader.execute(region, summoner);
+            summonerIDLoader.execute(region, summonerName);
         }
     }
 
     public void startActivity(Summoner summoner){
-        Intent intent = new Intent(context, SummonerActivity.class);
-        intent.putExtra("summonerId", summoner.getId());
-        intent.putExtra("summonerLevel", summoner.getSummonerLevel());
-        intent.putExtra("profileIconId", summoner.getProfileIconId());
-        intent.putExtra("region", summoner.getRegion());
-        intent.putExtra("summonerName", summoner.getName());
-        context.startActivity(intent);
-        mDialog.dismiss();
+        Intent intent = null;
+        if(radioGroup.getCheckedRadioButtonId() == R.id.profileRadioButton) {
+            intent = new Intent(context, SummonerActivity.class);
+
+        }else if(radioGroup.getCheckedRadioButtonId() == R.id.inGameRadioButton){
+            intent = new Intent(context, InGameActivity.class);
+        }
+        if(intent != null) {
+            intent.putExtra("summonerId", summoner.getId());
+            intent.putExtra("summonerLevel", summoner.getSummonerLevel());
+            intent.putExtra("profileIconId", summoner.getProfileIconId());
+            intent.putExtra("region", summoner.getRegion());
+            intent.putExtra("summonerName", summoner.getName());
+            context.startActivity(intent);
+            mDialog.dismiss();
+        }
     }
 
 
