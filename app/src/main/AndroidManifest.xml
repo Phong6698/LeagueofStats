@@ -79,8 +79,9 @@
         </activity>
         <activity
             android:name=".InGameActivity"
-            android:label="@string/title_activity_in_game" >
+            android:label="@string/title_activity_in_game"
+            android:parentActivityName=".FindSummonerActivity"
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
     </application>
-
 </manifest>

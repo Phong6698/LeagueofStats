@@ -11,6 +11,8 @@ import java.util.Iterator;
 
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionStat;
+import ch.berufsbildungscenter.leagueofstats.model.InGame;
+import ch.berufsbildungscenter.leagueofstats.model.InGameSummoner;
 import ch.berufsbildungscenter.leagueofstats.model.Item;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
@@ -326,5 +328,40 @@ public class JSONParser{
             e.printStackTrace();
         }
         return item;
+    }
+
+    protected InGame getInGameStats(String jsonString){
+        InGame inGame = new InGame();
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            inGame.setGameMode(jsonObject.getString("gameMode"));
+
+            JSONArray jArray = (JSONArray)jsonObject.getJSONArray("participants");
+            if (jArray != null) {
+                for (int i=0;i<jArray.length();i++){
+                    InGameSummoner inGameSummoner = new InGameSummoner();
+
+                    JSONObject participantObj = new JSONObject(jArray.get(i).toString());
+                    inGameSummoner.setId(participantObj.getInt("summonerId"));
+                    inGameSummoner.setName(participantObj.getString("summonerName"));
+                    inGameSummoner.setPlayingChampionId(participantObj.getInt("championId"));
+                    inGameSummoner.setSpellId1(participantObj.getInt("spell1Id"));
+                    inGameSummoner.setSpellId2(participantObj.getInt("spell2Id"));
+                    int teamId = participantObj.getInt("teamId");
+                    inGameSummoner.setTeamId(teamId);
+
+                    if(teamId == 100){
+                        inGame.getInGameSummonersTeam1().add(inGameSummoner);
+                    } else if (teamId == 200){
+                        inGame.getInGameSummonersTeam2().add(inGameSummoner);
+                    }
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return inGame;
     }
 }
