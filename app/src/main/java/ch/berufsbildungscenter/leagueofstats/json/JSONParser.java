@@ -131,9 +131,12 @@ public class JSONParser{
     }
 
 
-    protected static Summoner getSummonerWins(String jsonString, Summoner summoner){
+    protected static Summoner getSummonerWins(String jsonString, Summoner sum){
+        Summoner summoner = sum;
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
+
+
 
             ArrayList<String> listdata = new ArrayList<String>();
             JSONArray jArray = (JSONArray)jsonObj.getJSONArray("playerStatSummaries");

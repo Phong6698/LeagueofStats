@@ -2,12 +2,15 @@ package ch.berufsbildungscenter.leagueofstats.json;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.widget.Toast;
 
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import ch.berufsbildungscenter.leagueofstats.SummonerActivity;
+import ch.berufsbildungscenter.leagueofstats.listener.FavoritSummonerListener;
+import ch.berufsbildungscenter.leagueofstats.listener.FindSummonerActivityButtonListener;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 /**
@@ -15,35 +18,46 @@ import ch.berufsbildungscenter.leagueofstats.model.Summoner;
  */
 public class SummonerIDLoader extends JsonLoadingTask {
 
-    private URL url;
     private String region;
-    private SummonerActivity summonerActivity;
+    private FindSummonerActivityButtonListener findSummonerActivityButtonListener;
+    private FavoritSummonerListener favoritSummonerListener;
 
-    public SummonerIDLoader(Activity activity, ProgressDialog mDialog, String region) {
+    public SummonerIDLoader(Activity activity, ProgressDialog mDialog, FindSummonerActivityButtonListener findSummonerActivityButtonListener) {
         super(activity, mDialog);
-        summonerActivity = (SummonerActivity) activity;
-        this.region = region;
+        this.findSummonerActivityButtonListener = findSummonerActivityButtonListener;
+
+    }
+    public SummonerIDLoader(Activity activity, ProgressDialog mDialog, FavoritSummonerListener favoritSummonerListener) {
+        super(activity, mDialog);
+        this.favoritSummonerListener = favoritSummonerListener;
+
     }
 
     @Override
     protected void onCostumPostExecute(String jsonString) {
-        Summoner summoner = jsonParser.getSummoner(jsonString);
-        summoner.setRegion(region);
-        int summonerId = summoner.getId();
-
-        SummonerStatsLoader summonerStatsLoader = new SummonerStatsLoader(activity, mDialog, summoner);
-        summonerStatsLoader.execute(region, ""+summonerId);
-
+        if (null == jsonString) {
+            mDialog.dismiss();
+            Toast.makeText(activity, "Summoner not found", Toast.LENGTH_SHORT).show();
+        } else {
+            Summoner summoner = jsonParser.getSummoner(jsonString);
+            summoner.setRegion(region);
+            if(findSummonerActivityButtonListener != null) {
+                findSummonerActivityButtonListener.startActivity(summoner);
+            }
+            if(favoritSummonerListener != null){
+                favoritSummonerListener.startActivity(summoner);
+            }
+        }
     }
 
     @Override
     protected URL createURL(String... params) {
         String summonername = params[1];
         String region = params[0];
-
+        this.region = region;
         URL url = null;
         try {
-            url = new URL("https://euw.api.pvp.net/api/lol/"+region+"/v1.4/summoner/by-name/"+summonername.replaceAll("\\s+", "%20")+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            url = new URL("https://"+region.toLowerCase()+".api.pvp.net/api/lol/"+region.toLowerCase()+"/v1.4/summoner/by-name/"+summonername.replaceAll("\\s+", "%20")+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

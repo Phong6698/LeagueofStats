@@ -17,28 +17,29 @@
             android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AllChampionsActivity"
             android:label="@string/title_activity_all_champions"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".ChampionStatsActivity"
             android:label="@string/title_activity_champion_stats"
-            android:screenOrientation="portrait"
             android:parentActivityName=".AllChampionsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".FavoritSummonerActivity"
             android:label="@string/title_activity_favorit_summoner"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
@@ -58,23 +59,28 @@
         <activity
             android:name=".FreeToPlayChampionsActivity"
             android:label="@string/title_activity_free_to_play_champions"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".AllItemsActivity"
             android:label="@string/title_activity_all_items"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name=".ItemActivity"
             android:label="@string/title_activity_item"
-            android:screenOrientation="portrait"
             android:parentActivityName=".AllItemsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
+        <activity
+            android:name=".InGameActivity"
+            android:label="@string/title_activity_in_game" >
+        </activity>
     </application>
+
 </manifest>

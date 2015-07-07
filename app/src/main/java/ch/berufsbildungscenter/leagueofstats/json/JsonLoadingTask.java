@@ -76,14 +76,8 @@ public abstract class JsonLoadingTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String jsonString) {
-        if (null == jsonString) {
-            mDialog.dismiss();
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_SHORT).show();
-        }else {
             onCostumPostExecute(jsonString);
             Log.e(LOG_TAG, "jsonString: " + jsonString);
-        }
-
     }
 
     protected abstract void onCostumPostExecute(String jsonString);

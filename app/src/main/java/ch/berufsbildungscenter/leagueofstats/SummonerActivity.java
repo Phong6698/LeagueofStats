@@ -21,15 +21,15 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ch.berufsbildungscenter.leagueofstats.json.SummonerIDLoader;
+import ch.berufsbildungscenter.leagueofstats.json.SummonerStatsLoader;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 import ch.berufsbildungscenter.leagueofstats.model.SummonerRanked;
 
 
 public class SummonerActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    private String summonername;
+    private int summonerId;
     private String region;
-    private URL url;
     private Summoner summoner;
     private Menu menu;
 
@@ -50,17 +50,19 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         actionBar.addTab(actionBar.newTab().setText(R.string.summoner_overview).setTabListener(this), true);
         actionBar.addTab(actionBar.newTab().setText(R.string.summoner_stats).setTabListener(this), false);
 
-
-
         Intent intent = getIntent();
-        summonername = intent.getStringExtra("summoner");
-        region = intent.getStringExtra("region");
+
+        summoner = new Summoner();
+        summoner.setId(intent.getIntExtra("summonerId", 0));
+        summoner.setRegion(intent.getStringExtra("region"));
+        summoner.setName(intent.getStringExtra("summonerName"));
+        summoner.setSummonerLevel(intent.getIntExtra("summonerLevel", 0));
+        summoner.setProfileIconId(intent.getIntExtra("profileIconId",0));
 
         mDialog = ProgressDialog.show(this, "Please wait", "Loading Summoner...");
 
-
-        SummonerIDLoader summonerIDLoader = new SummonerIDLoader(this, mDialog, region);
-        summonerIDLoader.execute(region,summonername);
+        SummonerStatsLoader summonerStatsLoader = new SummonerStatsLoader(this, mDialog, summoner);
+        summonerStatsLoader.execute(summoner.getRegion(), ""+summoner.getId());
     }
 
     public void setData(Summoner summoner){

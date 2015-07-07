@@ -16,6 +16,7 @@ public class Summoner {
     private int summonerLevel;
     private int profileIconId;
     private String region = "euw";
+    private int wins;
     private ArrayList<SummonerRanked> summonerRankeds = new ArrayList<>();
 
 
@@ -82,5 +83,5 @@ public class Summoner {
         this.id = id;
     }
 
-    private int wins;
+
 }

@@ -36,9 +36,10 @@ public class SummonerRankedStatsLoader extends JsonLoadingTask{
     @Override
     protected URL createURL(String... params) {
         String summonerId = params[0];
+        String region = params[1];
         URL url = null;
         try {
-            url = new URL("https://euw.api.pvp.net/api/lol/euw/v2.5/league/by-summoner/" + summonerId + "/entry?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
+            url = new URL("https://"+region.toLowerCase()+".api.pvp.net/api/lol/"+region.toLowerCase()+"/v2.5/league/by-summoner/" + summonerId + "/entry?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
