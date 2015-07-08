@@ -34,7 +34,6 @@ public class LoreActivity extends ActionBarActivity implements ActionBar.TabList
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_lore).setTabListener(this), true);
         actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_stats).setTabListener(this), false);
-        actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_spells).setTabListener(this), false);
 
         Intent intent = getIntent();
 
@@ -87,13 +86,11 @@ public class LoreActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         if(tab.getPosition() == 0) {
-            Log.e("TAB 1", "Selected");
+
         }
         else if(tab.getPosition() == 1) {
-            Log.e("TAB 2", "Selected");
-        }
-        else if(tab.getPosition() == 2) {
-            Log.e("TAB 3", "Selected");
+            this.finish();
+            Log.v("TAB 1", "Selected");
         }
     }
 

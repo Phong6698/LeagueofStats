@@ -45,11 +45,6 @@ public class SummonerActivity extends ActionBarActivity implements ActionBar.Tab
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.addTab(actionBar.newTab().setText(R.string.summomer_gamehistory).setTabListener(this), false);
-        actionBar.addTab(actionBar.newTab().setText(R.string.summoner_overview).setTabListener(this), true);
-        actionBar.addTab(actionBar.newTab().setText(R.string.summoner_stats).setTabListener(this), false);
-
         Intent intent = getIntent();
 
         summoner = new Summoner();

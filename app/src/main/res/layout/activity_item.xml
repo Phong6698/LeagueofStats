@@ -55,7 +55,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/cost"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:layout_alignTop="@+id/costTitle"
         android:layout_toEndOf="@+id/costTitle" />
 
@@ -68,7 +68,7 @@
         android:layout_alignBottom="@+id/itemImageView"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="15dp"
-        android:layout_marginRight="60dp" />
+        android:layout_marginRight="55dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/sell"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_alignTop="@+id/sellTitle"
         android:layout_alignStart="@+id/sellTitle" />
 

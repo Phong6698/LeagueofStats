@@ -27,14 +27,15 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
     private URL url;
     private ProgressDialog mDialog;
     private String image;
-    ChampionData championData;
+    private ChampionData championData;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champion_stats);
 
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // changes color of action bar:
@@ -42,7 +43,6 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_lore).setTabListener(this), false);
         actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_stats).setTabListener(this), true);
-        actionBar.addTab(actionBar.newTab().setText(R.string.champion_tab_spells).setTabListener(this), false);
 
         Intent intent = getIntent();
 
@@ -144,13 +144,13 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
             intent.putExtra("championName", championData.getName());
             startActivity(intent);
             Log.v("TAB 1", "Selected");
+            actionBar.getTabAt(1).select();
+
         }
         else if(tab.getPosition() == 1) {
             Log.v("TAB 2", "Selected");
         }
-        else if(tab.getPosition() == 2) {
-            Log.v("TAB 3", "Selected");
-        }
+
 
 
     }
