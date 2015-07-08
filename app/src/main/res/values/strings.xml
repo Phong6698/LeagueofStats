@@ -45,4 +45,5 @@
     <string name="title_activity_item">Item</string>
     <string name="title_activity_in_game">In Game</string>
     <string name="title_activity_in_game_adapter">InGameAdapter</string>
+    <string name="title_activity_lore">Lore and tips</string>
 </resources>

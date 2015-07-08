@@ -26,8 +26,9 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
 
     private URL url;
     private ProgressDialog mDialog;
-    private ArrayList<ChampionData> championDatas;
     private String image;
+    ChampionData championData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
 
     public void setData(ChampionData champion) {
 
+        championData = champion;
         champion.setImage(image);
         ArrayList<ChampionStat> arrayList = new ArrayList<ChampionStat>();
 
@@ -132,6 +134,21 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        if(tab.getPosition() == 0) {
+            Log.e("TAB 1", "Selected");
+            Intent intent = new Intent(this, LoreActivity.class);
+            intent.putExtra("allyTips", championData.getAllyTips());
+            intent.putExtra("enemyTips", championData.getEnemyTips());
+            intent.putExtra("lore", championData.getLore());
+            startActivity(intent);
+        }
+        else if(tab.getPosition() == 1) {
+            Log.e("TAB 2", "Selected");
+        }
+        else if(tab.getPosition() == 2) {
+            Log.e("TAB 3", "Selected");
+        }
+
 
     }
 

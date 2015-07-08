@@ -46,8 +46,9 @@ public class ChampionData {
     private double armorPerLevel;
     private double magicResistance;
 
-    private String[] allyTips;
-    private String[] enemyTips;
+    private String allyTips;
+    private String enemyTips;
+    private String lore;
 
     public void getChampionIconImageButton(ImageButton image) {
         Log.e("Image", "Image: " + this.image);
@@ -66,22 +67,6 @@ public class ChampionData {
 
     public void setAttackSpeedOffset(double attackSpeedOffset) {
         this.attackSpeedOffset = attackSpeedOffset;
-    }
-
-    public String[] getAllyTips() {
-        return allyTips;
-    }
-
-    public void setAllyTips(String[] allyTips) {
-        this.allyTips = allyTips;
-    }
-
-    public String[] getEnemyTips() {
-        return enemyTips;
-    }
-
-    public void setEnemyTips(String[] enemyTips) {
-        this.enemyTips = enemyTips;
     }
 
     public double getMana() {
@@ -263,6 +248,29 @@ public class ChampionData {
         this.championStats = championStats;
     }
 
+    public String getAllyTips() {
+        return allyTips;
+    }
+
+    public void setAllyTips(String allyTips) {
+        this.allyTips = allyTips;
+    }
+
+    public String getEnemyTips() {
+        return enemyTips;
+    }
+
+    public void setEnemyTips(String enemyTips) {
+        this.enemyTips = enemyTips;
+    }
+
+    public String getLore() {
+        return lore;
+    }
+
+    public void setLore(String lore) {
+        this.lore = lore;
+    }
 }
 
 

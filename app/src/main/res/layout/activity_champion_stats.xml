@@ -120,4 +120,20 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lore"
+        android:id="@+id/lore"
+        android:layout_alignTop="@+id/Champ_stat_list"
+        android:layout_alignStart="@+id/difficulty_bar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tips"
+        android:id="@+id/tips"
+        android:layout_below="@+id/lore"
+        android:layout_alignEnd="@+id/ap_stat" />
+
 </RelativeLayout>

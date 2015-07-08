@@ -93,11 +93,19 @@ public class JSONParser{
             JSONObject jsonObject = new JSONObject(jsonstring);
             JSONObject jsonInfoObj = jsonObject.getJSONObject("info");
             JSONObject jsonStatObj = jsonObject.getJSONObject("stats");
+            JSONArray jsonArrayEnemyTips = jsonObject.getJSONArray("enemytips");
+            JSONArray jsonArrayAllyTips = jsonObject.getJSONArray("allytips");
+
             int id = jsonObject.getInt("id");
             int ad = jsonInfoObj.getInt("attack");
             int ap = jsonInfoObj.getInt("magic");
             int defense = jsonInfoObj.getInt("defense");
             int difficulty = jsonInfoObj.getInt("difficulty");
+            String enemyTips = "";
+            String allyTips = "";
+            String lore = jsonObject.getString("lore");
+
+
 
             Iterator keys = jsonStatObj.keys();
             while(keys.hasNext()) {
@@ -111,26 +119,41 @@ public class JSONParser{
                 Log.e("Stat ", "" + jsonStatObj.getDouble(key));
             }
 
+            if (jsonArrayAllyTips != null) {
+                for (int i = 0; i < jsonArrayAllyTips.length(); i++){
+                    allyTips += jsonArrayAllyTips.getString(i) + "\n";
+                }
+            }
+
+            if (jsonArrayEnemyTips != null) {
+                for (int i = 0; i < jsonArrayEnemyTips.length(); i++){
+                    enemyTips += jsonArrayEnemyTips.getString(i) + "\n";
+                }
+            }
+
+
+            championsDetails.setEnemyTips(enemyTips);
+            championsDetails.setAllyTips(allyTips);
+            championsDetails.setLore(lore);
             championsDetails.setId(id);
             championsDetails.setAttack(ad);
             championsDetails.setMagic(ap);
             championsDetails.setDefense(defense);
             championsDetails.setDifficulty(difficulty);
-
             championsDetails.setChampionStats(championStats);
 
-
-            Log.e(LOG_TAG, "Attack: " + ad);
-            Log.e(LOG_TAG, "Magic: " + ap);
-            Log.e(LOG_TAG, "Defense: " + defense);
-            Log.e(LOG_TAG, "Difficulty: " + difficulty);
-            Log.e(LOG_TAG, "ChampionStats: " + championStats);
+            Log.v(LOG_TAG, "Attack: " + ad);
+            Log.v(LOG_TAG, "Magic: " + ap);
+            Log.v(LOG_TAG, "Defense: " + defense);
+            Log.v(LOG_TAG, "Difficulty: " + difficulty);
+            Log.v(LOG_TAG, "ChampionStats: " + championStats);
 
         } catch (JSONException e) {
             Log.v("JSONParser", e.toString());
         }
         return championsDetails;
     }
+
 
 
     protected static Summoner getSummonerWins(String jsonString, Summoner sum){

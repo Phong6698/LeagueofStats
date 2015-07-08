@@ -1,0 +1,74 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="ch.berufsbildungscenter.leagueofstats.LoreTips"
+        android:id="@+id/loreRealtive"
+        android:nestedScrollingEnabled="false">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="allyTips"
+        android:id="@+id/tips"
+        android:layout_below="@+id/title_allytips"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Allytips"
+        android:id="@+id/title_allytips"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Lore"
+        android:id="@+id/lore"
+        android:layout_below="@+id/title_lore"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Lore"
+        android:id="@+id/title_lore"
+        android:layout_below="@+id/enemyTips"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Enemytips"
+            android:id="@+id/title_enemytips"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tips"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="enemyTips"
+            android:id="@+id/enemyTips"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/title_enemytips" />
+
+    </RelativeLayout>
+</ScrollView>

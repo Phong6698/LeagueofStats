@@ -81,12 +81,11 @@
             android:name=".InGameActivity"
             android:label="@string/title_activity_in_game"
             android:parentActivityName=".FindSummonerActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
-            android:name=".InGameAdapter"
-            android:label="@string/title_activity_in_game_adapter" >
+            android:name=".LoreActivity"
+            android:label="@string/title_activity_lore" >
         </activity>
     </application>
 
