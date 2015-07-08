@@ -1,5 +1,10 @@
 package ch.berufsbildungscenter.leagueofstats.model;
 
+import android.util.Log;
+import android.widget.ImageButton;
+
+import ch.berufsbildungscenter.leagueofstats.ImageDownloader;
+
 /**
  * Created by Phong6 on 07.07.2015.
  */
@@ -11,6 +16,21 @@ public class InGameSummoner {
     private int spellId1;
     private int spellId2;
     private int teamId;
+    private String summonerImage;
+
+    public void getChampionIconImageButton(ImageButton image) {
+        Log.e("Image", "Image: " + this.summonerImage);
+        String url = "http://ddragon.leagueoflegends.com/cdn/5.12.1/img/champion/" + this.summonerImage;
+        new ImageDownloader(image).execute(url);
+    }
+
+    public String getSummonerImage() {
+        return summonerImage;
+    }
+
+    public void setSummonerImage(String summonerImage) {
+        this.summonerImage = summonerImage;
+    }
 
     public String getName() {
         return name;

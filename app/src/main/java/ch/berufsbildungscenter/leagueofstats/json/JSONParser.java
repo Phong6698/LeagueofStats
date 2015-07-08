@@ -364,4 +364,20 @@ public class JSONParser{
 
         return inGame;
     }
+
+    protected InGameSummoner getInGameChampion(String jsonString, InGameSummoner inGameSum){
+
+        InGameSummoner inGameSummoner = inGameSum;
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONObject imageObj = jsonObject.getJSONObject("image");
+            inGameSummoner.setSummonerImage(imageObj.getString("full"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return inGameSummoner;
+    }
 }

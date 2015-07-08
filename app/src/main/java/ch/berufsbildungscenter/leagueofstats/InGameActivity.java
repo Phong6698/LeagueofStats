@@ -6,14 +6,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import ch.berufsbildungscenter.leagueofstats.json.InGameLoader;
 import ch.berufsbildungscenter.leagueofstats.model.InGame;
+import ch.berufsbildungscenter.leagueofstats.model.InGameSummoner;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 
 public class InGameActivity extends ActionBarActivity {
 
+    private InGame inGame;
     private ProgressDialog mDialog;
 
     @Override
@@ -26,7 +30,7 @@ public class InGameActivity extends ActionBarActivity {
         int summonerId = intent.getIntExtra("summonerId", 0);
         String region = intent.getStringExtra("region");
 
-        mDialog = ProgressDialog.show(this,  "Please wait", "Loading In Game Stat");
+        mDialog = ProgressDialog.show(this,  "Please wait", "Loading In Game Stat...");
         InGameLoader inGameLoader = new InGameLoader(this, mDialog);
         inGameLoader.execute(region, ""+summonerId);
     }
@@ -38,9 +42,31 @@ public class InGameActivity extends ActionBarActivity {
         return true;
     }
 
-    public void setData(InGame inGame) {
+    public void setData(InGameSummoner inGameSummoner, InGame inGame) {
 
-        mDialog.dismiss();
+        if(inGameSummoner.getTeamId() == 100){
+            this.inGame.getInGameSummonersTeam1().add(inGameSummoner);
+        } else if(inGameSummoner.getTeamId() == 200){
+            this.inGame.getInGameSummonersTeam2().add(inGameSummoner);
+        }
+
+        if (this.inGame.getInGameSummonersTeam1().size() == inGame.getInGameSummonersTeam1().size() && this.inGame.getInGameSummonersTeam2().size() == inGame.getInGameSummonersTeam2().size()) {
+
+
+            TextView gameModeTextView = (TextView) findViewById(R.id.gameModeTextView);
+            gameModeTextView.setText(inGame.getGameMode());
+
+            // define items
+            InGameAdapter inGameAdapter1 = new InGameAdapter(this, R.id.InGameSummonerItem, inGame.getInGameSummonersTeam1());
+            ListView team1ListView = (ListView) findViewById(R.id.team1ListView);
+            team1ListView.setAdapter(inGameAdapter1);
+
+            InGameAdapter inGameAdapter2 = new InGameAdapter(this, R.id.InGameSummonerItem, inGame.getInGameSummonersTeam2());
+            ListView team2ListView = (ListView) findViewById(R.id.team2ListView);
+            team2ListView.setAdapter(inGameAdapter2);
+
+            mDialog.dismiss();
+        }
     }
 
     @Override
@@ -58,5 +84,11 @@ public class InGameActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public InGame getInGame() {
+        return inGame;
+    }
 
+    public void setInGame(InGame inGame) {
+        this.inGame = inGame;
+    }
 }

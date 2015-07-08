@@ -44,4 +44,5 @@
     <string name="title_activity_all_items_adapter">AllItemsAdapter</string>
     <string name="title_activity_item">Item</string>
     <string name="title_activity_in_game">In Game</string>
+    <string name="title_activity_in_game_adapter">InGameAdapter</string>
 </resources>
