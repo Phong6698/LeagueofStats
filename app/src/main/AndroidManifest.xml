@@ -86,7 +86,7 @@
         <activity
             android:name=".LoreActivity"
             android:label="@string/title_activity_lore"
-            android:parentActivityName=".ChampionStatsActivity"
+            android:parentActivityName=".AllChampionsActivity"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
     </application>
