@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import ch.berufsbildungscenter.leagueofstats.json.InGameLoader;
+import ch.berufsbildungscenter.leagueofstats.listener.FavoritSummonerListener;
+import ch.berufsbildungscenter.leagueofstats.listener.InGameListener;
 import ch.berufsbildungscenter.leagueofstats.model.InGame;
 import ch.berufsbildungscenter.leagueofstats.model.InGameSummoner;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
@@ -60,10 +62,15 @@ public class InGameActivity extends ActionBarActivity {
             InGameAdapter inGameAdapter1 = new InGameAdapter(this, R.id.InGameSummonerItem, inGame.getInGameSummonersTeam1());
             ListView team1ListView = (ListView) findViewById(R.id.team1ListView);
             team1ListView.setAdapter(inGameAdapter1);
+            team1ListView.setOnItemClickListener(new InGameListener(this));
+
 
             InGameAdapter inGameAdapter2 = new InGameAdapter(this, R.id.InGameSummonerItem, inGame.getInGameSummonersTeam2());
             ListView team2ListView = (ListView) findViewById(R.id.team2ListView);
             team2ListView.setAdapter(inGameAdapter2);
+            team2ListView.setOnItemClickListener(new InGameListener(this));
+          
+
 
             mDialog.dismiss();
         }

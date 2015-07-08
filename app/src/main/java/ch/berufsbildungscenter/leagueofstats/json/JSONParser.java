@@ -371,6 +371,7 @@ public class JSONParser{
 
         try {
             JSONObject jsonObject = new JSONObject(jsonString);
+            inGameSummoner.setChampionName(jsonObject.getString("name"));
             JSONObject imageObj = jsonObject.getJSONObject("image");
             inGameSummoner.setSummonerImage(imageObj.getString("full"));
 

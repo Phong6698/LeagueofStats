@@ -17,11 +17,30 @@ public class InGameSummoner {
     private int spellId2;
     private int teamId;
     private String summonerImage;
+    private String championName;
+    private String region;
+
 
     public void getChampionIconImageButton(ImageButton image) {
         Log.e("Image", "Image: " + this.summonerImage);
         String url = "http://ddragon.leagueoflegends.com/cdn/5.12.1/img/champion/" + this.summonerImage;
         new ImageDownloader(image).execute(url);
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getChampionName() {
+        return championName;
+    }
+
+    public void setChampionName(String championName) {
+        this.championName = championName;
     }
 
     public String getSummonerImage() {

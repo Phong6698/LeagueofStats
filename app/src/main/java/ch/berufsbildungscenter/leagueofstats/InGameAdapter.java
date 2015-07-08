@@ -3,6 +3,7 @@ package ch.berufsbildungscenter.leagueofstats;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ch.berufsbildungscenter.leagueofstats.listener.AllChampionsListener;
+import ch.berufsbildungscenter.leagueofstats.listener.InGameChampionListener;
 import ch.berufsbildungscenter.leagueofstats.model.ChampionData;
 import ch.berufsbildungscenter.leagueofstats.model.InGameSummoner;
 
@@ -48,6 +50,7 @@ public class InGameAdapter extends ArrayAdapter<InGameSummoner> {
         inGameSummoner.getChampionIconImageButton(championImageButton);
         summonerTextView.setText(inGameSummoner.getName());
 
+        championImageButton.setOnClickListener(new InGameChampionListener(context, inGameSummoner));
 
         return rowView;
     }

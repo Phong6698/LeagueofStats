@@ -17,6 +17,7 @@ import ch.berufsbildungscenter.leagueofstats.model.InGameSummoner;
 public class InGameLoader extends JsonLoadingTask{
 
     private InGameActivity inGameActivity;
+    private String region;
 
     public InGameLoader(Activity activity, ProgressDialog mDialog) {
         super(activity, mDialog);
@@ -39,10 +40,12 @@ public class InGameLoader extends JsonLoadingTask{
             inGameActivity.setInGame(inGame2);
 
             for (InGameSummoner inGameSummoner : inGame.getInGameSummonersTeam1()) {
+                inGameSummoner.setRegion(this.region);
                 InGameChampionLoader inGameChampionLoader = new InGameChampionLoader(inGameActivity, mDialog, inGame, inGameSummoner);
                 inGameChampionLoader.execute("" + inGameSummoner.getPlayingChampionId());
             }
             for (InGameSummoner inGameSummoner : inGame.getInGameSummonersTeam2()) {
+                inGameSummoner.setRegion(this.region);
                 InGameChampionLoader inGameChampionLoader = new InGameChampionLoader(inGameActivity, mDialog, inGame, inGameSummoner);
                 inGameChampionLoader.execute("" + inGameSummoner.getPlayingChampionId());
             }
@@ -55,6 +58,7 @@ public class InGameLoader extends JsonLoadingTask{
     protected URL createURL(String... params) {
         String region = params[0];
         String summonerId = params[1];
+        this.region = region;
         URL url = null;
         try {
             url = new URL("https://"+region.toLowerCase()+".api.pvp.net/observer-mode/rest/consumer/getSpectatorGameInfo/"+region.toUpperCase()+"1/"+summonerId+"?api_key=58453580-a12b-497a-bdde-d1255bd0fda3");

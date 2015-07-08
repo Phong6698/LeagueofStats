@@ -11,6 +11,8 @@ import java.net.URL;
 import ch.berufsbildungscenter.leagueofstats.SummonerActivity;
 import ch.berufsbildungscenter.leagueofstats.listener.FavoritSummonerListener;
 import ch.berufsbildungscenter.leagueofstats.listener.FindSummonerActivityButtonListener;
+import ch.berufsbildungscenter.leagueofstats.listener.InGameChampionListener;
+import ch.berufsbildungscenter.leagueofstats.listener.InGameListener;
 import ch.berufsbildungscenter.leagueofstats.model.Summoner;
 
 /**
@@ -21,6 +23,7 @@ public class SummonerIDLoader extends JsonLoadingTask {
     private String region;
     private FindSummonerActivityButtonListener findSummonerActivityButtonListener;
     private FavoritSummonerListener favoritSummonerListener;
+    private InGameListener inGameListener;
 
     public SummonerIDLoader(Activity activity, ProgressDialog mDialog, FindSummonerActivityButtonListener findSummonerActivityButtonListener) {
         super(activity, mDialog);
@@ -30,6 +33,12 @@ public class SummonerIDLoader extends JsonLoadingTask {
     public SummonerIDLoader(Activity activity, ProgressDialog mDialog, FavoritSummonerListener favoritSummonerListener) {
         super(activity, mDialog);
         this.favoritSummonerListener = favoritSummonerListener;
+
+    }
+
+    public SummonerIDLoader(Activity activity, ProgressDialog mDialog, InGameListener inGameListener) {
+        super(activity, mDialog);
+        this.inGameListener = inGameListener;
 
     }
 
@@ -46,6 +55,9 @@ public class SummonerIDLoader extends JsonLoadingTask {
             }
             if(favoritSummonerListener != null){
                 favoritSummonerListener.startActivity(summoner);
+            }
+            if(inGameListener != null){
+                inGameListener.startActivity(summoner);
             }
         }
     }
