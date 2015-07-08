@@ -7,10 +7,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import ch.berufsbildungscenter.leagueofstats.listener.LoreListener;
 
 
 public class LoreActivity extends ActionBarActivity implements ActionBar.TabListener {
+
+    private boolean allyTipsVisible = false;
+    private boolean enemyTipsVisible = false;
+    private boolean loreVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,16 @@ public class LoreActivity extends ActionBarActivity implements ActionBar.TabList
         tipsText.setText(allyTips);
         enemyTipsText.setText(enemyTips);
         loreText.setText(lore.replaceAll("<br>", "\n"));
+        tipsText.setVisibility(View.GONE);
+        enemyTipsText.setVisibility(View.GONE);
+        loreText.setVisibility(View.GONE);
+
+        Button allytipsButton = (Button) findViewById(R.id.allytipsButton);
+        Button enemytipsButton = (Button) findViewById(R.id.enemytipsButton);
+        Button loreButton = (Button) findViewById(R.id.loreButton);
+        allytipsButton.setOnClickListener(new LoreListener(this));
+        enemytipsButton.setOnClickListener(new LoreListener(this));
+        loreButton.setOnClickListener(new LoreListener(this));
     }
 
     @Override
@@ -78,5 +96,29 @@ public class LoreActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
+    }
+
+    public boolean isAllyTipsVisible() {
+        return allyTipsVisible;
+    }
+
+    public void setAllyTipsVisible(boolean allyTipsVisible) {
+        this.allyTipsVisible = allyTipsVisible;
+    }
+
+    public boolean isEnemyTipsVisible() {
+        return enemyTipsVisible;
+    }
+
+    public void setEnemyTipsVisible(boolean enemyTipsVisible) {
+        this.enemyTipsVisible = enemyTipsVisible;
+    }
+
+    public boolean isLoreVisible() {
+        return loreVisible;
+    }
+
+    public void setLoreVisible(boolean loreVisible) {
+        this.loreVisible = loreVisible;
     }
 }

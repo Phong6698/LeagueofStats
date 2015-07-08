@@ -20,7 +20,8 @@
         android:text="allyTips"
         android:id="@+id/tips"
         android:layout_below="@+id/title_allytips"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +39,8 @@
         android:text="Lore"
         android:id="@+id/lore"
         android:layout_below="@+id/title_lore"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,9 +68,46 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="enemyTips"
             android:id="@+id/enemyTips"
-            android:layout_centerVertical="true"
+            android:autoText="false"
+            android:layout_below="@+id/title_enemytips"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/title_enemytips" />
+            android:layout_marginTop="20dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="show"
+            android:id="@+id/allytipsButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_blue_dark"
+            android:textColor="#ffffffff"
+            android:textSize="10sp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/enemytipsButton"
+            android:layout_alignTop="@+id/title_enemytips"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_blue_dark"
+            android:textColor="#ffffffff"
+            android:textSize="10sp"
+            android:text="show" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="show"
+            android:id="@+id/loreButton"
+            android:layout_alignTop="@+id/title_lore"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_blue_dark"
+            android:textColor="#ffffffff"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 </ScrollView>
