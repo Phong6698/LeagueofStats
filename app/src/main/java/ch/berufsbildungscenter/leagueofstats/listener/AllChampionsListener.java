@@ -27,11 +27,11 @@ public class AllChampionsListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
             Intent intent = new Intent(context, ChampionStatsActivity.class);
-            Log.e(LOG_TAG, "name: " + championData.getName());
             intent.putExtra("championId", championData.getId());
             intent.putExtra("championName", championData.getName());
             intent.putExtra("image", championData.getImage());
             context.startActivity(intent);
+            Log.v(LOG_TAG, "name: " + championData.getName());
     }
 
     public Context getContext() {

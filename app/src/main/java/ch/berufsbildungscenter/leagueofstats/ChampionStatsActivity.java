@@ -135,18 +135,21 @@ public class ChampionStatsActivity extends ActionBarActivity implements ActionBa
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         if(tab.getPosition() == 0) {
-            Log.e("TAB 1", "Selected");
             Intent intent = new Intent(this, LoreActivity.class);
             intent.putExtra("allyTips", championData.getAllyTips());
             intent.putExtra("enemyTips", championData.getEnemyTips());
             intent.putExtra("lore", championData.getLore());
+            intent.putExtra("image", championData.getImage());
+            intent.putExtra("id", championData.getId());
+            intent.putExtra("championName", championData.getName());
             startActivity(intent);
+            Log.v("TAB 1", "Selected");
         }
         else if(tab.getPosition() == 1) {
-            Log.e("TAB 2", "Selected");
+            Log.v("TAB 2", "Selected");
         }
         else if(tab.getPosition() == 2) {
-            Log.e("TAB 3", "Selected");
+            Log.v("TAB 3", "Selected");
         }
 
 

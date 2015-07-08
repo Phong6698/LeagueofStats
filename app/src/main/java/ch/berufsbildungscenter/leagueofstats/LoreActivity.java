@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,7 +86,15 @@ public class LoreActivity extends ActionBarActivity implements ActionBar.TabList
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        
+        if(tab.getPosition() == 0) {
+            Log.e("TAB 1", "Selected");
+        }
+        else if(tab.getPosition() == 1) {
+            Log.e("TAB 2", "Selected");
+        }
+        else if(tab.getPosition() == 2) {
+            Log.e("TAB 3", "Selected");
+        }
     }
 
     @Override
