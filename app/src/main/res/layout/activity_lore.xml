@@ -76,19 +76,19 @@
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
             android:text="show"
             android:id="@+id/allytipsButton"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:background="@android:color/holo_blue_dark"
             android:textColor="#ffffffff"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:layout_above="@+id/tips"
+            android:layout_alignParentEnd="true" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
             android:id="@+id/enemytipsButton"
             android:layout_alignTop="@+id/title_enemytips"
             android:layout_alignParentEnd="true"
@@ -100,7 +100,7 @@
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
             android:text="show"
             android:id="@+id/loreButton"
             android:layout_alignTop="@+id/title_lore"
